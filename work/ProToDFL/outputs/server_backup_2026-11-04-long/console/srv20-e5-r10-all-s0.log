@@ -1,0 +1,5 @@
+Training Progress:   0%|          | 0/11 [00:00<?, ?it/s]Training Progress:   9%|▉         | 1/11 [01:32<15:20, 92.02s/it]Training Progress:  18%|█▊        | 2/11 [03:03<13:47, 91.99s/it]Training Progress:  27%|██▋       | 3/11 [04:36<12:16, 92.09s/it]Training Progress:  36%|███▋      | 4/11 [06:08<10:45, 92.15s/it]Training Progress:  45%|████▌     | 5/11 [07:40<09:13, 92.20s/it]Training Progress:  55%|█████▍    | 6/11 [09:12<07:40, 92.18s/it]Training Progress:  64%|██████▎   | 7/11 [10:44<06:08, 92.11s/it]Training Progress:  73%|███████▎  | 8/11 [12:16<04:36, 92.04s/it]Training Progress:  82%|████████▏ | 9/11 [13:48<03:04, 92.02s/it]Training Progress:  91%|█████████ | 10/11 [15:20<01:32, 92.00s/it]Training Progress: 100%|██████████| 11/11 [16:53<00:00, 92.24s/it]Training Progress: 100%|██████████| 11/11 [16:53<00:00, 92.13s/it]
+Removed edge between 6 and 8 safely.
+Removed edge between 8 and 13 safely.
+Removed edge between 11 and 14 safely.
+Graphs saved to outputs/topologies/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm10-total_clnt20-neighbor20-seed0-tagsrv20-e5-r10-all-s0/ring/topologies_dir_2.pdf

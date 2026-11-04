@@ -1,0 +1,233 @@
+Namespace(model='resnet18', dataset='cifar10', momentum=0, data_dir='c:/Users/Administrator/Desktop/bishe/datasets', output_dir='c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs', partition_method='dir', partition_alpha=0.3, batch_size=256, personal=0, client_optimizer='sgd', lr=0.1, lr_decay=0.998, wd=0.0005, epochs=1, client_num_in_total=5, frac=1.0, comm_round=0, k=1, frequency_of_the_test=1, cs='ring', gpu=0, dynamic=0, ci=0, step=0, oracle_mode=0, oracle_m=2, max_neighbors=1, tag='cap-smoke', t_max=100, seed=0, momentums=0.5, times=1, identity='ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-1-mo0.5-per-0-mdlresnet18-cm0-total_clnt5-neighbor5-seed0-tagcap-smoke', client_num_per_round=5)
+cuda:0
+running at devicecuda:0
+*********partition data***************
+dir: allocated 50000/50000 samples across 5 clients
+train_num10000  test_num2003
+client_idx = 0, local_sample_number = 10000
+train_num10000  test_num2003
+client_idx = 1, local_sample_number = 10000
+train_num10000  test_num2003
+client_idx = 2, local_sample_number = 10000
+train_num10000  test_num2001
+client_idx = 3, local_sample_number = 10000
+train_num10000  test_num2001
+client_idx = 4, local_sample_number = 10000
+DATA Partition: Train [np.int64(257), np.int64(1987), np.int64(671), 0, 0, np.int64(1788), np.int64(5000), np.int64(290), np.int64(2), np.int64(5)]; Test [np.int64(52), np.int64(398), np.int64(135), 0, 0, np.int64(358), np.int64(1000), np.int64(58), np.int64(1), np.int64(1)]
+DATA Partition: Train [np.int64(1146), np.int64(128), np.int64(739), 0, np.int64(1917), np.int64(3212), 0, np.int64(2595), np.int64(55), np.int64(208)]; Test [np.int64(230), np.int64(26), np.int64(148), 0, np.int64(384), np.int64(643), 0, np.int64(519), np.int64(11), np.int64(42)]
+DATA Partition: Train [np.int64(2406), np.int64(96), np.int64(3590), np.int64(1235), np.int64(43), 0, 0, np.int64(2115), np.int64(234), np.int64(281)]; Test [np.int64(482), np.int64(20), np.int64(718), np.int64(247), np.int64(9), 0, 0, np.int64(423), np.int64(47), np.int64(57)]
+DATA Partition: Train [np.int64(591), 0, 0, np.int64(3765), np.int64(635), 0, 0, 0, np.int64(4709), np.int64(300)]; Test [np.int64(119), 0, 0, np.int64(753), np.int64(127), 0, 0, 0, np.int64(942), np.int64(60)]
+DATA Partition: Train [np.int64(600), np.int64(2789), 0, 0, np.int64(2405), 0, 0, 0, 0, np.int64(4206)]; Test [np.int64(120), np.int64(558), 0, 0, np.int64(481), 0, 0, 0, 0, np.int64(842)]
+create_model. model_name = resnet18
+BaseHeadSplit(
+  (base): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (linear): Identity()
+  )
+  (head): Linear(in_features=512, out_features=10, bias=True)
+)
+############setup_clients (START)#############
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+############setup_clients (END)#############
+test acc on this client before 52 / 2003 : 0.03
+Client Index = 0	Epoch: 0	Loss: 3.069227
+################client:0 threshold : 500
+test acc on this client after 1000 / 2003 : 0.50
+--------------------------------------
+test acc on this client before 230 / 2003 : 0.11
+Client Index = 1	Epoch: 0	Loss: 3.525716
+################client:1 threshold : 500
+test acc on this client after 230 / 2003 : 0.11
+--------------------------------------
+test acc on this client before 482 / 2003 : 0.24
+Client Index = 2	Epoch: 0	Loss: 3.351600
+################client:2 threshold : 500
+test acc on this client after 247 / 2003 : 0.12
+--------------------------------------
+test acc on this client before 119 / 2001 : 0.06
+Client Index = 3	Epoch: 0	Loss: 3.229622
+################client:3 threshold : 500
+test acc on this client after 942 / 2001 : 0.47
+--------------------------------------
+test acc on this client before 120 / 2001 : 0.06
+Client Index = 4	Epoch: 0	Loss: 3.114114
+################client:4 threshold : 500
+test acc on this client after 661 / 2001 : 0.33
+--------------------------------------
+test acc on this client before 1000 / 2003 : 0.50
+Client Index = 0	Epoch: 0	Loss: 1.391472
+################client:0 threshold : 500
+test acc on this client after 1000 / 2003 : 0.50
+--------------------------------------
+test acc on this client before 230 / 2003 : 0.11
+Client Index = 1	Epoch: 0	Loss: 1.678753
+################client:1 threshold : 500
+test acc on this client after 714 / 2003 : 0.36
+--------------------------------------
+test acc on this client before 247 / 2003 : 0.12
+Client Index = 2	Epoch: 0	Loss: 1.581798
+################client:2 threshold : 500
+test acc on this client after 247 / 2003 : 0.12
+--------------------------------------
+test acc on this client before 942 / 2001 : 0.47
+Client Index = 3	Epoch: 0	Loss: 1.230468
+################client:3 threshold : 500
+test acc on this client after 1196 / 2001 : 0.60
+--------------------------------------
+test acc on this client before 661 / 2001 : 0.33
+Client Index = 4	Epoch: 0	Loss: 1.268314
+################client:4 threshold : 500
+test acc on this client after 618 / 2001 : 0.31
+--------------------------------------
+################Communication round : 0
+add number:0
+sub number:0
+@@@@@@@@@@@@@@@@ Training Client CM(0): 0
+choose client_indexes: {1: {}, 4: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 1
+choose client_indexes: {2: {}, 0: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 2
+choose client_indexes: {1: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 3
+choose client_indexes: {4: {}, 2: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 4
+choose client_indexes: {0: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+-----------------------最初------------------
+client_id: 0
+client.neigh_distance: {1: 17.799951553344727, 4: 14.026643753051758}
+client.threshold: 14.026643753051758
+-----------------------最初------------------
+client_id: 1
+client.neigh_distance: {2: 18.56157684326172, 0: 17.82562828063965}
+client.threshold: 17.82562828063965
+-----------------------最初------------------
+client_id: 2
+client.neigh_distance: {1: 18.676050186157227, 3: 11.623504638671875}
+client.threshold: 11.623504638671875
+-----------------------最初------------------
+client_id: 3
+client.neigh_distance: {4: 9.579854011535645, 2: 11.645779609680176}
+client.threshold: 9.579854011535645
+-----------------------最初------------------
+client_id: 4
+client.neigh_distance: {0: 14.023857116699219, 3: 9.557320594787598}
+client.threshold: 9.557320594787598
+CAP max_neighbors=1
+Doing local aggregation!
+COMM round=0 directed_links=5 model_bytes=223479240 proto_accesses=10 proto_bytes=20480
+@@@@@@@@@@@@@@@@ Training Client CM(0): 0
+test acc on this client before 398 / 2003 : 0.20
+Client Index = 0	Epoch: 0	Loss: 1.549699
+################client:0 threshold : 14.026643753051758
+test acc on this client after 616 / 2003 : 0.31
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 1
+test acc on this client before 643 / 2003 : 0.32
+Client Index = 1	Epoch: 0	Loss: 1.733434
+################client:1 threshold : 17.82562828063965
+test acc on this client after 523 / 2003 : 0.26
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 2
+test acc on this client before 247 / 2003 : 0.12
+Client Index = 2	Epoch: 0	Loss: 1.669556
+################client:2 threshold : 11.623504638671875
+test acc on this client after 718 / 2003 : 0.36
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 3
+test acc on this client before 127 / 2001 : 0.06
+Client Index = 3	Epoch: 0	Loss: 1.502720
+################client:3 threshold : 9.579854011535645
+test acc on this client after 753 / 2001 : 0.38
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 4
+test acc on this client before 481 / 2001 : 0.24
+Client Index = 4	Epoch: 0	Loss: 1.391045
+################client:4 threshold : 9.557320594787598
+test acc on this client after 660 / 2001 : 0.33
+--------------------------------------
+sum_comm_params 111742180
+################global_test_on_all_clients : 0
+{'global_test_acc': np.float64(0.32665125250654753), 'global_test_loss': np.float64(1.6799367722983387)}

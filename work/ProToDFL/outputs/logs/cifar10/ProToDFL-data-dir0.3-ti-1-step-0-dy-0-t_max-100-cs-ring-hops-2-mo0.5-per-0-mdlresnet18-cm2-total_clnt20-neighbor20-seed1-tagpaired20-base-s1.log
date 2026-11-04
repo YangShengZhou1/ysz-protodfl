@@ -1,0 +1,1178 @@
+Namespace(model='resnet18', dataset='cifar10', momentum=0, data_dir='c:/Users/Administrator/Desktop/bishe/datasets', output_dir='c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs', partition_method='dir', partition_alpha=0.3, batch_size=256, personal=0, client_optimizer='sgd', lr=0.1, lr_decay=0.998, wd=0.0005, epochs=1, client_num_in_total=20, frac=1.0, comm_round=2, k=2, frequency_of_the_test=1, cs='ring', gpu=0, dynamic=0, ci=0, step=0, oracle_mode=0, oracle_m=2, max_neighbors=2, aggregate_scope='base', self_weight_scale=1.0, validation_ratio=0.2, save_models_round=1, save_models_dir='', tag='paired20-base-s1', t_max=100, seed=1, momentums=0.5, times=1, identity='ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed1-tagpaired20-base-s1', client_num_per_round=20)
+cuda:0
+running at devicecuda:0
+*********partition data***************
+dir: allocated 50000/50000 samples across 20 clients
+train_num1998  test_num503
+client_idx = 0, local_sample_number = 1998, validation_number = 502
+train_num2001  test_num504
+client_idx = 1, local_sample_number = 2001, validation_number = 499
+train_num2002  test_num505
+client_idx = 2, local_sample_number = 2002, validation_number = 498
+train_num2000  test_num503
+client_idx = 3, local_sample_number = 2000, validation_number = 500
+train_num2001  test_num504
+client_idx = 4, local_sample_number = 2001, validation_number = 499
+train_num1999  test_num503
+client_idx = 5, local_sample_number = 1999, validation_number = 501
+train_num1999  test_num503
+client_idx = 6, local_sample_number = 1999, validation_number = 501
+train_num1999  test_num503
+client_idx = 7, local_sample_number = 1999, validation_number = 501
+train_num1999  test_num504
+client_idx = 8, local_sample_number = 1999, validation_number = 501
+train_num2001  test_num503
+client_idx = 9, local_sample_number = 2001, validation_number = 499
+train_num2000  test_num504
+client_idx = 10, local_sample_number = 2000, validation_number = 500
+train_num2000  test_num503
+client_idx = 11, local_sample_number = 2000, validation_number = 500
+train_num2000  test_num504
+client_idx = 12, local_sample_number = 2000, validation_number = 500
+train_num2000  test_num504
+client_idx = 13, local_sample_number = 2000, validation_number = 500
+train_num2000  test_num503
+client_idx = 14, local_sample_number = 2000, validation_number = 500
+train_num1998  test_num502
+client_idx = 15, local_sample_number = 1998, validation_number = 502
+train_num2000  test_num503
+client_idx = 16, local_sample_number = 2000, validation_number = 500
+train_num1999  test_num502
+client_idx = 17, local_sample_number = 1999, validation_number = 501
+train_num2000  test_num501
+client_idx = 18, local_sample_number = 2000, validation_number = 500
+train_num2000  test_num501
+client_idx = 19, local_sample_number = 2000, validation_number = 500
+DATA Partition: Train [np.int64(398), np.int64(368), 0, np.int64(14), np.int64(1), np.int64(1490), np.int64(23), 0, np.int64(3), np.int64(203)]; Test [np.int64(80), np.int64(74), 0, np.int64(3), np.int64(1), np.int64(298), np.int64(5), 0, np.int64(1), np.int64(41)]
+DATA Partition: Train [np.int64(77), 0, np.int64(146), 0, np.int64(130), np.int64(881), np.int64(551), 0, np.int64(29), np.int64(686)]; Test [np.int64(16), 0, np.int64(30), 0, np.int64(26), np.int64(177), np.int64(111), 0, np.int64(6), np.int64(138)]
+DATA Partition: Train [np.int64(305), np.int64(686), np.int64(297), np.int64(7), np.int64(42), np.int64(194), 0, np.int64(62), np.int64(31), np.int64(876)]; Test [np.int64(61), np.int64(138), np.int64(60), np.int64(2), np.int64(9), np.int64(39), 0, np.int64(13), np.int64(7), np.int64(176)]
+DATA Partition: Train [0, np.int64(12), np.int64(555), np.int64(671), 0, np.int64(156), np.int64(2), np.int64(900), 0, np.int64(204)]; Test [0, np.int64(3), np.int64(111), np.int64(135), 0, np.int64(32), np.int64(1), np.int64(180), 0, np.int64(41)]
+DATA Partition: Train [0, 0, np.int64(632), np.int64(97), np.int64(1), np.int64(140), np.int64(467), np.int64(438), np.int64(618), np.int64(107)]; Test [0, 0, np.int64(127), np.int64(20), np.int64(1), np.int64(28), np.int64(94), np.int64(88), np.int64(124), np.int64(22)]
+DATA Partition: Train [0, 0, np.int64(8), 0, np.int64(108), np.int64(4), np.int64(5), np.int64(2188), np.int64(11), np.int64(176)]; Test [0, 0, np.int64(2), 0, np.int64(22), np.int64(1), np.int64(1), np.int64(438), np.int64(3), np.int64(36)]
+DATA Partition: Train [np.int64(2), 0, np.int64(483), np.int64(68), np.int64(437), np.int64(330), np.int64(655), 0, np.int64(504), np.int64(21)]; Test [np.int64(1), 0, np.int64(97), np.int64(14), np.int64(88), np.int64(66), np.int64(131), 0, np.int64(101), np.int64(5)]
+DATA Partition: Train [np.int64(3), np.int64(48), np.int64(4), np.int64(160), np.int64(595), 0, np.int64(99), np.int64(981), np.int64(597), np.int64(13)]; Test [np.int64(1), np.int64(10), np.int64(1), np.int64(32), np.int64(119), 0, np.int64(20), np.int64(197), np.int64(120), np.int64(3)]
+DATA Partition: Train [np.int64(255), np.int64(1907), np.int64(61), np.int64(5), np.int64(2), 0, np.int64(2), np.int64(1), np.int64(39), np.int64(228)]; Test [np.int64(51), np.int64(382), np.int64(13), np.int64(1), np.int64(1), 0, np.int64(1), np.int64(1), np.int64(8), np.int64(46)]
+DATA Partition: Train [np.int64(840), np.int64(100), np.int64(581), np.int64(105), 0, np.int64(86), np.int64(34), np.int64(192), np.int64(562), 0]; Test [np.int64(168), np.int64(20), np.int64(117), np.int64(21), 0, np.int64(18), np.int64(7), np.int64(39), np.int64(113), 0]
+DATA Partition: Train [np.int64(291), 0, np.int64(47), np.int64(207), np.int64(165), np.int64(18), np.int64(434), np.int64(238), np.int64(797), np.int64(303)]; Test [np.int64(59), 0, np.int64(10), np.int64(42), np.int64(33), np.int64(4), np.int64(87), np.int64(48), np.int64(160), np.int64(61)]
+DATA Partition: Train [np.int64(16), np.int64(20), np.int64(110), np.int64(1765), np.int64(2), np.int64(12), np.int64(507), 0, np.int64(5), np.int64(63)]; Test [np.int64(4), np.int64(4), np.int64(22), np.int64(353), np.int64(1), np.int64(3), np.int64(102), 0, np.int64(1), np.int64(13)]
+DATA Partition: Train [np.int64(274), np.int64(156), np.int64(261), np.int64(54), np.int64(60), np.int64(877), np.int64(488), 0, np.int64(36), np.int64(294)]; Test [np.int64(55), np.int64(32), np.int64(53), np.int64(11), np.int64(12), np.int64(176), np.int64(98), 0, np.int64(8), np.int64(59)]
+DATA Partition: Train [np.int64(2014), np.int64(11), np.int64(8), np.int64(14), np.int64(90), np.int64(14), np.int64(166), 0, np.int64(182), np.int64(1)]; Test [np.int64(403), np.int64(3), np.int64(2), np.int64(3), np.int64(18), np.int64(3), np.int64(34), 0, np.int64(37), np.int64(1)]
+DATA Partition: Train [np.int64(10), np.int64(24), np.int64(632), np.int64(787), np.int64(559), 0, np.int64(269), 0, np.int64(11), np.int64(208)]; Test [np.int64(2), np.int64(5), np.int64(127), np.int64(158), np.int64(112), 0, np.int64(54), 0, np.int64(3), np.int64(42)]
+DATA Partition: Train [np.int64(215), np.int64(163), np.int64(4), np.int64(424), np.int64(1318), np.int64(53), 0, 0, np.int64(298), np.int64(25)]; Test [np.int64(43), np.int64(33), np.int64(1), np.int64(85), np.int64(264), np.int64(11), 0, 0, np.int64(60), np.int64(5)]
+DATA Partition: Train [np.int64(14), np.int64(741), np.int64(2), np.int64(15), np.int64(37), np.int64(335), np.int64(79), 0, np.int64(1277), 0]; Test [np.int64(3), np.int64(149), np.int64(1), np.int64(3), np.int64(8), np.int64(67), np.int64(16), 0, np.int64(256), 0]
+DATA Partition: Train [np.int64(131), np.int64(15), 0, np.int64(2), np.int64(879), np.int64(410), np.int64(1063), 0, 0, 0]; Test [np.int64(27), np.int64(3), 0, np.int64(1), np.int64(176), np.int64(82), np.int64(213), 0, 0, 0]
+DATA Partition: Train [np.int64(155), 0, np.int64(980), np.int64(605), np.int64(574), 0, np.int64(156), 0, 0, np.int64(30)]; Test [np.int64(31), 0, np.int64(196), np.int64(121), np.int64(115), 0, np.int64(32), 0, 0, np.int64(6)]
+DATA Partition: Train [0, np.int64(749), np.int64(189), 0, 0, 0, 0, 0, 0, np.int64(1562)]; Test [0, np.int64(150), np.int64(38), 0, 0, 0, 0, 0, 0, np.int64(313)]
+create_model. model_name = resnet18
+BaseHeadSplit(
+  (base): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (linear): Identity()
+  )
+  (head): Linear(in_features=512, out_features=10, bias=True)
+)
+############setup_clients (START)#############
+self.local_sample_number = 1998
+self.local_sample_number = 2001
+self.local_sample_number = 2002
+self.local_sample_number = 2000
+self.local_sample_number = 2001
+self.local_sample_number = 1999
+self.local_sample_number = 1999
+self.local_sample_number = 1999
+self.local_sample_number = 1999
+self.local_sample_number = 2001
+self.local_sample_number = 2000
+self.local_sample_number = 2000
+self.local_sample_number = 2000
+self.local_sample_number = 2000
+self.local_sample_number = 2000
+self.local_sample_number = 1998
+self.local_sample_number = 2000
+self.local_sample_number = 1999
+self.local_sample_number = 2000
+self.local_sample_number = 2000
+############setup_clients (END)#############
+test acc on this client before 1 / 503 : 0.00
+Client Index = 0	Epoch: 0	Loss: 7.437593
+################client:0 threshold : 500
+test acc on this client after 298 / 503 : 0.59
+--------------------------------------
+test acc on this client before 7 / 504 : 0.01
+Client Index = 1	Epoch: 0	Loss: 7.814893
+################client:1 threshold : 500
+test acc on this client after 138 / 504 : 0.27
+--------------------------------------
+test acc on this client before 7 / 505 : 0.01
+Client Index = 2	Epoch: 0	Loss: 7.451540
+################client:2 threshold : 500
+test acc on this client after 138 / 505 : 0.27
+--------------------------------------
+test acc on this client before 0 / 503 : 0.00
+Client Index = 3	Epoch: 0	Loss: 6.869512
+################client:3 threshold : 500
+test acc on this client after 161 / 503 : 0.32
+--------------------------------------
+test acc on this client before 118 / 504 : 0.23
+Client Index = 4	Epoch: 0	Loss: 6.453976
+################client:4 threshold : 500
+test acc on this client after 127 / 504 : 0.25
+--------------------------------------
+test acc on this client before 3 / 503 : 0.01
+Client Index = 5	Epoch: 0	Loss: 3.153871
+################client:5 threshold : 500
+test acc on this client after 438 / 503 : 0.87
+--------------------------------------
+test acc on this client before 99 / 503 : 0.20
+Client Index = 6	Epoch: 0	Loss: 7.276032
+################client:6 threshold : 500
+test acc on this client after 131 / 503 : 0.26
+--------------------------------------
+test acc on this client before 116 / 503 : 0.23
+Client Index = 7	Epoch: 0	Loss: 7.289906
+################client:7 threshold : 500
+test acc on this client after 120 / 503 : 0.24
+--------------------------------------
+test acc on this client before 8 / 504 : 0.02
+Client Index = 8	Epoch: 0	Loss: 5.275938
+################client:8 threshold : 500
+test acc on this client after 382 / 504 : 0.76
+--------------------------------------
+test acc on this client before 113 / 503 : 0.22
+Client Index = 9	Epoch: 0	Loss: 7.575937
+################client:9 threshold : 500
+test acc on this client after 20 / 503 : 0.04
+--------------------------------------
+test acc on this client before 160 / 504 : 0.32
+Client Index = 10	Epoch: 0	Loss: 7.775165
+################client:10 threshold : 500
+test acc on this client after 160 / 504 : 0.32
+--------------------------------------
+test acc on this client before 1 / 503 : 0.00
+Client Index = 11	Epoch: 0	Loss: 6.223377
+################client:11 threshold : 500
+test acc on this client after 13 / 503 : 0.03
+--------------------------------------
+test acc on this client before 8 / 504 : 0.02
+Client Index = 12	Epoch: 0	Loss: 7.371843
+################client:12 threshold : 500
+test acc on this client after 53 / 504 : 0.11
+--------------------------------------
+test acc on this client before 37 / 504 : 0.07
+Client Index = 13	Epoch: 0	Loss: 3.974997
+################client:13 threshold : 500
+test acc on this client after 403 / 504 : 0.80
+--------------------------------------
+test acc on this client before 5 / 503 : 0.01
+Client Index = 14	Epoch: 0	Loss: 7.165177
+################client:14 threshold : 500
+test acc on this client after 127 / 503 : 0.25
+--------------------------------------
+test acc on this client before 62 / 502 : 0.12
+Client Index = 15	Epoch: 0	Loss: 6.862016
+################client:15 threshold : 500
+test acc on this client after 43 / 502 : 0.09
+--------------------------------------
+test acc on this client before 250 / 503 : 0.50
+Client Index = 16	Epoch: 0	Loss: 7.913446
+################client:16 threshold : 500
+test acc on this client after 67 / 503 : 0.13
+--------------------------------------
+test acc on this client before 2 / 502 : 0.00
+Client Index = 17	Epoch: 0	Loss: 7.163917
+################client:17 threshold : 500
+test acc on this client after 176 / 502 : 0.35
+--------------------------------------
+test acc on this client before 3 / 501 : 0.01
+Client Index = 18	Epoch: 0	Loss: 7.543477
+################client:18 threshold : 500
+test acc on this client after 31 / 501 : 0.06
+--------------------------------------
+test acc on this client before 0 / 501 : 0.00
+Client Index = 19	Epoch: 0	Loss: 7.168785
+################client:19 threshold : 500
+test acc on this client after 313 / 501 : 0.62
+--------------------------------------
+FINGERPRINT initial_model=054212404b9b3d937338e0b307a57cedd3ee603efadc9626aebd44d6d77a7e6e data_split=28e22cf82f2ba47a1bdcec46fe04dd71c3c05c32732ce6049d61b2b134c57910
+test acc on this client before 298 / 503 : 0.59
+Client Index = 0	Epoch: 0	Loss: 2.964667
+################client:0 threshold : 500
+test acc on this client after 298 / 503 : 0.59
+--------------------------------------
+test acc on this client before 138 / 504 : 0.27
+Client Index = 1	Epoch: 0	Loss: 4.553644
+################client:1 threshold : 500
+test acc on this client after 177 / 504 : 0.35
+--------------------------------------
+test acc on this client before 138 / 505 : 0.27
+Client Index = 2	Epoch: 0	Loss: 4.100132
+################client:2 threshold : 500
+test acc on this client after 176 / 505 : 0.35
+--------------------------------------
+test acc on this client before 161 / 503 : 0.32
+Client Index = 3	Epoch: 0	Loss: 4.197400
+################client:3 threshold : 500
+test acc on this client after 135 / 503 : 0.27
+--------------------------------------
+test acc on this client before 127 / 504 : 0.25
+Client Index = 4	Epoch: 0	Loss: 3.879587
+################client:4 threshold : 500
+test acc on this client after 124 / 504 : 0.25
+--------------------------------------
+test acc on this client before 438 / 503 : 0.87
+Client Index = 5	Epoch: 0	Loss: 1.144366
+################client:5 threshold : 500
+test acc on this client after 438 / 503 : 0.87
+--------------------------------------
+test acc on this client before 131 / 503 : 0.26
+Client Index = 6	Epoch: 0	Loss: 3.468085
+################client:6 threshold : 500
+test acc on this client after 131 / 503 : 0.26
+--------------------------------------
+test acc on this client before 120 / 503 : 0.24
+Client Index = 7	Epoch: 0	Loss: 3.669744
+################client:7 threshold : 500
+test acc on this client after 119 / 503 : 0.24
+--------------------------------------
+test acc on this client before 382 / 504 : 0.76
+Client Index = 8	Epoch: 0	Loss: 2.102947
+################client:8 threshold : 500
+test acc on this client after 382 / 504 : 0.76
+--------------------------------------
+test acc on this client before 20 / 503 : 0.04
+Client Index = 9	Epoch: 0	Loss: 3.821087
+################client:9 threshold : 500
+test acc on this client after 117 / 503 : 0.23
+--------------------------------------
+test acc on this client before 160 / 504 : 0.32
+Client Index = 10	Epoch: 0	Loss: 5.518889
+################client:10 threshold : 500
+test acc on this client after 48 / 504 : 0.10
+--------------------------------------
+test acc on this client before 13 / 503 : 0.03
+Client Index = 11	Epoch: 0	Loss: 2.499102
+################client:11 threshold : 500
+test acc on this client after 102 / 503 : 0.20
+--------------------------------------
+test acc on this client before 53 / 504 : 0.11
+Client Index = 12	Epoch: 0	Loss: 4.625710
+################client:12 threshold : 500
+test acc on this client after 176 / 504 : 0.35
+--------------------------------------
+test acc on this client before 403 / 504 : 0.80
+Client Index = 13	Epoch: 0	Loss: 1.923279
+################client:13 threshold : 500
+test acc on this client after 403 / 504 : 0.80
+--------------------------------------
+test acc on this client before 127 / 503 : 0.25
+Client Index = 14	Epoch: 0	Loss: 4.294883
+################client:14 threshold : 500
+test acc on this client after 158 / 503 : 0.31
+--------------------------------------
+test acc on this client before 43 / 502 : 0.09
+Client Index = 15	Epoch: 0	Loss: 3.815309
+################client:15 threshold : 500
+test acc on this client after 85 / 502 : 0.17
+--------------------------------------
+test acc on this client before 67 / 503 : 0.13
+Client Index = 16	Epoch: 0	Loss: 3.455386
+################client:16 threshold : 500
+test acc on this client after 149 / 503 : 0.30
+--------------------------------------
+test acc on this client before 176 / 502 : 0.35
+Client Index = 17	Epoch: 0	Loss: 3.824097
+################client:17 threshold : 500
+test acc on this client after 213 / 502 : 0.42
+--------------------------------------
+test acc on this client before 31 / 501 : 0.06
+Client Index = 18	Epoch: 0	Loss: 3.646331
+################client:18 threshold : 500
+test acc on this client after 196 / 501 : 0.39
+--------------------------------------
+test acc on this client before 313 / 501 : 0.62
+Client Index = 19	Epoch: 0	Loss: 3.454383
+################client:19 threshold : 500
+test acc on this client after 313 / 501 : 0.62
+--------------------------------------
+################Communication round : 0
+add number:0
+sub number:0
+@@@@@@@@@@@@@@@@ Training Client CM(0): 0
+choose client_indexes: {9: {}, 16: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 1
+choose client_indexes: {16: {}, 15: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 2
+choose client_indexes: {8: {}, 18: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 3
+choose client_indexes: {7: {}, 8: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 4
+choose client_indexes: {18: {}, 11: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 5
+choose client_indexes: {11: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 6
+choose client_indexes: {15: {}, 10: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 7
+choose client_indexes: {12: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 8
+choose client_indexes: {3: {}, 2: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 9
+choose client_indexes: {19: {}, 0: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 10
+choose client_indexes: {6: {}, 13: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 11
+choose client_indexes: {5: {}, 4: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 12
+choose client_indexes: {14: {}, 7: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 13
+choose client_indexes: {10: {}, 14: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 14
+choose client_indexes: {13: {}, 12: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 15
+choose client_indexes: {1: {}, 6: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 16
+choose client_indexes: {0: {}, 1: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 17
+choose client_indexes: {5: {}, 19: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 18
+choose client_indexes: {2: {}, 4: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 19
+choose client_indexes: {17: {}, 9: {}}, accoring to ring
+client.dmax_num 2
+-----------------------最初------------------
+client_id: 0
+client.neigh_distance: {9: 42.147403717041016, 16: 30.037012100219727}
+client.threshold: 30.037012100219727
+-----------------------最初------------------
+client_id: 1
+client.neigh_distance: {16: 34.688758850097656, 15: 34.730812072753906}
+client.threshold: 34.688758850097656
+-----------------------最初------------------
+client_id: 2
+client.neigh_distance: {8: 68.38489532470703, 18: 48.40894317626953}
+client.threshold: 48.40894317626953
+-----------------------最初------------------
+client_id: 3
+client.neigh_distance: {7: 37.35722732543945, 8: 77.369140625}
+client.threshold: 37.35722732543945
+-----------------------最初------------------
+client_id: 4
+client.neigh_distance: {18: 33.16148376464844, 11: 39.27775192260742}
+client.threshold: 33.16148376464844
+-----------------------最初------------------
+client_id: 5
+client.neigh_distance: {11: 143.5303192138672, 17: 145.9724884033203}
+client.threshold: 143.5303192138672
+-----------------------最初------------------
+client_id: 6
+client.neigh_distance: {15: 44.05762481689453, 10: 65.71102142333984}
+client.threshold: 44.05762481689453
+-----------------------最初------------------
+client_id: 7
+client.neigh_distance: {12: 53.61320877075195, 3: 38.887351989746094}
+client.threshold: 38.887351989746094
+-----------------------最初------------------
+client_id: 8
+client.neigh_distance: {3: 81.9269790649414, 2: 71.30087280273438}
+client.threshold: 71.30087280273438
+-----------------------最初------------------
+client_id: 9
+client.neigh_distance: {19: 48.90605163574219, 0: 42.596458435058594}
+client.threshold: 42.596458435058594
+-----------------------最初------------------
+client_id: 10
+client.neigh_distance: {6: 66.37406158447266, 13: 86.1488037109375}
+client.threshold: 66.37406158447266
+-----------------------最初------------------
+client_id: 11
+client.neigh_distance: {5: 133.98731994628906, 4: 39.960845947265625}
+client.threshold: 39.960845947265625
+-----------------------最初------------------
+client_id: 12
+client.neigh_distance: {14: 36.327632904052734, 7: 53.59566116333008}
+client.threshold: 36.327632904052734
+-----------------------最初------------------
+client_id: 13
+client.neigh_distance: {10: 89.32915496826172, 14: 83.84798431396484}
+client.threshold: 83.84798431396484
+-----------------------最初------------------
+client_id: 14
+client.neigh_distance: {13: 82.15686798095703, 12: 36.82714080810547}
+client.threshold: 36.82714080810547
+-----------------------最初------------------
+client_id: 15
+client.neigh_distance: {1: 34.66541290283203, 6: 43.60148620605469}
+client.threshold: 34.66541290283203
+-----------------------最初------------------
+client_id: 16
+client.neigh_distance: {0: 30.3726863861084, 1: 34.95896530151367}
+client.threshold: 30.3726863861084
+-----------------------最初------------------
+client_id: 17
+client.neigh_distance: {5: 131.9599151611328, 19: 45.888160705566406}
+client.threshold: 45.888160705566406
+-----------------------最初------------------
+client_id: 18
+client.neigh_distance: {2: 48.40180206298828, 4: 33.82622146606445}
+client.threshold: 33.82622146606445
+-----------------------最初------------------
+client_id: 19
+client.neigh_distance: {17: 46.61928176879883, 9: 49.11018753051758}
+client.threshold: 46.61928176879883
+CAP max_neighbors=2
+Doing local aggregation! scope=base self_scale=1.0
+COMM round=0 directed_links=34 model_bytes=1519658832 proto_accesses=120 proto_bytes=245760
+@@@@@@@@@@@@@@@@ Training Client CM(0): 0
+test acc on this client before 298 / 503 : 0.59
+Client Index = 0	Epoch: 0	Loss: 2.454770
+################client:0 threshold : 30.037012100219727
+test acc on this client after 298 / 503 : 0.59
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 1
+test acc on this client before 177 / 504 : 0.35
+Client Index = 1	Epoch: 0	Loss: 2.915860
+################client:1 threshold : 34.688758850097656
+test acc on this client after 138 / 504 : 0.27
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 2
+test acc on this client before 176 / 505 : 0.35
+Client Index = 2	Epoch: 0	Loss: 2.368448
+################client:2 threshold : 48.40894317626953
+test acc on this client after 176 / 505 : 0.35
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 3
+test acc on this client before 135 / 503 : 0.27
+Client Index = 3	Epoch: 0	Loss: 2.773314
+################client:3 threshold : 37.35722732543945
+test acc on this client after 111 / 503 : 0.22
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 4
+test acc on this client before 124 / 504 : 0.25
+Client Index = 4	Epoch: 0	Loss: 2.005141
+################client:4 threshold : 33.16148376464844
+test acc on this client after 127 / 504 : 0.25
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 5
+test acc on this client before 438 / 503 : 0.87
+Client Index = 5	Epoch: 0	Loss: 0.904768
+################client:5 threshold : 143.5303192138672
+test acc on this client after 438 / 503 : 0.87
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 6
+test acc on this client before 131 / 503 : 0.26
+Client Index = 6	Epoch: 0	Loss: 2.492794
+################client:6 threshold : 44.05762481689453
+test acc on this client after 131 / 503 : 0.26
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 7
+test acc on this client before 119 / 503 : 0.24
+Client Index = 7	Epoch: 0	Loss: 2.650910
+################client:7 threshold : 38.887351989746094
+test acc on this client after 197 / 503 : 0.39
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 8
+test acc on this client before 382 / 504 : 0.76
+Client Index = 8	Epoch: 0	Loss: 1.258106
+################client:8 threshold : 71.30087280273438
+test acc on this client after 382 / 504 : 0.76
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 9
+test acc on this client before 117 / 503 : 0.23
+Client Index = 9	Epoch: 0	Loss: 2.296670
+################client:9 threshold : 42.596458435058594
+test acc on this client after 117 / 503 : 0.23
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 10
+test acc on this client before 11 / 504 : 0.02
+Client Index = 10	Epoch: 0	Loss: 2.762952
+################client:10 threshold : 66.37406158447266
+test acc on this client after 160 / 504 : 0.32
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 11
+test acc on this client before 102 / 503 : 0.20
+Client Index = 11	Epoch: 0	Loss: 1.555197
+################client:11 threshold : 39.960845947265625
+test acc on this client after 353 / 503 : 0.70
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 12
+test acc on this client before 176 / 504 : 0.35
+Client Index = 12	Epoch: 0	Loss: 2.952404
+################client:12 threshold : 36.327632904052734
+test acc on this client after 176 / 504 : 0.35
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 13
+test acc on this client before 403 / 504 : 0.80
+Client Index = 13	Epoch: 0	Loss: 1.393014
+################client:13 threshold : 83.84798431396484
+test acc on this client after 403 / 504 : 0.80
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 14
+test acc on this client before 158 / 503 : 0.31
+Client Index = 14	Epoch: 0	Loss: 2.616776
+################client:14 threshold : 36.82714080810547
+test acc on this client after 127 / 503 : 0.25
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 15
+test acc on this client before 85 / 502 : 0.17
+Client Index = 15	Epoch: 0	Loss: 3.249922
+################client:15 threshold : 34.66541290283203
+test acc on this client after 85 / 502 : 0.17
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 16
+test acc on this client before 256 / 503 : 0.51
+Client Index = 16	Epoch: 0	Loss: 2.705774
+################client:16 threshold : 30.3726863861084
+test acc on this client after 149 / 503 : 0.30
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 17
+test acc on this client before 213 / 502 : 0.42
+Client Index = 17	Epoch: 0	Loss: 2.395760
+################client:17 threshold : 45.888160705566406
+test acc on this client after 213 / 502 : 0.42
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 18
+test acc on this client before 196 / 501 : 0.39
+Client Index = 18	Epoch: 0	Loss: 2.139938
+################client:18 threshold : 33.82622146606445
+test acc on this client after 196 / 501 : 0.39
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 19
+test acc on this client before 313 / 501 : 0.62
+Client Index = 19	Epoch: 0	Loss: 1.541910
+################client:19 threshold : 46.61928176879883
+test acc on this client after 313 / 501 : 0.62
+--------------------------------------
+sum_comm_params 446983056
+################global_test_on_all_clients : 0
+{'global_test_acc': np.float64(0.4263596950221453), 'global_test_loss': np.float64(1.8176173382910055)}
+################Communication round : 1
+add number:3
+sub number:0
+@@@@@@@@@@@@@@@@ Training Client CM(1): 0
+choose client_indexes: {9: {}, 16: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 1
+choose client_indexes: {16: {}, 15: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 2
+choose client_indexes: {8: {}, 18: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 3
+choose client_indexes: {7: {}, 8: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 4
+choose client_indexes: {18: {}, 11: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 5
+choose client_indexes: {11: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 6
+choose client_indexes: {15: {}, 10: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 7
+choose client_indexes: {12: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 8
+choose client_indexes: {3: {}, 2: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 9
+choose client_indexes: {19: {}, 0: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 10
+choose client_indexes: {6: {}, 13: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 11
+choose client_indexes: {5: {}, 4: {}, 18: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 12
+choose client_indexes: {14: {}, 7: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 13
+choose client_indexes: {10: {}, 14: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 14
+choose client_indexes: {13: {}, 12: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 15
+choose client_indexes: {1: {}, 6: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 16
+choose client_indexes: {0: {}, 1: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 17
+choose client_indexes: {5: {}, 19: {}, 9: {}, 11: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 18
+choose client_indexes: {2: {}, 4: {}, 11: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(1): 19
+choose client_indexes: {17: {}, 9: {}}, accoring to ring
+client.dmax_num 2
+-----------------------最初------------------
+client_id: 0
+client.neigh_distance: {9: 42.147403717041016, 16: 30.037012100219727}
+client.threshold: 42.147403717041016
+-----------------------最初------------------
+client_id: 1
+client.neigh_distance: {16: 34.688758850097656, 15: 34.730812072753906}
+client.threshold: 34.730812072753906
+-----------------------最初------------------
+client_id: 2
+client.neigh_distance: {8: 68.38489532470703, 18: 48.40894317626953}
+client.threshold: 68.38489532470703
+-----------------------最初------------------
+client_id: 3
+client.neigh_distance: {7: 37.35722732543945, 8: 77.369140625}
+client.threshold: 77.369140625
+-----------------------最初------------------
+client_id: 4
+client.neigh_distance: {18: 33.16148376464844, 11: 39.27775192260742}
+client.threshold: 39.27775192260742
+-----------------------最初------------------
+client_id: 5
+client.neigh_distance: {11: 143.5303192138672, 17: 145.9724884033203}
+client.threshold: 145.9724884033203
+-----------------------最初------------------
+client_id: 6
+client.neigh_distance: {15: 44.05762481689453, 10: 65.71102142333984}
+client.threshold: 65.71102142333984
+-----------------------最初------------------
+client_id: 7
+client.neigh_distance: {12: 53.61320877075195, 3: 38.887351989746094}
+client.threshold: 53.61320877075195
+-----------------------最初------------------
+client_id: 8
+client.neigh_distance: {3: 81.9269790649414, 2: 71.30087280273438}
+client.threshold: 81.9269790649414
+-----------------------最初------------------
+client_id: 9
+client.neigh_distance: {19: 48.90605163574219, 0: 42.596458435058594, 17: 42.06556701660156}
+client.threshold: 42.06556701660156
+-----------------------最初------------------
+client_id: 10
+client.neigh_distance: {6: 66.37406158447266, 13: 86.1488037109375}
+client.threshold: 86.1488037109375
+-----------------------最初------------------
+client_id: 11
+client.neigh_distance: {5: 133.98731994628906, 4: 39.960845947265625, 18: 29.590898513793945, 17: 37.24241256713867}
+client.threshold: 29.590898513793945
+-----------------------最初------------------
+client_id: 12
+client.neigh_distance: {14: 36.327632904052734, 7: 53.59566116333008}
+client.threshold: 53.59566116333008
+-----------------------最初------------------
+client_id: 13
+client.neigh_distance: {10: 89.32915496826172, 14: 83.84798431396484}
+client.threshold: 89.32915496826172
+-----------------------最初------------------
+client_id: 14
+client.neigh_distance: {13: 82.15686798095703, 12: 36.82714080810547}
+client.threshold: 82.15686798095703
+-----------------------最初------------------
+client_id: 15
+client.neigh_distance: {1: 34.66541290283203, 6: 43.60148620605469}
+client.threshold: 43.60148620605469
+-----------------------最初------------------
+client_id: 16
+client.neigh_distance: {0: 30.3726863861084, 1: 34.95896530151367}
+client.threshold: 34.95896530151367
+-----------------------最初------------------
+client_id: 17
+client.neigh_distance: {5: 131.9599151611328, 19: 45.888160705566406, 9: 41.896053314208984, 11: 37.19744110107422}
+client.threshold: 37.19744110107422
+-----------------------最初------------------
+client_id: 18
+client.neigh_distance: {2: 48.40180206298828, 4: 33.82622146606445, 11: 29.532638549804688}
+client.threshold: 29.532638549804688
+-----------------------最初------------------
+client_id: 19
+client.neigh_distance: {17: 46.61928176879883, 9: 49.11018753051758}
+client.threshold: 49.11018753051758
+CAP max_neighbors=2
+SAVED round=1 checkpoints to c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs\checkpoints\ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed1-tagpaired20-base-s1\round_1
+Doing local aggregation! scope=base self_scale=1.0
+COMM round=1 directed_links=33 model_bytes=1474962984 proto_accesses=164 proto_bytes=335872
+@@@@@@@@@@@@@@@@ Training Client CM(1): 0
+test acc on this client before 298 / 503 : 0.59
+Client Index = 0	Epoch: 0	Loss: 1.457966
+################client:0 threshold : 42.147403717041016
+test acc on this client after 298 / 503 : 0.59
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 1
+test acc on this client before 138 / 504 : 0.27
+Client Index = 1	Epoch: 0	Loss: 1.847569
+################client:1 threshold : 34.730812072753906
+test acc on this client after 165 / 504 : 0.33
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 2
+test acc on this client before 176 / 505 : 0.35
+Client Index = 2	Epoch: 0	Loss: 1.906700
+################client:2 threshold : 68.38489532470703
+test acc on this client after 176 / 505 : 0.35
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 3
+test acc on this client before 111 / 503 : 0.22
+Client Index = 3	Epoch: 0	Loss: 1.726729
+################client:3 threshold : 77.369140625
+test acc on this client after 135 / 503 : 0.27
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 4
+test acc on this client before 127 / 504 : 0.25
+Client Index = 4	Epoch: 0	Loss: 1.943784
+################client:4 threshold : 39.27775192260742
+test acc on this client after 127 / 504 : 0.25
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 5
+test acc on this client before 438 / 503 : 0.87
+Client Index = 5	Epoch: 0	Loss: 0.662550
+################client:5 threshold : 145.9724884033203
+test acc on this client after 438 / 503 : 0.87
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 6
+test acc on this client before 131 / 503 : 0.26
+Client Index = 6	Epoch: 0	Loss: 1.806900
+################client:6 threshold : 65.71102142333984
+test acc on this client after 134 / 503 : 0.27
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 7
+test acc on this client before 197 / 503 : 0.39
+Client Index = 7	Epoch: 0	Loss: 1.730739
+################client:7 threshold : 53.61320877075195
+test acc on this client after 197 / 503 : 0.39
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 8
+test acc on this client before 382 / 504 : 0.76
+Client Index = 8	Epoch: 0	Loss: 0.976529
+################client:8 threshold : 81.9269790649414
+test acc on this client after 382 / 504 : 0.76
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 9
+test acc on this client before 117 / 503 : 0.23
+Client Index = 9	Epoch: 0	Loss: 1.877391
+################client:9 threshold : 42.06556701660156
+test acc on this client after 117 / 503 : 0.23
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 10
+test acc on this client before 160 / 504 : 0.32
+Client Index = 10	Epoch: 0	Loss: 2.076016
+################client:10 threshold : 86.1488037109375
+test acc on this client after 160 / 504 : 0.32
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 11
+test acc on this client before 353 / 503 : 0.70
+Client Index = 11	Epoch: 0	Loss: 1.264046
+################client:11 threshold : 29.590898513793945
+test acc on this client after 353 / 503 : 0.70
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 12
+test acc on this client before 176 / 504 : 0.35
+Client Index = 12	Epoch: 0	Loss: 1.884349
+################client:12 threshold : 53.59566116333008
+test acc on this client after 98 / 504 : 0.19
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 13
+test acc on this client before 403 / 504 : 0.80
+Client Index = 13	Epoch: 0	Loss: 0.830629
+################client:13 threshold : 89.32915496826172
+test acc on this client after 403 / 504 : 0.80
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 14
+test acc on this client before 127 / 503 : 0.25
+Client Index = 14	Epoch: 0	Loss: 1.744945
+################client:14 threshold : 82.15686798095703
+test acc on this client after 132 / 503 : 0.26
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 15
+test acc on this client before 85 / 502 : 0.17
+Client Index = 15	Epoch: 0	Loss: 1.753213
+################client:15 threshold : 43.60148620605469
+test acc on this client after 264 / 502 : 0.53
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 16
+test acc on this client before 149 / 503 : 0.30
+Client Index = 16	Epoch: 0	Loss: 1.526033
+################client:16 threshold : 34.95896530151367
+test acc on this client after 149 / 503 : 0.30
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 17
+test acc on this client before 213 / 502 : 0.42
+Client Index = 17	Epoch: 0	Loss: 1.576584
+################client:17 threshold : 37.19744110107422
+test acc on this client after 213 / 502 : 0.42
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 18
+test acc on this client before 196 / 501 : 0.39
+Client Index = 18	Epoch: 0	Loss: 1.532479
+################client:18 threshold : 29.532638549804688
+test acc on this client after 169 / 501 : 0.34
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(1): 19
+test acc on this client before 313 / 501 : 0.62
+Client Index = 19	Epoch: 0	Loss: 1.958968
+################client:19 threshold : 49.11018753051758
+test acc on this client after 150 / 501 : 0.30
+--------------------------------------
+sum_comm_params 893969696
+################global_test_on_all_clients : 1
+{'global_test_acc': np.float64(0.42334769513620474), 'global_test_loss': np.float64(1.4899437362143495)}
+################Communication round : 2
+add number:7
+sub number:2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 0
+choose client_indexes: {9: {}, 16: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 1
+choose client_indexes: {16: {}, 15: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 2
+choose client_indexes: {8: {}, 18: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 3
+choose client_indexes: {7: {}, 8: {}, 2: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 4
+choose client_indexes: {18: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 5
+choose client_indexes: {11: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 6
+choose client_indexes: {15: {}, 10: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 7
+choose client_indexes: {12: {}, 3: {}, 14: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 8
+choose client_indexes: {3: {}, 2: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 9
+choose client_indexes: {19: {}, 0: {}, 17: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 10
+choose client_indexes: {6: {}, 13: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 11
+choose client_indexes: {5: {}, 18: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 12
+choose client_indexes: {14: {}, 7: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 13
+choose client_indexes: {10: {}, 14: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 14
+choose client_indexes: {13: {}, 12: {}, 7: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 15
+choose client_indexes: {1: {}, 6: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 16
+choose client_indexes: {0: {}, 1: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 17
+choose client_indexes: {5: {}, 19: {}, 9: {}, 4: {}, 0: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 18
+choose client_indexes: {2: {}, 4: {}, 11: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(2): 19
+choose client_indexes: {17: {}, 9: {}}, accoring to ring
+client.dmax_num 2
+-----------------------最初------------------
+client_id: 0
+client.neigh_distance: {9: 42.147403717041016, 16: 30.037012100219727, 17: 31.20062828063965}
+client.threshold: 31.20062828063965
+-----------------------最初------------------
+client_id: 1
+client.neigh_distance: {16: 34.688758850097656, 15: 34.730812072753906}
+client.threshold: 34.730812072753906
+-----------------------最初------------------
+client_id: 2
+client.neigh_distance: {8: 68.38489532470703, 18: 48.40894317626953, 3: 41.106685638427734}
+client.threshold: 48.40894317626953
+-----------------------最初------------------
+client_id: 3
+client.neigh_distance: {7: 37.35722732543945, 8: 77.369140625, 2: 40.793949127197266}
+client.threshold: 40.793949127197266
+-----------------------最初------------------
+client_id: 4
+client.neigh_distance: {18: 33.16148376464844, 17: 34.65314865112305}
+client.threshold: 34.65314865112305
+-----------------------最初------------------
+client_id: 5
+client.neigh_distance: {11: 143.5303192138672, 17: 145.9724884033203}
+client.threshold: 145.9724884033203
+-----------------------最初------------------
+client_id: 6
+client.neigh_distance: {15: 44.05762481689453, 10: 65.71102142333984}
+client.threshold: 65.71102142333984
+-----------------------最初------------------
+client_id: 7
+client.neigh_distance: {12: 53.61320877075195, 3: 38.887351989746094, 14: 45.64205551147461}
+client.threshold: 45.64205551147461
+-----------------------最初------------------
+client_id: 8
+client.neigh_distance: {3: 81.9269790649414, 2: 71.30087280273438}
+client.threshold: 81.9269790649414
+-----------------------最初------------------
+client_id: 9
+client.neigh_distance: {19: 48.90605163574219, 0: 42.596458435058594, 17: 42.06556701660156}
+client.threshold: 42.596458435058594
+-----------------------最初------------------
+client_id: 10
+client.neigh_distance: {6: 66.37406158447266, 13: 86.1488037109375}
+client.threshold: 86.1488037109375
+-----------------------最初------------------
+client_id: 11
+client.neigh_distance: {5: 133.98731994628906, 18: 29.590898513793945}
+client.threshold: 133.98731994628906
+-----------------------最初------------------
+client_id: 12
+client.neigh_distance: {14: 36.327632904052734, 7: 53.59566116333008}
+client.threshold: 53.59566116333008
+-----------------------最初------------------
+client_id: 13
+client.neigh_distance: {10: 89.32915496826172, 14: 83.84798431396484}
+client.threshold: 89.32915496826172
+-----------------------最初------------------
+client_id: 14
+client.neigh_distance: {13: 82.15686798095703, 12: 36.82714080810547, 7: 44.83425521850586}
+client.threshold: 44.83425521850586
+-----------------------最初------------------
+client_id: 15
+client.neigh_distance: {1: 34.66541290283203, 6: 43.60148620605469}
+client.threshold: 43.60148620605469
+-----------------------最初------------------
+client_id: 16
+client.neigh_distance: {0: 30.3726863861084, 1: 34.95896530151367}
+client.threshold: 34.95896530151367
+-----------------------最初------------------
+client_id: 17
+client.neigh_distance: {5: 131.9599151611328, 19: 45.888160705566406, 9: 41.896053314208984, 4: 34.955528259277344, 0: 31.20724105834961}
+client.threshold: 31.20724105834961
+-----------------------最初------------------
+client_id: 18
+client.neigh_distance: {2: 48.40180206298828, 4: 33.82622146606445, 11: 29.532638549804688}
+client.threshold: 29.532638549804688
+-----------------------最初------------------
+client_id: 19
+client.neigh_distance: {17: 46.61928176879883, 9: 49.11018753051758}
+client.threshold: 49.11018753051758
+CAP max_neighbors=2
+Doing local aggregation! scope=base self_scale=1.0
+COMM round=2 directed_links=34 model_bytes=1519658832 proto_accesses=201 proto_bytes=411648
+@@@@@@@@@@@@@@@@ Training Client CM(2): 0
+test acc on this client before 298 / 503 : 0.59
+Client Index = 0	Epoch: 0	Loss: 1.179400
+################client:0 threshold : 31.20062828063965
+test acc on this client after 298 / 503 : 0.59
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 1
+test acc on this client before 138 / 504 : 0.27
+Client Index = 1	Epoch: 0	Loss: 1.583555
+################client:1 threshold : 34.730812072753906
+test acc on this client after 138 / 504 : 0.27
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 2
+test acc on this client before 176 / 505 : 0.35
+Client Index = 2	Epoch: 0	Loss: 1.730030
+################client:2 threshold : 48.40894317626953
+test acc on this client after 176 / 505 : 0.35
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 3
+test acc on this client before 135 / 503 : 0.27
+Client Index = 3	Epoch: 0	Loss: 1.577969
+################client:3 threshold : 40.793949127197266
+test acc on this client after 139 / 503 : 0.28
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 4
+test acc on this client before 127 / 504 : 0.25
+Client Index = 4	Epoch: 0	Loss: 1.817745
+################client:4 threshold : 34.65314865112305
+test acc on this client after 124 / 504 : 0.25
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 5
+test acc on this client before 438 / 503 : 0.87
+Client Index = 5	Epoch: 0	Loss: 0.563259
+################client:5 threshold : 145.9724884033203
+test acc on this client after 438 / 503 : 0.87
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 6
+test acc on this client before 131 / 503 : 0.26
+Client Index = 6	Epoch: 0	Loss: 1.748619
+################client:6 threshold : 65.71102142333984
+test acc on this client after 88 / 503 : 0.17
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 7
+test acc on this client before 197 / 503 : 0.39
+Client Index = 7	Epoch: 0	Loss: 1.563977
+################client:7 threshold : 45.64205551147461
+test acc on this client after 197 / 503 : 0.39
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 8
+test acc on this client before 382 / 504 : 0.76
+Client Index = 8	Epoch: 0	Loss: 0.843827
+################client:8 threshold : 81.9269790649414
+test acc on this client after 382 / 504 : 0.76
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 9
+test acc on this client before 117 / 503 : 0.23
+Client Index = 9	Epoch: 0	Loss: 1.746504
+################client:9 threshold : 42.596458435058594
+test acc on this client after 125 / 503 : 0.25
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 10
+test acc on this client before 160 / 504 : 0.32
+Client Index = 10	Epoch: 0	Loss: 1.975788
+################client:10 threshold : 86.1488037109375
+test acc on this client after 160 / 504 : 0.32
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 11
+test acc on this client before 353 / 503 : 0.70
+Client Index = 11	Epoch: 0	Loss: 1.056172
+################client:11 threshold : 133.98731994628906
+test acc on this client after 353 / 503 : 0.70
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 12
+test acc on this client before 98 / 504 : 0.19
+Client Index = 12	Epoch: 0	Loss: 1.884473
+################client:12 threshold : 53.59566116333008
+test acc on this client after 98 / 504 : 0.19
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 13
+test acc on this client before 403 / 504 : 0.80
+Client Index = 13	Epoch: 0	Loss: 0.790712
+################client:13 threshold : 89.32915496826172
+test acc on this client after 403 / 504 : 0.80
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 14
+test acc on this client before 146 / 503 : 0.29
+Client Index = 14	Epoch: 0	Loss: 1.623405
+################client:14 threshold : 44.83425521850586
+test acc on this client after 127 / 503 : 0.25
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 15
+test acc on this client before 264 / 502 : 0.53
+Client Index = 15	Epoch: 0	Loss: 1.449750
+################client:15 threshold : 43.60148620605469
+test acc on this client after 264 / 502 : 0.53
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 16
+test acc on this client before 149 / 503 : 0.30
+Client Index = 16	Epoch: 0	Loss: 1.247340
+################client:16 threshold : 34.95896530151367
+test acc on this client after 256 / 503 : 0.51
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 17
+test acc on this client before 213 / 502 : 0.42
+Client Index = 17	Epoch: 0	Loss: 1.341198
+################client:17 threshold : 31.20724105834961
+test acc on this client after 213 / 502 : 0.42
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 18
+test acc on this client before 171 / 501 : 0.34
+Client Index = 18	Epoch: 0	Loss: 1.576934
+################client:18 threshold : 29.532638549804688
+test acc on this client after 121 / 501 : 0.24
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(2): 19
+test acc on this client before 150 / 501 : 0.30
+Client Index = 19	Epoch: 0	Loss: 1.111363
+################client:19 threshold : 49.11018753051758
+test acc on this client after 313 / 501 : 0.62
+--------------------------------------
+sum_comm_params 1340957360
+################global_test_on_all_clients : 2
+{'global_test_acc': np.float64(0.4386079939081583), 'global_test_loss': np.float64(1.408086620365173)}

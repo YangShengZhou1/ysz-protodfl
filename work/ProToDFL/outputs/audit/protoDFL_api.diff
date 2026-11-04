@@ -1,0 +1,415 @@
+--- original/fedml_api/standalone/ProToDFL/protoDFL_api.py
++++ current/fedml_api/standalone/ProToDFL/protoDFL_api.py
+@@ -1,2 +1,4 @@
+ import copy
++import hashlib
++import json
+ import logging
+@@ -25,4 +27,7 @@
+         self.args = args
++        dataset = list(dataset)
+         [train_data_num, test_data_num, train_data_global, test_data_global,
+-         train_data_local_num_dict, train_data_local_dict, test_data_local_dict, class_num] = dataset
++         train_data_local_num_dict, train_data_local_dict, test_data_local_dict, class_num] = dataset[:8]
++        val_data_local_num_dict = dataset[8] if len(dataset) > 8 else None
++        val_data_local_dict = dataset[9] if len(dataset) > 9 else None
+         self.train_global = train_data_global
+@@ -36,5 +41,12 @@
+         self.test_data_local_dict = test_data_local_dict
++        self.val_data_local_num_dict = val_data_local_num_dict
++        self.val_data_local_dict = val_data_local_dict
+         self.model_trainer = model_trainer
+-        self._setup_clients(train_data_local_num_dict, train_data_local_dict, test_data_local_dict, model_trainer)
++        self._setup_clients(
++            train_data_local_num_dict, train_data_local_dict, test_data_local_dict,
++            model_trainer, val_data_local_num_dict, val_data_local_dict
++        )
+         self.init_stat_info()
++        self._proto_access_count = 0
++        self.comm_sizes = None
+         self.cs = args.cs
+@@ -104,6 +116,10 @@
+         else:
+-            while True:
+-                graph = nx.random_geometric_graph(self.args.client_num_in_total, 0.25)
+-                if nx.is_k_edge_connected(graph, 1):
++            graph = None
++            for _ in range(100):
++                candidate = nx.random_geometric_graph(self.args.client_num_in_total, 0.25)
++                if nx.is_connected(candidate):
++                    graph = candidate
+                     break
++            if graph is None:
++                graph = network_topology.generate_graph('ring')
+         return graph
+@@ -126,3 +142,4 @@
+ 
+-    def _setup_clients(self, train_data_local_num_dict, train_data_local_dict, test_data_local_dict, model_trainer):
++    def _setup_clients(self, train_data_local_num_dict, train_data_local_dict, test_data_local_dict,
++                       model_trainer, val_data_local_num_dict=None, val_data_local_dict=None):
+         self.logger.info("############setup_clients (START)#############")
+@@ -130,4 +147,8 @@
+         for client_idx in range(self.args.client_num_in_total):
+-            c = Client(client_idx, train_data_local_dict[client_idx], test_data_local_dict[client_idx],
+-                       train_data_local_num_dict[client_idx], self.args, self.device, model_trainer, self.logger,w_global)
++            c = Client(
++                client_idx, train_data_local_dict[client_idx], test_data_local_dict[client_idx],
++                train_data_local_num_dict[client_idx], self.args, self.device, model_trainer, self.logger, w_global,
++                local_val_data=(val_data_local_dict or {}).get(client_idx),
++                local_val_num=(val_data_local_num_dict or {}).get(client_idx, 0),
++            )
+             self.client_list.append(c)
+@@ -137,2 +158,24 @@
+         num_comm_params = {}
++        self.stat_info["comm"]["oracle_mode"] = self.args.oracle_mode
++        self.stat_info["comm"]["oracle_m"] = self.args.oracle_m
++        self.stat_info["comm"]["initial_model_sha256"] = self._state_sha256(self.w_per_globals[0])
++        self.stat_info["comm"]["data_split_sha256"] = self._data_split_sha256()
++        self.logger.info("FINGERPRINT initial_model={} data_split={}".format(
++            self.stat_info["comm"]["initial_model_sha256"],
++            self.stat_info["comm"]["data_split_sha256"],
++        ))
++        if self.comm_sizes is None:
++            w = self.model_trainer.get_model_params(self.device)
++            self.comm_sizes = {
++                "model_param_count": sum(v.numel() for v in w.values()),
++                "model_bytes_per_client": sum(v.numel() * v.element_size() for v in w.values()),
++                "proto_count": int(self.client_list[0].running_mean.numel()),
++                "proto_bytes_per_client": int(
++                    self.client_list[0].running_mean.numel() * self.client_list[0].running_mean.element_size()
++                ),
++            }
++            self.stat_info["comm"]["model_param_count"] = self.comm_sizes["model_param_count"]
++            self.stat_info["comm"]["model_bytes_per_client"] = self.comm_sizes["model_bytes_per_client"]
++            self.stat_info["comm"]["proto_count"] = self.comm_sizes["proto_count"]
++            self.stat_info["comm"]["proto_bytes_per_client"] = self.comm_sizes["proto_bytes_per_client"]
+         for client in self.client_list:#��ʼ��
+@@ -186,2 +229,3 @@
+                 client.neigh_distance.clear()#һ���ھӽڵ�����Ҿ���
++            self._proto_access_count = 0
+             
+@@ -199,20 +243,27 @@
+             
+-            for client in self.client_list:
+-                if self.args.step != 1 :
+-                    if client.wait_signal != 1:
+-                        self.select_neighbors(client)
+-                        self.logger.info("-----------------------���------------------")
+-                        self.logger.info('client_id: {}'.format(client.client_idx))
+-                        self.logger.info('client.neigh_distance: {}'.format(client.neigh_distance))
+-                        self.logger.info('client.threshold: {}'.format(client.threshold))
++            if self.args.oracle_mode:
++                self._select_oracle_neighbors()
++            else:
++                for client in self.client_list:
++                    if self.args.step != 1 :
++                        if client.wait_signal != 1:
++                            self.select_neighbors(client)
++                            self.logger.info("-----------------------���------------------")
++                            self.logger.info('client_id: {}'.format(client.client_idx))
++                            self.logger.info('client.neigh_distance: {}'.format(client.neigh_distance))
++                            self.logger.info('client.threshold: {}'.format(client.threshold))
++                        else:
++                            self.compare_exper(client)
+                     else:
+                         self.compare_exper(client)
+-                else:
+-                    self.compare_exper(client)
+-            if self.args.step != 2 and self.args.step != 1:
+-                for client in self.client_list:
+-                    self.select_neighbors_two(client, k=self.args.k)#use k-hop neigh message
+-            if self.args.step != 1:
+-                self.change_neighbors(grap=0, rounds = round_idx)
++                if self.args.step != 2 and self.args.step != 1:
++                    for client in self.client_list:
++                        self.select_neighbors_two(client, k=self.args.k)#use k-hop neigh message
++                if self.args.step != 1:
++                    self.change_neighbors(grap=0, rounds = round_idx)
++                self._cap_selected_neighbors()
++            if self.args.save_models_round == round_idx and round_idx > 0:
++                self._save_round_models(round_idx)
+             self._aggregate_func()#�ۺ�ģ��
++            self._record_comm_round(round_idx)
+             for c in self.client_list:
+@@ -237,2 +288,7 @@
+ 
++        comm_path = os.path.join(self.args.output_dir, "logs", self.args.dataset, self.args.identity + "_comm.json")
++        os.makedirs(os.path.dirname(comm_path), exist_ok=True)
++        with open(comm_path, "w", encoding="utf-8") as comm_file:
++            json.dump(self.stat_info["comm"], comm_file, ensure_ascii=False, indent=2)
++
+         print(f"Graphs saved to {pdf_path}")
+@@ -242,13 +298,6 @@
+     def draw_and_save_graphs(self, graphs, rounds):
+-        # �������·��
+-        base_path = "/home/amax/check/lxl/LXL/DisPFL-master/fedml_experiments/standalone/ProToDFL/LOG/"#/home/amax/check/lxl/LXL/DisPFL-master/fedml_api/standalone/ProToDFL
+-        
+-        # ���� self.cs �����ļ���·��
++        base_path = os.path.join(self.args.output_dir, "topologies", self.args.identity)
+         folder_path = os.path.join(base_path, self.cs)
+-        
+-        # ����ļ��в����ڣ������ļ���
+-        if not os.path.exists(folder_path):
+-            os.makedirs(folder_path)
+-        
+-        # ���� PDF �ļ�·�������� self.args.partition_method
++        os.makedirs(folder_path, exist_ok=True)
++
+         pdf_filename = f"topologies_{self.args.partition_method}_{self.args.k}.pdf"
+@@ -265,3 +314,3 @@
+             plt.close(fig)
+-        return base_path
++        return pdf_path
+ 
+@@ -376,3 +425,106 @@
+         self.stat_info["final_masks"] = []
+-        
++        self.stat_info["comm"] = {
++            "model_param_count": 0,
++            "model_bytes_per_client": 0,
++            "proto_count": 0,
++            "proto_bytes_per_client": 0,
++            "rounds": [],
++            "total_model_bytes": 0,
++            "total_proto_bytes": 0,
++            "total_selected_directed_links": 0,
++            "total_proto_accesses": 0,
++        }
++
++    def _state_sha256(self, state):
++        digest = hashlib.sha256()
++        for key in sorted(state):
++            digest.update(key.encode("utf-8"))
++            digest.update(state[key].detach().cpu().numpy().tobytes())
++        return digest.hexdigest()
++
++    def _data_split_sha256(self):
++        digest = hashlib.sha256()
++        for client in self.client_list:
++            for loader in [client.local_training_data, client.local_validation_data, client.local_test_data]:
++                if loader is None:
++                    digest.update(b"none")
++                    continue
++                indices = getattr(loader.dataset, "dataidxs", None)
++                if indices is None:
++                    digest.update(b"all")
++                else:
++                    digest.update(np.asarray(indices, dtype=np.int64).tobytes())
++        return digest.hexdigest()
++
++    def _save_round_models(self, round_idx):
++        """Save same-round local models, prototypes and indices for offline partner tests."""
++        save_root = self.args.save_models_dir or os.path.join(self.args.output_dir, "checkpoints")
++        round_dir = os.path.join(save_root, self.args.identity, "round_{}".format(round_idx))
++        os.makedirs(round_dir, exist_ok=True)
++
++        def indices_of(loader):
++            if loader is None:
++                return []
++            dataidxs = getattr(loader.dataset, "dataidxs", None)
++            return [int(x) for x in dataidxs] if dataidxs is not None else []
++
++        metadata = {
++            "identity": self.args.identity,
++            "round": round_idx,
++            "args": vars(self.args),
++            "initial_model_sha256": self.stat_info["comm"].get("initial_model_sha256"),
++            "data_split_sha256": self.stat_info["comm"].get("data_split_sha256"),
++            "graph_edges": [list(map(int, edge)) for edge in self.graph.edges()],
++            "clients": [],
++        }
++        for client in self.client_list:
++            model_file = os.path.join(round_dir, "client_{}.pt".format(client.client_idx))
++            proto_file = os.path.join(round_dir, "client_{}_proto.pt".format(client.client_idx))
++            torch.save(
++                {k: v.detach().cpu() for k, v in self.w_per_globals[client.client_idx].items()},
++                model_file,
++            )
++            torch.save(client.running_mean.detach().cpu(), proto_file)
++            metadata["clients"].append({
++                "client_idx": client.client_idx,
++                "train_num": int(client.local_sample_number),
++                "val_num": int(client.local_validation_num),
++                "test_num": len(indices_of(client.local_test_data)),
++                "train_indices": indices_of(client.local_training_data),
++                "val_indices": indices_of(client.local_validation_data),
++                "test_indices": indices_of(client.local_test_data),
++                "selected_neighbors": sorted(int(x) for x in client.selected_neighbors),
++                "selected_weigh": {str(k): float(v) for k, v in client.selected_weigh.items()},
++                "threshold": float(client.threshold),
++                "thres_id": int(client.thres_id),
++                "model_file": model_file,
++                "proto_file": proto_file,
++            })
++        with open(os.path.join(round_dir, "metadata.json"), "w", encoding="utf-8") as f:
++            json.dump(metadata, f, ensure_ascii=False, indent=2)
++        self.logger.info("SAVED round={} checkpoints to {}".format(round_idx, round_dir))
++
++    def _record_comm_round(self, round_idx):
++        comm = self.stat_info["comm"]
++        directed_links = sum(len(client.selected_neighbors) for client in self.client_list)
++        model_bytes = directed_links * comm["model_bytes_per_client"]
++        proto_bytes = self._proto_access_count * comm["proto_bytes_per_client"]
++        comm["total_model_bytes"] += model_bytes
++        comm["total_proto_bytes"] += proto_bytes
++        comm["total_selected_directed_links"] += directed_links
++        comm["total_proto_accesses"] += self._proto_access_count
++        comm["rounds"].append({
++            "round": round_idx,
++            "edge_count": self.graph.number_of_edges(),
++            "selected_directed_links": directed_links,
++            "model_bytes": model_bytes,
++            "proto_accesses": self._proto_access_count,
++            "proto_bytes": proto_bytes,
++        })
++        self.logger.info(
++            "COMM round={} directed_links={} model_bytes={} proto_accesses={} proto_bytes={}".format(
++                round_idx, directed_links, model_bytes, self._proto_access_count, proto_bytes
++            )
++        )
++
+     def _benefit_choose(self, cur_clnt, client_num_in_total, client_num_per_round, cs = False):
+@@ -435,11 +587,12 @@
+             aggregate_weight.update({c.client_idx: {k: v.detach().clone().to(self.device) for k, v in self.w_per_globals[c.client_idx].items()}})
++        scope = self.args.aggregate_scope
++        self_scale = self.args.self_weight_scale
+         for c in self.client_list:
+-            total_num = 0
+-            #global_mean = 0
+-            total_num += self.train_data_local_num_dict[c.client_idx]
++            total_num = self.train_data_local_num_dict[c.client_idx] * self_scale
+             for neigh_index in c.selected_neighbors:
+                 total_num += self.train_data_local_num_dict[neigh_index]
+-            W = self.train_data_local_num_dict[c.client_idx] / total_num
+-            #global_mean += all_running_means[c.client_idx] * W #��ʼ���ۺ�ģ�ͺ�global_mean
++            W = (self.train_data_local_num_dict[c.client_idx] * self_scale) / total_num
+             for k in aggregate_weight[c.client_idx].keys():
++                if scope == 'base' and self._is_classifier_layer(k):
++                    continue
+                 aggregate_weight[c.client_idx][k] = W * aggregate_weight[c.client_idx][k]#��ʼ��
+@@ -448,5 +601,5 @@
+                 for k in aggregate_weight[c.client_idx].keys():
++                    if scope == 'base' and self._is_classifier_layer(k):
++                        continue
+                     aggregate_weight[c.client_idx][k] += w * self.w_per_globals[neigh_index][k]
+-                #global_mean += all_running_means[neigh_index] * w
+-            #c.global_mean = global_mean
+         for c in self.client_list:    
+@@ -454,3 +607,3 @@
+         
+-        self.logger.info('Doing local aggregation!')
++        self.logger.info('Doing local aggregation! scope={} self_scale={}'.format(scope, self_scale))
+         
+@@ -708,2 +861,65 @@
+     
++    def _select_oracle_neighbors(self):
++        """Diagnostic upper bound: choose globally closest prototypes.
++
++        oracle_mode=1 selects top-m by one-way prototype KL; oracle_mode=2
++        selects all other clients. This method intentionally ignores the base
++        graph and discovery cost, so it must never be presented as a runnable
++        decentralized method.
++        """
++        n_clients = len(self.client_list)
++        m = n_clients - 1 if self.args.oracle_mode == 2 else min(
++            max(1, self.args.oracle_m), n_clients - 1
++        )
++        probs = [
++            F.softmax(c.running_mean.to(self.device).detach().reshape(1, -1), dim=1)
++            for c in self.client_list
++        ]
++        for i, client in enumerate(self.client_list):
++            distances = {}
++            for j, other in enumerate(self.client_list):
++                if i == j:
++                    continue
++                distance = torch.sum(probs[i] * torch.log(probs[i] / probs[j])) * 1000
++                distance = torch.nan_to_num(
++                    distance, nan=1e12, posinf=1e12, neginf=-1e12
++                ).item()
++                distances[other.client_idx] = float(distance)
++            selected = sorted(distances, key=distances.get)[:m]
++            client.selected_neighbors = set(selected)
++            client.selected_weigh = {idx: distances[idx] for idx in selected}
++            client.max_num = m
++            client.num = len(selected)
++            client.signal = 0
++        self.logger.info(
++            "ORACLE mode={} m={} (global prototype information, no graph/discovery cost)".format(
++                self.args.oracle_mode, m
++            )
++        )
++
++    def _cap_selected_neighbors(self):
++        """Keep at most max_neighbors collaborators, ranked by KL distance."""
++        m = self.args.max_neighbors
++        if m <= 0:
++            return
++        for client in self.client_list:
++            if len(client.selected_neighbors) > m:
++                ranked = sorted(
++                    client.selected_neighbors,
++                    key=lambda idx: client.selected_weigh.get(
++                        idx, client.neigh_distance.get(idx, float("inf"))
++                    ),
++                )
++                keep = ranked[:m]
++                client.selected_neighbors = set(keep)
++                client.selected_weigh = {
++                    idx: client.selected_weigh.get(
++                        idx, client.neigh_distance.get(idx, float("inf"))
++                    )
++                    for idx in keep
++                }
++            client.max_num = m
++            client.num = len(client.selected_neighbors)
++        self.logger.info("CAP max_neighbors={}".format(m))
++
+     def select_neighbors(self, client):
+@@ -723,2 +939,3 @@
+             client.neigh_distance.update({neigh_id : distance})#ͳ��ֱ���������ھӵľ���
++        self._proto_access_count += len(client.neigh_distance)
+             
+@@ -747,21 +964,13 @@
+     def get_k_hop_neighbors(self, client_idx, k):
++        """Nodes within shortest-path distance ``[1, k]`` from ``client_idx``.
++
++        The search radius is defined on the base communication graph as all
++        nodes whose shortest-path distance is at most ``k``, excluding the
++        source itself. This replaces the previous recursive implementation,
++        which did not guarantee this set for ``k >= 3``.
+         """
+-        Parameters:
+-        - client_idx: ��ǰ�ͻ��˵�����
+-        - k: Ҫ��ȡ���ھӽײ���
+-
+-        Returns:
+-        - Set: �������� k ���ھӵļ���
+-        """
+-        if k == 1:
+-            return set(self.graph.adj[client_idx])
+-        else:
+-            neighbors = set()
+-            for neighbor in self.graph.adj[client_idx]:
+-                neighbors.update(self.get_k_hop_neighbors(neighbor, k - 1))
+-            # �Ƴ��Ѿ���1�׵��ھ�
+-            neighbors -= set(self.graph.adj[client_idx])
+-            # �Ƴ�����
+-            neighbors.discard(client_idx)
+-            return neighbors
++        if k <= 0:
++            return set()
++        lengths = nx.single_source_shortest_path_length(self.graph, client_idx)
++        return {node for node, dist in lengths.items() if 0 < dist <= k}
+ 
+@@ -780,4 +989,4 @@
+ 
+-                # ��ȡ k ���ھ�
+-                k_hop_neighbors = self.get_k_hop_neighbors(client.client_idx, k)
++                # ����Ҫ�����ھӵĽڵ� A ����Ϊ������㣬ȡ A �� k ���뾶�ں�ѡ
++                k_hop_neighbors = self.get_k_hop_neighbors(neigh1_id, k)
+                 for neigh2_id in k_hop_neighbors:
+@@ -787,2 +996,3 @@
+                             client2_mean_prob = F.softmax(client2_mean, dim=1)
++                            self._proto_access_count += 1
+ 

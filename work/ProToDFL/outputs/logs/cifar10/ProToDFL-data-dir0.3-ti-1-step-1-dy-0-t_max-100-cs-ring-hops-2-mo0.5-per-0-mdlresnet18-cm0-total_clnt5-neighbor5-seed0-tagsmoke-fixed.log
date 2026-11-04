@@ -1,0 +1,210 @@
+Namespace(model='resnet18', dataset='cifar10', momentum=0, data_dir='c:/Users/Administrator/Desktop/bishe/datasets', output_dir='c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs', partition_method='dir', partition_alpha=0.3, batch_size=256, personal=0, client_optimizer='sgd', lr=0.1, lr_decay=0.998, wd=0.0005, epochs=1, client_num_in_total=5, frac=1.0, comm_round=0, k=2, frequency_of_the_test=1, cs='ring', gpu=0, dynamic=0, ci=0, step=1, tag='smoke-fixed', t_max=100, seed=0, momentums=0.5, times=1, identity='ProToDFL-data-dir0.3-ti-1-step-1-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm0-total_clnt5-neighbor5-seed0-tagsmoke-fixed', client_num_per_round=5)
+cuda:0
+running at devicecuda:0
+*********partition data***************
+train_num10000  test_num2005
+client_idx = 0, local_sample_number = 10000
+train_num10000  test_num2005
+client_idx = 1, local_sample_number = 10000
+train_num10000  test_num2005
+client_idx = 2, local_sample_number = 10000
+train_num10000  test_num2004
+client_idx = 3, local_sample_number = 10000
+train_num10000  test_num2003
+client_idx = 4, local_sample_number = 10000
+DATA Partition: Train [np.int64(471), np.int64(4389), np.int64(830), np.int64(2), 0, np.int64(662), np.int64(2906), np.int64(151), np.int64(1), np.int64(588)]; Test [np.int64(95), np.int64(878), np.int64(166), np.int64(1), 0, np.int64(133), np.int64(582), np.int64(31), np.int64(1), np.int64(118)]
+DATA Partition: Train [np.int64(1328), np.int64(325), np.int64(571), 0, np.int64(2371), np.int64(3482), np.int64(51), np.int64(688), np.int64(23), np.int64(1161)]; Test [np.int64(266), np.int64(65), np.int64(115), 0, np.int64(475), np.int64(697), np.int64(11), np.int64(138), np.int64(5), np.int64(233)]
+DATA Partition: Train [np.int64(2063), np.int64(196), np.int64(1871), np.int64(1046), np.int64(17), np.int64(18), np.int64(1323), np.int64(2248), np.int64(69), np.int64(1149)]; Test [np.int64(413), np.int64(40), np.int64(375), np.int64(210), np.int64(4), np.int64(4), np.int64(265), np.int64(450), np.int64(14), np.int64(230)]
+DATA Partition: Train [np.int64(416), np.int64(7), np.int64(1564), np.int64(2777), np.int64(373), np.int64(3), np.int64(65), np.int64(1501), np.int64(2210), np.int64(1084)]; Test [np.int64(84), np.int64(2), np.int64(313), np.int64(556), np.int64(75), np.int64(1), np.int64(13), np.int64(301), np.int64(442), np.int64(217)]
+DATA Partition: Train [np.int64(722), np.int64(83), np.int64(164), np.int64(1175), np.int64(2239), np.int64(835), np.int64(655), np.int64(412), np.int64(2697), np.int64(1018)]; Test [np.int64(145), np.int64(17), np.int64(33), np.int64(235), np.int64(448), np.int64(167), np.int64(131), np.int64(83), np.int64(540), np.int64(204)]
+create_model. model_name = resnet18
+BaseHeadSplit(
+  (base): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 64, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 128, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 256, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (shortcut): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): GroupNorm(32, 512, eps=1e-05, affine=True)
+        (shortcut): Sequential()
+      )
+    )
+    (linear): Identity()
+  )
+  (head): Linear(in_features=512, out_features=10, bias=True)
+)
+############setup_clients (START)#############
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+self.local_sample_number = 10000
+############setup_clients (END)#############
+test acc on this client before 95 / 2005 : 0.05
+Client Index = 0	Epoch: 0	Loss: 3.545993
+################client:0 threshold : 500
+test acc on this client after 878 / 2005 : 0.44
+--------------------------------------
+test acc on this client before 266 / 2005 : 0.13
+Client Index = 1	Epoch: 0	Loss: 3.268627
+################client:1 threshold : 500
+test acc on this client after 371 / 2005 : 0.19
+--------------------------------------
+test acc on this client before 413 / 2005 : 0.21
+Client Index = 2	Epoch: 0	Loss: 3.207538
+################client:2 threshold : 500
+test acc on this client after 210 / 2005 : 0.10
+--------------------------------------
+test acc on this client before 84 / 2004 : 0.04
+Client Index = 3	Epoch: 0	Loss: 3.756297
+################client:3 threshold : 500
+test acc on this client after 464 / 2004 : 0.23
+--------------------------------------
+test acc on this client before 145 / 2003 : 0.07
+Client Index = 4	Epoch: 0	Loss: 3.344381
+################client:4 threshold : 500
+test acc on this client after 679 / 2003 : 0.34
+--------------------------------------
+test acc on this client before 878 / 2005 : 0.44
+Client Index = 0	Epoch: 0	Loss: 1.537744
+################client:0 threshold : 500
+test acc on this client after 867 / 2005 : 0.43
+--------------------------------------
+test acc on this client before 371 / 2005 : 0.19
+Client Index = 1	Epoch: 0	Loss: 1.734873
+################client:1 threshold : 500
+test acc on this client after 704 / 2005 : 0.35
+--------------------------------------
+test acc on this client before 210 / 2005 : 0.10
+Client Index = 2	Epoch: 0	Loss: 1.838824
+################client:2 threshold : 500
+test acc on this client after 455 / 2005 : 0.23
+--------------------------------------
+test acc on this client before 464 / 2004 : 0.23
+Client Index = 3	Epoch: 0	Loss: 1.786452
+################client:3 threshold : 500
+test acc on this client after 313 / 2004 : 0.16
+--------------------------------------
+test acc on this client before 679 / 2003 : 0.34
+Client Index = 4	Epoch: 0	Loss: 1.953313
+################client:4 threshold : 500
+test acc on this client after 519 / 2003 : 0.26
+--------------------------------------
+################Communication round : 0
+add number:0
+sub number:0
+@@@@@@@@@@@@@@@@ Training Client CM(0): 0
+choose client_indexes: {1: {}, 4: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 1
+choose client_indexes: {2: {}, 0: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 2
+choose client_indexes: {1: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 3
+choose client_indexes: {4: {}, 2: {}}, accoring to ring
+client.dmax_num 2
+@@@@@@@@@@@@@@@@ Training Client CM(0): 4
+choose client_indexes: {0: {}, 3: {}}, accoring to ring
+client.dmax_num 2
+Doing local aggregation!
+@@@@@@@@@@@@@@@@ Training Client CM(0): 0
+test acc on this client before 133 / 2005 : 0.07
+Client Index = 0	Epoch: 0	Loss: 1.921138
+################client:0 threshold : 500
+test acc on this client after 866 / 2005 : 0.43
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 1
+test acc on this client before 115 / 2005 : 0.06
+Client Index = 1	Epoch: 0	Loss: 2.014698
+################client:1 threshold : 500
+test acc on this client after 479 / 2005 : 0.24
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 2
+test acc on this client before 375 / 2005 : 0.19
+Client Index = 2	Epoch: 0	Loss: 1.955286
+################client:2 threshold : 500
+test acc on this client after 532 / 2005 : 0.27
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 3
+test acc on this client before 321 / 2004 : 0.16
+Client Index = 3	Epoch: 0	Loss: 1.848186
+################client:3 threshold : 500
+test acc on this client after 556 / 2004 : 0.28
+--------------------------------------
+@@@@@@@@@@@@@@@@ Training Client CM(0): 4
+test acc on this client before 33 / 2003 : 0.02
+Client Index = 4	Epoch: 0	Loss: 2.100779
+################client:4 threshold : 500
+test acc on this client after 463 / 2003 : 0.23
+--------------------------------------
+sum_comm_params 111742180
+################global_test_on_all_clients : 0
+{'global_test_acc': np.float64(0.2889515961745606), 'global_test_loss': np.float64(2.1482058178712133)}

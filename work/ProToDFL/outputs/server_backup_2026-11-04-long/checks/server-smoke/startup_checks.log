@@ -1,0 +1,12 @@
+*********partition data***************
+dir: allocated 50000/50000 samples across 5 clients
+train_num10000  test_num2003
+client_idx = 0, local_sample_number = 10000, validation_number = 0
+train_num10000  test_num2003
+client_idx = 1, local_sample_number = 10000, validation_number = 0
+train_num10000  test_num2003
+client_idx = 2, local_sample_number = 10000, validation_number = 0
+train_num10000  test_num2001
+client_idx = 3, local_sample_number = 10000, validation_number = 0
+train_num10000  test_num2001
+client_idx = 4, local_sample_number = 10000, validation_number = 0

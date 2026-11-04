@@ -1,0 +1,22 @@
+{
+  "model_param_count": 11173962,
+  "model_bytes_per_client": 44695848,
+  "proto_count": 512,
+  "proto_bytes_per_client": 2048,
+  "rounds": [
+    {
+      "round": 0,
+      "edge_count": 5,
+      "selected_directed_links": 5,
+      "model_bytes": 223479240,
+      "proto_accesses": 10,
+      "proto_bytes": 20480
+    }
+  ],
+  "total_model_bytes": 223479240,
+  "total_proto_bytes": 20480,
+  "total_selected_directed_links": 5,
+  "total_proto_accesses": 10,
+  "oracle_mode": 0,
+  "oracle_m": 2
+}

@@ -1,0 +1,55 @@
+# 本仓库仅保存可交付材料：源码、运行脚本、实验证据与反馈文档。
+# 内部协作记录、个人草稿与大数据不进入版本历史。
+
+# Python 环境与缓存
+.venv/
+__pycache__/
+*.py[cod]
+
+# 账号与密钥
+secrets/
+
+# 编辑器与 AI 工具配置
+.codebuddy/
+
+# 根目录下的个人草稿与协作记录
+/*.md
+/*.txt
+!README.md
+日记/
+论文/
+
+# 除反馈文档外的所有 Word 文件
+*.docx
+!docs/15_实验反馈_2026-11-04.docx
+
+# 内部文档（代码改动审计报告属于交付材料，保留）
+docs/**/*.md
+!docs/13_代码改动审计_对比原始包.md
+
+# 训练数据与原始参考包
+datasets/
+datacifar10/
+data/
+DisPFL-master-代码包/
+work/ProToDFL/datasets/
+work/ProToDFL/datacifar10/
+work/ProToDFL/data/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 模型权重、快照与中间产物
+work/ProToDFL/fedml_experiments/standalone/Ours/
+work/ProToDFL/outputs/checkpoints/
+work/ProToDFL/outputs/server_backup_2026-11-04/
+work/ProToDFL/outputs/topologies/
+work/ProToDFL/outputs/watchdog/
+work/ProToDFL/outputs/summary/
+
+# 大文件
+*.tar.gz
+*.zip
+*.pdf
+*.pptx

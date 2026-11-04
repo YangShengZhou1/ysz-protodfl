@@ -1,0 +1,54 @@
+{
+  "model_param_count": 11173962,
+  "model_bytes_per_client": 44695848,
+  "proto_count": 512,
+  "proto_bytes_per_client": 2048,
+  "rounds": [
+    {
+      "round": 0,
+      "edge_count": 20,
+      "selected_directed_links": 20,
+      "model_bytes": 893916960,
+      "proto_accesses": 0,
+      "proto_bytes": 0
+    },
+    {
+      "round": 1,
+      "edge_count": 20,
+      "selected_directed_links": 20,
+      "model_bytes": 893916960,
+      "proto_accesses": 0,
+      "proto_bytes": 0
+    },
+    {
+      "round": 2,
+      "edge_count": 20,
+      "selected_directed_links": 20,
+      "model_bytes": 893916960,
+      "proto_accesses": 0,
+      "proto_bytes": 0
+    },
+    {
+      "round": 3,
+      "edge_count": 20,
+      "selected_directed_links": 20,
+      "model_bytes": 893916960,
+      "proto_accesses": 0,
+      "proto_bytes": 0
+    },
+    {
+      "round": 4,
+      "edge_count": 20,
+      "selected_directed_links": 20,
+      "model_bytes": 893916960,
+      "proto_accesses": 0,
+      "proto_bytes": 0
+    }
+  ],
+  "total_model_bytes": 4469584800,
+  "total_proto_bytes": 0,
+  "total_selected_directed_links": 100,
+  "total_proto_accesses": 0,
+  "oracle_mode": 1,
+  "oracle_m": 1
+}
