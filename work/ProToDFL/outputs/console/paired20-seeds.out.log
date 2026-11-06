@@ -1,15 +1,15 @@
 {
   "command": [
-    "c:/Users/Administrator/Desktop/bishe/.venv/Scripts/python.exe",
-    "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
+    ".venv/Scripts/python.exe",
+    "work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
     "--dataset",
     "cifar10",
     "--model",
     "resnet18",
     "--data_dir",
-    "c:/Users/Administrator/Desktop/bishe/datasets",
+    "datasets",
     "--output_dir",
-    "c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs",
+    "work/ProToDFL/outputs",
     "--partition_method",
     "dir",
     "--partition_alpha",
@@ -59,21 +59,21 @@
   "elapsed_seconds": 342.83,
   "idle_timeout": 900.0,
   "hard_timeout": 10800.0,
-  "stdout": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-all-s1.out",
-  "stderr": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-all-s1.err"
+  "stdout": "work\\ProToDFL\\outputs\\watchdog\\paired20-all-s1.out",
+  "stderr": "work\\ProToDFL\\outputs\\watchdog\\paired20-all-s1.err"
 }
 {
   "command": [
-    "c:/Users/Administrator/Desktop/bishe/.venv/Scripts/python.exe",
-    "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
+    ".venv/Scripts/python.exe",
+    "work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
     "--dataset",
     "cifar10",
     "--model",
     "resnet18",
     "--data_dir",
-    "c:/Users/Administrator/Desktop/bishe/datasets",
+    "datasets",
     "--output_dir",
-    "c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs",
+    "work/ProToDFL/outputs",
     "--partition_method",
     "dir",
     "--partition_alpha",
@@ -123,21 +123,21 @@
   "elapsed_seconds": 291.87,
   "idle_timeout": 900.0,
   "hard_timeout": 10800.0,
-  "stdout": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-base-s1.out",
-  "stderr": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-base-s1.err"
+  "stdout": "work\\ProToDFL\\outputs\\watchdog\\paired20-base-s1.out",
+  "stderr": "work\\ProToDFL\\outputs\\watchdog\\paired20-base-s1.err"
 }
 {
   "command": [
-    "c:/Users/Administrator/Desktop/bishe/.venv/Scripts/python.exe",
-    "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
+    ".venv/Scripts/python.exe",
+    "work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
     "--dataset",
     "cifar10",
     "--model",
     "resnet18",
     "--data_dir",
-    "c:/Users/Administrator/Desktop/bishe/datasets",
+    "datasets",
     "--output_dir",
-    "c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs",
+    "work/ProToDFL/outputs",
     "--partition_method",
     "dir",
     "--partition_alpha",
@@ -187,21 +187,21 @@
   "elapsed_seconds": 287.94,
   "idle_timeout": 900.0,
   "hard_timeout": 10800.0,
-  "stdout": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-all-s2.out",
-  "stderr": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-all-s2.err"
+  "stdout": "work\\ProToDFL\\outputs\\watchdog\\paired20-all-s2.out",
+  "stderr": "work\\ProToDFL\\outputs\\watchdog\\paired20-all-s2.err"
 }
 {
   "command": [
-    "c:/Users/Administrator/Desktop/bishe/.venv/Scripts/python.exe",
-    "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
+    ".venv/Scripts/python.exe",
+    "work\\ProToDFL\\fedml_experiments\\standalone\\ProToDFL\\main_ProToDFL.py",
     "--dataset",
     "cifar10",
     "--model",
     "resnet18",
     "--data_dir",
-    "c:/Users/Administrator/Desktop/bishe/datasets",
+    "datasets",
     "--output_dir",
-    "c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs",
+    "work/ProToDFL/outputs",
     "--partition_method",
     "dir",
     "--partition_alpha",
@@ -251,6 +251,6 @@
   "elapsed_seconds": 484.21,
   "idle_timeout": 900.0,
   "hard_timeout": 10800.0,
-  "stdout": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-base-s2.out",
-  "stderr": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\paired20-base-s2.err"
+  "stdout": "work\\ProToDFL\\outputs\\watchdog\\paired20-base-s2.out",
+  "stderr": "work\\ProToDFL\\outputs\\watchdog\\paired20-base-s2.err"
 }

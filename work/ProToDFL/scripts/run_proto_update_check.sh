@@ -3,7 +3,7 @@
 # prototypes. Only the refresh branch is launched here; the frozen baseline is the
 # existing srv20-e5-r10-* runs, which use the same COMMON block.
 set -uo pipefail
-cd /home/seczone/bishe_protodfl || exit 1
+cd /home/seczone/ysz || exit 1
 mkdir -p outputs/console
 export LD_LIBRARY_PATH=/home/seczone/anaconda3/lib
 PY=/home/seczone/anaconda3/bin/python

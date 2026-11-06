@@ -984,6 +984,6 @@
         ]
       }
     ],
-    "partition_file": "/home/seczone/bishe_protodfl/outputs/checks/server-smoke/cifar10_dir_partition.npz"
+    "partition_file": "/home/seczone/ysz/outputs/checks/server-smoke/cifar10_dir_partition.npz"
   }
 }

@@ -51,8 +51,8 @@ def aggregate(target_state, neighbor_states, target_n, neighbor_ns, scope):
     return out
 
 
-def evaluate_state(state, loader, device):
-    model = build_model(class_num=10).to(device)
+def evaluate_state(state, loader, device, class_num=10):
+    model = build_model(class_num=class_num).to(device)
     model.load_state_dict({k: v.to(device) for k, v in state.items()})
     model.eval()
     criterion = nn.CrossEntropyLoss(reduction="sum")

@@ -84,11 +84,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--cmd", help="shell command to run remotely")
     parser.add_argument("--put", nargs=2, metavar=("LOCAL", "REMOTE"), help="upload a file")
+    parser.add_argument("--get", nargs=2, metavar=("REMOTE", "LOCAL"), help="download a file")
     parser.add_argument("--timeout", type=int, default=120)
     args = parser.parse_args()
 
-    if not args.cmd and not args.put:
-        parser.error("one of --cmd or --put is required")
+    if not args.cmd and not args.put and not args.get:
+        parser.error("one of --cmd, --put or --get is required")
 
     client = connect()
     try:
@@ -98,6 +99,15 @@ def main() -> int:
             try:
                 sftp.put(local, remote)
                 sys.stdout.write(f"uploaded {local} -> {remote}\n")
+            finally:
+                sftp.close()
+        if args.get:
+            remote, local = args.get
+            pathlib.Path(local).parent.mkdir(parents=True, exist_ok=True)
+            sftp = client.open_sftp()
+            try:
+                sftp.get(remote, local)
+                sys.stdout.write(f"downloaded {remote} -> {local}\n")
             finally:
                 sftp.close()
         if args.cmd:

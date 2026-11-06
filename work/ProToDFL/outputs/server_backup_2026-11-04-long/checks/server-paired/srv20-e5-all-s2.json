@@ -1,5 +1,5 @@
 {
-  "checkpoint": "/home/seczone/bishe_protodfl/outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed2-tagsrv20-e5-all-s2/round_1",
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed2-tagsrv20-e5-all-s2/round_1",
   "rows": [
     {
       "client": 0,

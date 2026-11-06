@@ -119,8 +119,8 @@ def add_args(parser):
                         help='0-keep original behaviour (prototype computed at round 0 only), 1-refresh every round')
     parser.add_argument('--validation_ratio', type=float, default=0.0,
                         help='stratified per-client validation fraction held out from local training data')
-    parser.add_argument('--save_models_round', type=int, default=-1,
-                        help='save all client models/prototypes at this formal round; -1 disables')
+    parser.add_argument('--save_models_round', type=str, default='-1',
+                        help='comma-separated formal rounds to save client models/prototypes, e.g. 1,100,300,500; -1 disables')
     parser.add_argument('--save_models_dir', type=str, default='',
                         help='checkpoint root; defaults to output_dir/checkpoints')
     parser.add_argument("--tag", type=str, default="test")
@@ -144,11 +144,10 @@ def load_data(args, dataset_name):
             validation_ratio=args.validation_ratio
         )
     elif dataset_name == "cifar100":
-        if args.validation_ratio > 0:
-            raise ValueError("validation_ratio is currently implemented for CIFAR-10 only")
         result = load_partition_data_cifar100(
             data_dir, args.partition_method, args.partition_alpha,
-            args.client_num_in_total, args.batch_size, logger
+            args.client_num_in_total, args.batch_size, logger,
+            validation_ratio=args.validation_ratio
         )
     else:
         if args.validation_ratio > 0:

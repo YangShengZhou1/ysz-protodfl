@@ -1,4 +1,4 @@
-Namespace(model='resnet18', dataset='cifar10', momentum=0, data_dir='c:/Users/Administrator/Desktop/bishe/datasets', output_dir='c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs', partition_method='dir', partition_alpha=0.3, batch_size=256, personal=0, client_optimizer='sgd', lr=0.1, lr_decay=0.998, wd=0.0005, epochs=1, client_num_in_total=20, frac=1.0, comm_round=2, k=2, frequency_of_the_test=1, cs='ring', gpu=0, dynamic=0, ci=0, step=0, oracle_mode=0, oracle_m=2, max_neighbors=2, aggregate_scope='all', self_weight_scale=1.0, validation_ratio=0.2, save_models_round=1, save_models_dir='', tag='paired20-all-s2', t_max=100, seed=2, momentums=0.5, times=1, identity='ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed2-tagpaired20-all-s2', client_num_per_round=20)
+Namespace(model='resnet18', dataset='cifar10', momentum=0, data_dir='datasets', output_dir='work/ProToDFL/outputs', partition_method='dir', partition_alpha=0.3, batch_size=256, personal=0, client_optimizer='sgd', lr=0.1, lr_decay=0.998, wd=0.0005, epochs=1, client_num_in_total=20, frac=1.0, comm_round=2, k=2, frequency_of_the_test=1, cs='ring', gpu=0, dynamic=0, ci=0, step=0, oracle_mode=0, oracle_m=2, max_neighbors=2, aggregate_scope='all', self_weight_scale=1.0, validation_ratio=0.2, save_models_round=1, save_models_dir='', tag='paired20-all-s2', t_max=100, seed=2, momentums=0.5, times=1, identity='ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed2-tagpaired20-all-s2', client_num_per_round=20)
 cuda:0
 running at devicecuda:0
 *********partition data***************
@@ -781,7 +781,7 @@ client_id: 19
 client.neigh_distance: {8: 72.82111358642578, 15: 63.98923873901367}
 client.threshold: 72.82111358642578
 CAP max_neighbors=2
-SAVED round=1 checkpoints to c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs\checkpoints\ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed2-tagpaired20-all-s2\round_1
+SAVED round=1 checkpoints to work/ProToDFL/outputs\checkpoints\ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed2-tagpaired20-all-s2\round_1
 Doing local aggregation! scope=all self_scale=1.0
 COMM round=1 directed_links=35 model_bytes=1564354680 proto_accesses=140 proto_bytes=286720
 @@@@@@@@@@@@@@@@ Training Client CM(1): 0

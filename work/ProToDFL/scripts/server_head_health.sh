@@ -1,6 +1,6 @@
 #!/bin/bash
 set -u
-cd /home/seczone/bishe_protodfl
+cd /home/seczone/ysz
 export LD_LIBRARY_PATH=/home/seczone/anaconda3/lib
 export CUDA_VISIBLE_DEVICES=0
 PY=/home/seczone/anaconda3/bin/python

@@ -3,7 +3,7 @@ CHECK srv20-e5-r10-all-s0 outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-d
 /home/seczone/.local/lib/python3.11/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
   return self.fget.__get__(instance, owner)()
 {
-  "checkpoint": "/home/seczone/bishe_protodfl/outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm10-total_clnt20-neighbor20-seed0-tagsrv20-e5-r10-all-s0/round_10",
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm10-total_clnt20-neighbor20-seed0-tagsrv20-e5-r10-all-s0/round_10",
   "targets": [
     0,
     1,
@@ -368,7 +368,7 @@ CHECK srv20-e5-r10-base-s0 outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-
 /home/seczone/.local/lib/python3.11/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
   return self.fget.__get__(instance, owner)()
 {
-  "checkpoint": "/home/seczone/bishe_protodfl/outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm10-total_clnt20-neighbor20-seed0-tagsrv20-e5-r10-base-s0/round_10",
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm10-total_clnt20-neighbor20-seed0-tagsrv20-e5-r10-base-s0/round_10",
   "targets": [
     0,
     1,

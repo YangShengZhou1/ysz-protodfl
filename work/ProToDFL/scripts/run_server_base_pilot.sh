@@ -1,6 +1,6 @@
 #!/bin/bash
 set -uo pipefail
-cd /home/seczone/bishe_protodfl
+cd /home/seczone/ysz
 mkdir -p outputs/console
 export LD_LIBRARY_PATH=/home/seczone/anaconda3/lib
 export CUDA_VISIBLE_DEVICES=1

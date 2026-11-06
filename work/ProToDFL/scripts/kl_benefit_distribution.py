@@ -26,6 +26,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from fedml_api.data_preprocessing.cifar10.data_loader import CIFAR10_truncated, _data_transforms_cifar10
+from fedml_api.data_preprocessing.cifar100.data_loader import CIFAR100_truncated, _data_transforms_cifar100
 from paired_aggregation_check import aggregate, build_model, evaluate_state, is_head_key
 
 
@@ -40,6 +41,8 @@ def kl_between(proto_i, proto_j):
 
 
 def bin_summary(kls, deltas, n_bins=8):
+    if len(kls) == 0:
+        return []
     order = np.argsort(kls)
     chunks = np.array_split(order, min(n_bins, len(order)))
     bins = []
@@ -71,6 +74,12 @@ def main():
     parser.add_argument("--batch_size", type=int, default=256)
     parser.add_argument("--scope", choices=["base", "all"], default="base")
     parser.add_argument("--max_targets", type=int, default=0)
+    parser.add_argument("--dataset", choices=["cifar10", "cifar100"], default="cifar10")
+    parser.add_argument("--num_classes", type=int, default=0, help="0 means infer from dataset")
+    parser.add_argument("--max_candidates", type=int, default=0,
+                        help="randomly sample at most N candidates per target; 0 means all")
+    parser.add_argument("--candidate_seed", type=int, default=0,
+                        help="seed for candidate subsampling, keeps the pool identical across targets")
     args = parser.parse_args()
 
     checkpoint_dir = Path(args.checkpoint).resolve()
@@ -79,6 +88,7 @@ def main():
     targets = sorted(clients)
     if args.max_targets > 0:
         targets = targets[:args.max_targets]
+    all_candidates = sorted(clients)
     device = torch.device(args.device)
 
     states = {
@@ -93,22 +103,42 @@ def main():
     graph = nx.Graph()
     graph.add_nodes_from(clients)
     graph.add_edges_from(metadata.get("graph_edges", []))
-    _, val_transform = _data_transforms_cifar10()
+    if args.dataset == "cifar100":
+        dataset_cls = CIFAR100_truncated
+        _, val_transform = _data_transforms_cifar100()
+        class_num = args.num_classes or 100
+    else:
+        dataset_cls = CIFAR10_truncated
+        _, val_transform = _data_transforms_cifar10()
+        class_num = args.num_classes or 10
 
     rows = []
     for target in targets:
         client = clients[target]
         val_indices = client["val_indices"]
-        dataset = CIFAR10_truncated(
+        if not val_indices:
+            raise ValueError(
+                "client {} has no val_indices; the checkpoint was produced without validation_ratio".format(target)
+            )
+        dataset = dataset_cls(
             args.data_dir, dataidxs=val_indices, train=True,
             transform=val_transform, download=False,
         )
         loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
-        pre = evaluate_state(states[target], loader, device)
+        pre = evaluate_state(states[target], loader, device, class_num=class_num)
         hops = nx.single_source_shortest_path_length(graph, target)
 
         target_n = int(client["train_num"])
-        for candidate in sorted(clients):
+        if args.max_candidates > 0 and len(all_candidates) - 1 > args.max_candidates:
+            pool = [c for c in all_candidates if c != target]
+            candidates_iter = sorted(
+                np.random.default_rng(args.candidate_seed).choice(
+                    pool, size=args.max_candidates, replace=False
+                ).tolist()
+            )
+        else:
+            candidates_iter = all_candidates
+        for candidate in candidates_iter:
             if candidate == target:
                 continue
             candidate_client = clients[candidate]
@@ -117,7 +147,7 @@ def main():
             aggregated = aggregate(
                 states[target], [neighbor_state], target_n, [candidate_n], args.scope
             )
-            metrics = evaluate_state(aggregated, loader, device)
+            metrics = evaluate_state(aggregated, loader, device, class_num=class_num)
             kl_ij, kl_ji, kl_sym = kl_between(prototypes[target], prototypes[candidate])
             rows.append({
                 "target": target,

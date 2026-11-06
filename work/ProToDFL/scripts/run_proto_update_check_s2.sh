@@ -2,7 +2,7 @@
 # Purpose: same as run_proto_update_check.sh, but for seed 2. Adds the third seed
 # so the frozen-vs-refreshed comparison covers the same seeds as the baseline.
 set -uo pipefail
-cd /home/seczone/bishe_protodfl || exit 1
+cd /home/seczone/ysz || exit 1
 mkdir -p outputs/console
 export LD_LIBRARY_PATH=/home/seczone/anaconda3/lib
 PY=/home/seczone/anaconda3/bin/python

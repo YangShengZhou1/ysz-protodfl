@@ -1,5 +1,6 @@
 import logging
 import math
+import os
 import random
 import numpy as np
 import torch
@@ -205,7 +206,7 @@ def partition_data( datadir, partition, n_nets, alpha, logger):
     return X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts
 
 
-def get_dataloader_CIFAR100(datadir, train_bs, test_bs, dataidxs=None,test_idxs=None, cache_train_data_set=None,cache_test_data_set=None, logger = None):
+def get_dataloader_CIFAR100(datadir, train_bs, test_bs, dataidxs=None,test_idxs=None, cache_train_data_set=None,cache_test_data_set=None, logger = None, val_idxs=None):
     transform_train, transform_test = _data_transforms_cifar100()
 
     dataidxs=np.array(dataidxs)
@@ -216,12 +217,35 @@ def get_dataloader_CIFAR100(datadir, train_bs, test_bs, dataidxs=None,test_idxs=
                       cache_data_set=cache_test_data_set)
     train_dl = data.DataLoader(dataset=train_ds, batch_size=train_bs, shuffle=True, drop_last=False)
     test_dl = data.DataLoader(dataset=test_ds, batch_size=test_bs, shuffle=True, drop_last=False)
-    return train_dl, test_dl
+    val_dl = None
+    if val_idxs is not None and len(val_idxs) > 0:
+        val_ds = CIFAR100_truncated(datadir, dataidxs=np.array(val_idxs), train=True, transform=transform_test,
+                                    download=False, cache_data_set=cache_train_data_set)
+        val_dl = data.DataLoader(dataset=val_ds, batch_size=test_bs, shuffle=False, drop_last=False)
+    return train_dl, test_dl, val_dl
+
+
+def _split_train_validation(indices, y_train, validation_ratio):
+    """Stratified per-client split held out before training."""
+    indices = np.asarray(indices, dtype=np.int64)
+    if validation_ratio <= 0 or len(indices) < 2:
+        return indices, np.asarray([], dtype=np.int64)
+    train_parts, val_parts = [], []
+    for label in np.unique(y_train[indices]):
+        cls_indices = indices[y_train[indices] == label]
+        cls_indices = np.random.permutation(cls_indices)
+        n_val = int(round(len(cls_indices) * validation_ratio))
+        if n_val == 0 and len(cls_indices) > 1:
+            n_val = 1
+        n_val = min(n_val, len(cls_indices) - 1)
+        val_parts.append(cls_indices[:n_val])
+        train_parts.append(cls_indices[n_val:])
+    return np.concatenate(train_parts), np.concatenate(val_parts)
 
 
 
 
-def load_partition_data_cifar100( data_dir, partition_method, partition_alpha, client_number, batch_size, logger):
+def load_partition_data_cifar100( data_dir, partition_method, partition_alpha, client_number, batch_size, logger, validation_ratio=0.0):
     X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = partition_data(
                                                                                              data_dir,
                                                                                              partition_method,
@@ -231,10 +255,13 @@ def load_partition_data_cifar100( data_dir, partition_method, partition_alpha, c
     data_local_num_dict = dict()
     train_data_local_dict = dict()
     test_data_local_dict = dict()
+    val_data_local_num_dict = dict()
+    val_data_local_dict = dict()
     transform_train, transform_test = _data_transforms_cifar100()
 
-    cache_train_data_set=CIFAR100(data_dir, train=True, transform=transform_train, download=True)
-    cache_test_data_set = CIFAR100(data_dir, train=False, transform=transform_test, download=True)
+    download = not os.path.isdir(os.path.join(data_dir, "cifar-100-python"))
+    cache_train_data_set=CIFAR100(data_dir, train=True, transform=transform_train, download=download)
+    cache_test_data_set = CIFAR100(data_dir, train=False, transform=transform_test, download=download)
     idx_test = [[] for i in range(100)]
     # checking
     for label in range(100):
@@ -251,14 +278,24 @@ def load_partition_data_cifar100( data_dir, partition_method, partition_alpha, c
             else:
                 test_dataidxs[client_idx] = np.concatenate(
                     (test_dataidxs[client_idx], idx_test[label][rand_perm[:label_num]]))
-        dataidxs = net_dataidx_map[client_idx]
-        train_data_local, test_data_local = get_dataloader_CIFAR100( data_dir, batch_size, batch_size,
-                                                 dataidxs,test_dataidxs[client_idx] ,cache_train_data_set=cache_train_data_set,cache_test_data_set=cache_test_data_set ,logger=logger)
+        dataidxs, validx = _split_train_validation(
+            net_dataidx_map[client_idx], y_train, validation_ratio
+        )
+        train_data_local, test_data_local, val_data_local = get_dataloader_CIFAR100( data_dir, batch_size, batch_size,
+                                                 dataidxs,test_dataidxs[client_idx] ,cache_train_data_set=cache_train_data_set,cache_test_data_set=cache_test_data_set ,logger=logger, val_idxs=validx)
         local_data_num = len(train_data_local.dataset)
         data_local_num_dict[client_idx] = local_data_num
-        logger.info("client_idx = %d, local_sample_number = %d" % (client_idx, local_data_num))
+        logger.info("client_idx = %d, local_sample_number = %d, validation_number = %d" % (
+            client_idx, local_data_num, len(validx)))
         train_data_local_dict[client_idx] = train_data_local
         test_data_local_dict[client_idx] = test_data_local
+        if validation_ratio > 0:
+            val_data_local_dict[client_idx] = val_data_local
+            val_data_local_num_dict[client_idx] = len(val_data_local.dataset)
     record_part(y_test, traindata_cls_counts, test_dataidxs, logger)
+    if validation_ratio > 0:
+        return None, None, None, None, \
+               data_local_num_dict, train_data_local_dict, test_data_local_dict, traindata_cls_counts, \
+               val_data_local_num_dict, val_data_local_dict
     return None, None, None, None, \
            data_local_num_dict, train_data_local_dict, test_data_local_dict, traindata_cls_counts

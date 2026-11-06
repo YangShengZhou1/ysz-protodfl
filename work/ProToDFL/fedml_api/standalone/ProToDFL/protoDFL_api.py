@@ -195,6 +195,10 @@ class ProToDFLAPI(object):
         #threshold = 6#逐步缩小阈值 cifar10,resnet18
         #threshold = 86#逐步缩小阈值 cifar100,resnet18
         save_rounds = [0, 5, 10, 50, 100, 300]
+        self._save_round_set = {
+            int(x) for x in str(self.args.save_models_round).split(",")
+            if x.strip().lstrip("-").isdigit()
+        }
         graphs_to_save = []
         #threshold = 120#逐步缩小阈值 tiny,resnet18
         #threshold = 6#逐步缩小阈值 cifar10,vgg11
@@ -262,7 +266,7 @@ class ProToDFLAPI(object):
                 if self.args.step != 1:
                     self.change_neighbors(grap=0, rounds = round_idx)
                 self._cap_selected_neighbors()
-            if self.args.save_models_round == round_idx and round_idx > 0:
+            if round_idx > 0 and round_idx in self._save_round_set:
                 self._save_round_models(round_idx)
             self._aggregate_func()#聚合模型
             self._record_comm_round(round_idx)

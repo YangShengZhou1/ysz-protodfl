@@ -1,6 +1,6 @@
 #!/bin/bash
 set -u
-cd /home/seczone/bishe_protodfl
+cd /home/seczone/ysz
 mkdir -p outputs/console
 LOG=outputs/console/finalize-after-long.log
 : > "$LOG"

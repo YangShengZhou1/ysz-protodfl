@@ -1,7 +1,7 @@
 param(
-    [string]$Python = "c:/Users/Administrator/Desktop/bishe/.venv/Scripts/python.exe",
-    [string]$DataDir = "c:/Users/Administrator/Desktop/bishe/datasets",
-    [string]$OutputDir = "c:/Users/Administrator/Desktop/bishe/work/ProToDFL/outputs"
+    [string]$Python = (Join-Path $PSScriptRoot '../../../.venv/Scripts/python.exe'),
+    [string]$DataDir = (Join-Path $PSScriptRoot '../../../datasets'),
+    [string]$OutputDir = (Join-Path $PSScriptRoot '../outputs')
 )
 
 $ErrorActionPreference = "Stop"
