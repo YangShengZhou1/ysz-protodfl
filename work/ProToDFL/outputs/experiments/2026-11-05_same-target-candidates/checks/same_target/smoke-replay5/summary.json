@@ -1,0 +1,88 @@
+{
+  "checkpoint": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\checkpoints\\ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed0-tagpaired20-base-s0\\round_1",
+  "scope": "base",
+  "replay_epochs": 5,
+  "split_frac": 0.5,
+  "split_seed": 0,
+  "max_candidates": 2,
+  "summary_agg": {
+    "n": 0
+  },
+  "summary_replay": {
+    "n": 0
+  },
+  "rows": [
+    {
+      "target": 1,
+      "candidate": 6,
+      "hop": 2,
+      "kl_ij": 28.030363082885742,
+      "kl_ji": 27.93339729309082,
+      "kl_sym": 27.98188018798828,
+      "pre_acc": 0.3383383383383383,
+      "agg_acc": 0.3383383383383383,
+      "replay_acc": 0.37237237237237236,
+      "delta_agg": 0.0,
+      "delta_replay": 0.034034034034034044,
+      "training_gain": 0.034034034034034044,
+      "pre_loss": 2.5229001584592403,
+      "agg_loss": 2.243066552881006,
+      "replay_loss": 1.496158084353885,
+      "degenerate": 1
+    },
+    {
+      "target": 1,
+      "candidate": 12,
+      "hop": 1,
+      "kl_ij": 30.322856903076172,
+      "kl_ji": 30.609601974487305,
+      "kl_sym": 30.46622943878174,
+      "pre_acc": 0.3383383383383383,
+      "agg_acc": 0.3383383383383383,
+      "replay_acc": 0.37237237237237236,
+      "delta_agg": 0.0,
+      "delta_replay": 0.034034034034034044,
+      "training_gain": 0.034034034034034044,
+      "pre_loss": 2.5229001584592403,
+      "agg_loss": 2.277624976050269,
+      "replay_loss": 1.4856648335347067,
+      "degenerate": 1
+    },
+    {
+      "target": 2,
+      "candidate": 11,
+      "hop": 1,
+      "kl_ij": 39.4664192199707,
+      "kl_ji": 38.92455291748047,
+      "kl_sym": 39.195486068725586,
+      "pre_acc": 0.33233233233233234,
+      "agg_acc": 0.33233233233233234,
+      "replay_acc": 0.33233233233233234,
+      "delta_agg": 0.0,
+      "delta_replay": 0.0,
+      "training_gain": 0.0,
+      "pre_loss": 1.9904494338088088,
+      "agg_loss": 1.8900588515761856,
+      "replay_loss": 1.5950683960327514,
+      "degenerate": 1
+    },
+    {
+      "target": 2,
+      "candidate": 5,
+      "hop": 2,
+      "kl_ij": 42.753787994384766,
+      "kl_ji": 42.87606430053711,
+      "kl_sym": 42.81492614746094,
+      "pre_acc": 0.33233233233233234,
+      "agg_acc": 0.33233233233233234,
+      "replay_acc": 0.34634634634634637,
+      "delta_agg": 0.0,
+      "delta_replay": 0.014014014014014031,
+      "training_gain": 0.014014014014014031,
+      "pre_loss": 1.9904494338088088,
+      "agg_loss": 1.9199138408427958,
+      "replay_loss": 1.5829987397065033,
+      "degenerate": 1
+    }
+  ]
+}

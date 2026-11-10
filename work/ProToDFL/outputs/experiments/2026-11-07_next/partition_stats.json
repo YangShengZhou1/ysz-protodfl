@@ -1,0 +1,3430 @@
+{
+  "paper100-next-dir": {
+    "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-my_part0.3-ti-1-step-0-dy-0-t_max-100-cs-random-hops-2-mo0.1-per-0-mdlresnet18-cm500-total_clnt100-neighbor100-seed0-tagpaper100-next-dir/round_500",
+    "partition_method": "my_part",
+    "partition_alpha": 0.3,
+    "n_clients": 100,
+    "train_n_min": 398,
+    "train_n_max": 401,
+    "train_n_mean": 399.77,
+    "nonzero_classes_min": 1,
+    "nonzero_classes_max": 10,
+    "nonzero_classes_mean": 5.7,
+    "per_client": [
+      {
+        "client_idx": 0,
+        "train_n": 399,
+        "class_counts": [
+          11,
+          16,
+          4,
+          6,
+          40,
+          18,
+          0,
+          0,
+          38,
+          266
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 1,
+        "train_n": 399,
+        "class_counts": [
+          16,
+          14,
+          7,
+          6,
+          46,
+          6,
+          0,
+          0,
+          36,
+          268
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 2,
+        "train_n": 400,
+        "class_counts": [
+          5,
+          10,
+          1,
+          4,
+          38,
+          10,
+          0,
+          0,
+          36,
+          296
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 3,
+        "train_n": 400,
+        "class_counts": [
+          8,
+          14,
+          1,
+          6,
+          31,
+          13,
+          0,
+          0,
+          33,
+          294
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 4,
+        "train_n": 401,
+        "class_counts": [
+          7,
+          10,
+          8,
+          4,
+          36,
+          10,
+          0,
+          0,
+          34,
+          292
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 5,
+        "train_n": 400,
+        "class_counts": [
+          10,
+          12,
+          3,
+          10,
+          39,
+          13,
+          0,
+          0,
+          36,
+          277
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 6,
+        "train_n": 400,
+        "class_counts": [
+          6,
+          14,
+          1,
+          5,
+          37,
+          10,
+          0,
+          0,
+          35,
+          292
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 7,
+        "train_n": 400,
+        "class_counts": [
+          10,
+          10,
+          5,
+          6,
+          32,
+          8,
+          0,
+          0,
+          35,
+          294
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 8,
+        "train_n": 400,
+        "class_counts": [
+          12,
+          14,
+          2,
+          6,
+          46,
+          4,
+          0,
+          0,
+          42,
+          274
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 9,
+        "train_n": 400,
+        "class_counts": [
+          3,
+          14,
+          6,
+          6,
+          32,
+          4,
+          0,
+          0,
+          31,
+          304
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 10,
+        "train_n": 400,
+        "class_counts": [
+          25,
+          0,
+          1,
+          21,
+          3,
+          19,
+          0,
+          28,
+          299,
+          4
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 11,
+        "train_n": 400,
+        "class_counts": [
+          22,
+          0,
+          0,
+          18,
+          1,
+          19,
+          0,
+          32,
+          305,
+          3
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 12,
+        "train_n": 399,
+        "class_counts": [
+          11,
+          0,
+          0,
+          19,
+          1,
+          18,
+          0,
+          34,
+          309,
+          7
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 13,
+        "train_n": 400,
+        "class_counts": [
+          13,
+          1,
+          0,
+          22,
+          1,
+          14,
+          0,
+          35,
+          310,
+          4
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 14,
+        "train_n": 401,
+        "class_counts": [
+          12,
+          0,
+          0,
+          18,
+          3,
+          9,
+          0,
+          32,
+          321,
+          6
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 15,
+        "train_n": 400,
+        "class_counts": [
+          18,
+          1,
+          0,
+          19,
+          1,
+          18,
+          0,
+          28,
+          310,
+          5
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 16,
+        "train_n": 400,
+        "class_counts": [
+          17,
+          0,
+          0,
+          19,
+          1,
+          13,
+          0,
+          32,
+          316,
+          2
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 17,
+        "train_n": 399,
+        "class_counts": [
+          10,
+          0,
+          0,
+          27,
+          1,
+          14,
+          0,
+          35,
+          306,
+          6
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 18,
+        "train_n": 399,
+        "class_counts": [
+          10,
+          1,
+          0,
+          22,
+          2,
+          16,
+          0,
+          29,
+          313,
+          6
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 19,
+        "train_n": 399,
+        "class_counts": [
+          12,
+          0,
+          0,
+          22,
+          1,
+          15,
+          0,
+          33,
+          310,
+          6
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 20,
+        "train_n": 399,
+        "class_counts": [
+          80,
+          1,
+          14,
+          37,
+          1,
+          71,
+          21,
+          1,
+          1,
+          172
+        ],
+        "nonzero_classes": 10
+      },
+      {
+        "client_idx": 21,
+        "train_n": 401,
+        "class_counts": [
+          70,
+          1,
+          10,
+          42,
+          1,
+          78,
+          20,
+          0,
+          1,
+          178
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 22,
+        "train_n": 401,
+        "class_counts": [
+          68,
+          3,
+          5,
+          46,
+          1,
+          81,
+          26,
+          0,
+          2,
+          169
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 23,
+        "train_n": 399,
+        "class_counts": [
+          68,
+          2,
+          6,
+          50,
+          1,
+          64,
+          30,
+          0,
+          4,
+          174
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 24,
+        "train_n": 398,
+        "class_counts": [
+          81,
+          5,
+          7,
+          27,
+          1,
+          82,
+          19,
+          2,
+          0,
+          174
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 25,
+        "train_n": 400,
+        "class_counts": [
+          75,
+          1,
+          2,
+          47,
+          1,
+          65,
+          18,
+          1,
+          2,
+          188
+        ],
+        "nonzero_classes": 10
+      },
+      {
+        "client_idx": 26,
+        "train_n": 399,
+        "class_counts": [
+          117,
+          4,
+          6,
+          75,
+          1,
+          107,
+          48,
+          1,
+          1,
+          39
+        ],
+        "nonzero_classes": 10
+      },
+      {
+        "client_idx": 27,
+        "train_n": 398,
+        "class_counts": [
+          135,
+          2,
+          11,
+          79,
+          2,
+          124,
+          40,
+          1,
+          4,
+          0
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 28,
+        "train_n": 399,
+        "class_counts": [
+          126,
+          2,
+          13,
+          79,
+          2,
+          122,
+          49,
+          1,
+          5,
+          0
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 29,
+        "train_n": 399,
+        "class_counts": [
+          138,
+          1,
+          8,
+          73,
+          3,
+          136,
+          39,
+          0,
+          1,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 30,
+        "train_n": 400,
+        "class_counts": [
+          254,
+          2,
+          6,
+          14,
+          0,
+          68,
+          50,
+          5,
+          1,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 31,
+        "train_n": 401,
+        "class_counts": [
+          249,
+          5,
+          5,
+          5,
+          0,
+          62,
+          62,
+          12,
+          1,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 32,
+        "train_n": 400,
+        "class_counts": [
+          246,
+          5,
+          8,
+          5,
+          0,
+          53,
+          73,
+          10,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 33,
+        "train_n": 399,
+        "class_counts": [
+          264,
+          3,
+          6,
+          10,
+          0,
+          63,
+          46,
+          7,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 34,
+        "train_n": 401,
+        "class_counts": [
+          258,
+          3,
+          5,
+          13,
+          0,
+          68,
+          49,
+          5,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 35,
+        "train_n": 400,
+        "class_counts": [
+          247,
+          7,
+          10,
+          9,
+          0,
+          54,
+          67,
+          5,
+          1,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 36,
+        "train_n": 399,
+        "class_counts": [
+          260,
+          1,
+          6,
+          10,
+          0,
+          57,
+          60,
+          5,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 37,
+        "train_n": 400,
+        "class_counts": [
+          257,
+          5,
+          3,
+          10,
+          0,
+          62,
+          55,
+          8,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 38,
+        "train_n": 400,
+        "class_counts": [
+          252,
+          8,
+          6,
+          10,
+          0,
+          63,
+          54,
+          6,
+          1,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 39,
+        "train_n": 399,
+        "class_counts": [
+          243,
+          6,
+          6,
+          7,
+          0,
+          62,
+          64,
+          10,
+          1,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 40,
+        "train_n": 399,
+        "class_counts": [
+          34,
+          50,
+          1,
+          32,
+          1,
+          6,
+          49,
+          89,
+          137,
+          0
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 41,
+        "train_n": 400,
+        "class_counts": [
+          43,
+          58,
+          1,
+          24,
+          0,
+          14,
+          50,
+          69,
+          141,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 42,
+        "train_n": 400,
+        "class_counts": [
+          48,
+          62,
+          1,
+          25,
+          1,
+          9,
+          38,
+          90,
+          126,
+          0
+        ],
+        "nonzero_classes": 9
+      },
+      {
+        "client_idx": 43,
+        "train_n": 400,
+        "class_counts": [
+          49,
+          46,
+          0,
+          23,
+          2,
+          12,
+          57,
+          97,
+          114,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 44,
+        "train_n": 399,
+        "class_counts": [
+          57,
+          87,
+          1,
+          41,
+          1,
+          19,
+          74,
+          119,
+          0,
+          0
+        ],
+        "nonzero_classes": 8
+      },
+      {
+        "client_idx": 45,
+        "train_n": 400,
+        "class_counts": [
+          42,
+          88,
+          3,
+          40,
+          0,
+          10,
+          71,
+          146,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 46,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          94,
+          3,
+          50,
+          0,
+          18,
+          89,
+          145,
+          0,
+          0
+        ],
+        "nonzero_classes": 6
+      },
+      {
+        "client_idx": 47,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          102,
+          3,
+          46,
+          3,
+          18,
+          78,
+          150,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 48,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          103,
+          2,
+          43,
+          1,
+          17,
+          85,
+          148,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 49,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          94,
+          1,
+          54,
+          2,
+          16,
+          78,
+          154,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 50,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          308,
+          12,
+          0,
+          40,
+          20,
+          0,
+          20,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 51,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          310,
+          1,
+          0,
+          31,
+          28,
+          0,
+          29,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 52,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          314,
+          8,
+          0,
+          27,
+          24,
+          0,
+          27,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 53,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          306,
+          9,
+          0,
+          38,
+          33,
+          0,
+          14,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 54,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          312,
+          10,
+          0,
+          35,
+          25,
+          0,
+          18,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 55,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          307,
+          13,
+          0,
+          30,
+          30,
+          0,
+          20,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 56,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          306,
+          11,
+          0,
+          35,
+          26,
+          1,
+          20,
+          0,
+          0
+        ],
+        "nonzero_classes": 6
+      },
+      {
+        "client_idx": 57,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          299,
+          7,
+          0,
+          47,
+          30,
+          0,
+          16,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 58,
+        "train_n": 401,
+        "class_counts": [
+          0,
+          313,
+          6,
+          0,
+          32,
+          25,
+          0,
+          25,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 59,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          239,
+          10,
+          0,
+          69,
+          46,
+          1,
+          35,
+          0,
+          0
+        ],
+        "nonzero_classes": 6
+      },
+      {
+        "client_idx": 60,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          226,
+          0,
+          171,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 61,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          248,
+          0,
+          151,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 62,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          242,
+          1,
+          156,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 63,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          250,
+          0,
+          145,
+          1,
+          3,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 64,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          250,
+          0,
+          149,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 65,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          264,
+          0,
+          134,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 66,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          0,
+          225,
+          1,
+          170,
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 67,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          243,
+          1,
+          154,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 68,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          258,
+          0,
+          142,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 69,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          0,
+          241,
+          0,
+          155,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 70,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          345,
+          0,
+          1,
+          51,
+          3,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 71,
+        "train_n": 401,
+        "class_counts": [
+          0,
+          0,
+          346,
+          0,
+          0,
+          49,
+          6,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 72,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          353,
+          0,
+          1,
+          44,
+          2,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 73,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          218,
+          0,
+          1,
+          172,
+          8,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 74,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          373,
+          23,
+          1,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 75,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          376,
+          19,
+          3,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 76,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          370,
+          22,
+          5,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 77,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          6,
+          337,
+          54,
+          3,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 78,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          51,
+          0,
+          320,
+          29,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 79,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          51,
+          0,
+          326,
+          23,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 80,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          1,
+          377,
+          0,
+          0,
+          22,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 81,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          3,
+          373,
+          0,
+          0,
+          24,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 82,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          3,
+          381,
+          0,
+          0,
+          16,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 83,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          3,
+          375,
+          0,
+          0,
+          22,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 84,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          55,
+          41,
+          0,
+          0,
+          304,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 85,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          0,
+          0,
+          63,
+          0,
+          0,
+          2,
+          334,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 86,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          70,
+          0,
+          0,
+          4,
+          326,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 87,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          65,
+          0,
+          0,
+          1,
+          334,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 88,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          66,
+          0,
+          0,
+          0,
+          334,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 89,
+        "train_n": 399,
+        "class_counts": [
+          0,
+          0,
+          0,
+          58,
+          0,
+          0,
+          1,
+          340,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 90,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          378,
+          22,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 91,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          377,
+          23,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 92,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 93,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 94,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          318,
+          0,
+          0,
+          82,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 95,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 96,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 97,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 98,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 99,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      }
+    ]
+  },
+  "paper100-next-path": {
+    "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-n_cls2.0-ti-1-step-0-dy-0-t_max-100-cs-random-hops-2-mo0.1-per-0-mdlresnet18-cm500-total_clnt100-neighbor100-seed0-tagpaper100-next-path/round_500",
+    "partition_method": "n_cls",
+    "partition_alpha": 2.0,
+    "n_clients": 100,
+    "train_n_min": 399,
+    "train_n_max": 401,
+    "train_n_mean": 399.96,
+    "nonzero_classes_min": 1,
+    "nonzero_classes_max": 7,
+    "nonzero_classes_mean": 2.2,
+    "per_client": [
+      {
+        "client_idx": 0,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          199,
+          0,
+          0,
+          201
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 1,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          218,
+          0,
+          0,
+          182
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 2,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          194,
+          0,
+          0,
+          206
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 3,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          188,
+          0,
+          0,
+          212
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 4,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          201,
+          0,
+          0,
+          199
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 5,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          200,
+          0,
+          0,
+          200
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 6,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          191,
+          0,
+          0,
+          209
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 7,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          194,
+          0,
+          0,
+          206
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 8,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          192,
+          0,
+          0,
+          208
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 9,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          194,
+          0,
+          0,
+          206
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 10,
+        "train_n": 400,
+        "class_counts": [
+          213,
+          0,
+          0,
+          0,
+          187,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 11,
+        "train_n": 400,
+        "class_counts": [
+          204,
+          0,
+          0,
+          0,
+          196,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 12,
+        "train_n": 400,
+        "class_counts": [
+          198,
+          0,
+          0,
+          0,
+          202,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 13,
+        "train_n": 400,
+        "class_counts": [
+          198,
+          0,
+          0,
+          0,
+          202,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 14,
+        "train_n": 400,
+        "class_counts": [
+          195,
+          0,
+          0,
+          0,
+          205,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 15,
+        "train_n": 400,
+        "class_counts": [
+          195,
+          0,
+          0,
+          0,
+          205,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 16,
+        "train_n": 400,
+        "class_counts": [
+          202,
+          0,
+          0,
+          0,
+          198,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 17,
+        "train_n": 400,
+        "class_counts": [
+          206,
+          0,
+          0,
+          0,
+          194,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 18,
+        "train_n": 400,
+        "class_counts": [
+          193,
+          0,
+          0,
+          0,
+          207,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 19,
+        "train_n": 400,
+        "class_counts": [
+          216,
+          0,
+          0,
+          0,
+          184,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 20,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          205,
+          195,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 21,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          197,
+          203,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 22,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          194,
+          206,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 23,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          202,
+          198,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 24,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          195,
+          205,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 25,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          195,
+          205,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 26,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          187,
+          213,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 27,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          191,
+          209,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 28,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          193,
+          207,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 29,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          191,
+          209,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 30,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          212,
+          0,
+          188,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 31,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          202,
+          0,
+          198,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 32,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          193,
+          0,
+          207,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 33,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          201,
+          0,
+          199,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 34,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          205,
+          0,
+          195,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 35,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          192,
+          0,
+          208,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 36,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          207,
+          0,
+          193,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 37,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          218,
+          0,
+          182,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 38,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          182,
+          0,
+          218,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 39,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          196,
+          0,
+          204,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 40,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          197,
+          0,
+          203,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 41,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          206,
+          0,
+          194,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 42,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          206,
+          0,
+          194,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 43,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          194,
+          0,
+          206,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 44,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          197,
+          0,
+          203,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 45,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          203,
+          0,
+          197,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 46,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          201,
+          0,
+          199,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 47,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          206,
+          0,
+          194,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 48,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          202,
+          0,
+          198,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 49,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          208,
+          0,
+          192,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 50,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          206,
+          0,
+          0,
+          0,
+          0,
+          0,
+          194
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 51,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          210,
+          0,
+          0,
+          0,
+          0,
+          0,
+          190
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 52,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          210,
+          0,
+          0,
+          0,
+          0,
+          0,
+          190
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 53,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          197,
+          0,
+          0,
+          0,
+          0,
+          0,
+          203
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 54,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          190,
+          0,
+          0,
+          0,
+          0,
+          0,
+          210
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 55,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          207,
+          0,
+          0,
+          0,
+          0,
+          0,
+          193
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 56,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          194,
+          0,
+          0,
+          0,
+          0,
+          0,
+          206
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 57,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          190,
+          0,
+          0,
+          0,
+          0,
+          0,
+          210
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 58,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          186,
+          0,
+          0,
+          0,
+          0,
+          0,
+          214
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 59,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          0,
+          238,
+          0,
+          0,
+          0,
+          0,
+          0,
+          162
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 60,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          194,
+          0,
+          0,
+          0,
+          0,
+          0,
+          206,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 61,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          190,
+          0,
+          0,
+          0,
+          0,
+          0,
+          210,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 62,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          199,
+          0,
+          0,
+          0,
+          0,
+          0,
+          201,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 63,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          202,
+          0,
+          0,
+          0,
+          0,
+          0,
+          198,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 64,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          208,
+          0,
+          0,
+          0,
+          0,
+          0,
+          192,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 65,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          222,
+          0,
+          0,
+          0,
+          0,
+          0,
+          178,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 66,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          178,
+          0,
+          0,
+          0,
+          0,
+          0,
+          222,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 67,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          201,
+          0,
+          0,
+          0,
+          0,
+          0,
+          199,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 68,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          202,
+          0,
+          0,
+          0,
+          0,
+          0,
+          198,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 69,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          254,
+          0,
+          0,
+          0,
+          0,
+          0,
+          146,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 70,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          388,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 2
+      },
+      {
+        "client_idx": 71,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 72,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 73,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 74,
+        "train_n": 400,
+        "class_counts": [
+          7,
+          7,
+          362,
+          7,
+          0,
+          8,
+          5,
+          4,
+          0,
+          0
+        ],
+        "nonzero_classes": 7
+      },
+      {
+        "client_idx": 75,
+        "train_n": 401,
+        "class_counts": [
+          76,
+          78,
+          0,
+          79,
+          0,
+          73,
+          33,
+          62,
+          0,
+          0
+        ],
+        "nonzero_classes": 6
+      },
+      {
+        "client_idx": 76,
+        "train_n": 399,
+        "class_counts": [
+          99,
+          99,
+          0,
+          99,
+          0,
+          98,
+          0,
+          4,
+          0,
+          0
+        ],
+        "nonzero_classes": 5
+      },
+      {
+        "client_idx": 77,
+        "train_n": 400,
+        "class_counts": [
+          94,
+          102,
+          0,
+          93,
+          0,
+          111,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 78,
+        "train_n": 400,
+        "class_counts": [
+          101,
+          94,
+          0,
+          103,
+          0,
+          102,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 79,
+        "train_n": 400,
+        "class_counts": [
+          110,
+          108,
+          0,
+          82,
+          0,
+          100,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 80,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 81,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 82,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 83,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 84,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 85,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 86,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 87,
+        "train_n": 400,
+        "class_counts": [
+          0,
+          400,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 1
+      },
+      {
+        "client_idx": 88,
+        "train_n": 399,
+        "class_counts": [
+          35,
+          311,
+          0,
+          31,
+          0,
+          22,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 4
+      },
+      {
+        "client_idx": 89,
+        "train_n": 401,
+        "class_counts": [
+          126,
+          0,
+          0,
+          130,
+          0,
+          145,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 90,
+        "train_n": 399,
+        "class_counts": [
+          114,
+          0,
+          0,
+          139,
+          0,
+          146,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 91,
+        "train_n": 400,
+        "class_counts": [
+          128,
+          0,
+          0,
+          134,
+          0,
+          138,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 92,
+        "train_n": 400,
+        "class_counts": [
+          139,
+          0,
+          0,
+          128,
+          0,
+          133,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 93,
+        "train_n": 400,
+        "class_counts": [
+          140,
+          0,
+          0,
+          128,
+          0,
+          132,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 94,
+        "train_n": 399,
+        "class_counts": [
+          126,
+          0,
+          0,
+          135,
+          0,
+          138,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 95,
+        "train_n": 400,
+        "class_counts": [
+          130,
+          0,
+          0,
+          131,
+          0,
+          139,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 96,
+        "train_n": 400,
+        "class_counts": [
+          127,
+          0,
+          0,
+          146,
+          0,
+          127,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 97,
+        "train_n": 399,
+        "class_counts": [
+          127,
+          0,
+          0,
+          146,
+          0,
+          126,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 98,
+        "train_n": 399,
+        "class_counts": [
+          119,
+          0,
+          0,
+          130,
+          0,
+          150,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      },
+      {
+        "client_idx": 99,
+        "train_n": 400,
+        "class_counts": [
+          182,
+          0,
+          0,
+          128,
+          0,
+          90,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonzero_classes": 3
+      }
+    ]
+  }
+}

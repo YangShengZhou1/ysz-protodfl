@@ -1,0 +1,65 @@
+{
+  "n_pairs_total": 380,
+  "n_pairs_clean": 57,
+  "n_dropped_degenerate": 323,
+  "n_dropped_majority": 0,
+  "n_targets": 4,
+  "n_targets_comparable": 3,
+  "mean_candidates_per_target": 14.25,
+  "mean_delta_acc_clean": -0.020390307105088084,
+  "negative_transfer_fraction_clean": 0.7192982456140351,
+  "mean_top1_regret": 0.06196806387225549,
+  "median_top1_regret": 0.04790419161676651,
+  "max_top1_regret": 0.09800000000000003,
+  "n_targets_top1_is_best": 0,
+  "mean_delta_range_within_target": 0.10656819693945441,
+  "median_delta_range_within_target": 0.132,
+  "n_targets_top1_beats_second": 0,
+  "mean_within_target_spearman": 0.0358697459097906,
+  "median_within_target_spearman": 0.02585320938057667,
+  "n_within_target_spearman_negative": 1,
+  "n_within_target_spearman": 3,
+  "overall_spearman_kl_vs_delta": -0.03549720455157861,
+  "graph_distance": {
+    "mean_delta_by_distance": {
+      "1": -0.011566200931470384,
+      "2": -0.02683319076133447,
+      "3": -0.014888445331559117,
+      "4": -0.023091997822536788,
+      "5": -0.026508982035928164,
+      "6": -0.024016966067864284,
+      "7": -0.015620758483033959
+    },
+    "count_by_distance": {
+      "1": 9,
+      "2": 7,
+      "3": 9,
+      "4": 11,
+      "5": 8,
+      "6": 8,
+      "7": 5
+    },
+    "best_distance_histogram": {
+      "1": 1,
+      "3": 2,
+      "6": 1
+    },
+    "kl_top1_distance_histogram": {
+      "1": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1
+    },
+    "n_targets_best_inside_two_hops": 1,
+    "n_targets": 3
+  },
+  "two_hop_subset": {
+    "n_targets": 3,
+    "mean_delta_range": 0.08923486360612108,
+    "max_delta_range": 0.1477045908183633,
+    "mean_top1_regret": 0.017312042581503612,
+    "n_targets_top1_is_best": 1
+  },
+  "label": "5 epoch / round_1 / base / alpha0.1 / seed0",
+  "source": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\experiments\\2026-11-05_supplement\\raw\\kl_benefit_srv20_e5_base_a01_s0.csv"
+}

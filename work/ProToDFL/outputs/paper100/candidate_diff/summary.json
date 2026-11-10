@@ -1,0 +1,124 @@
+{
+  "r1": {
+    "n_targets": 100,
+    "n_pairs": 2000,
+    "range_pp_mean": 0.9433873387338733,
+    "range_pp_median": 0.0,
+    "regret_pp_mean": 0.1996139613961396,
+    "regret_pp_median": 0.0,
+    "mean_delta_pp": 0.7213613361336132,
+    "target_rho_mean": 0.029683569546497396,
+    "kl_top1_is_best": "7/100",
+    "best_two_hop": "32/100",
+    "hop_stats": [
+      {
+        "hop": 1,
+        "n_pairs": 215,
+        "mean_delta_pp": 1.1699523440716164
+      },
+      {
+        "hop": 2,
+        "n_pairs": 264,
+        "mean_delta_pp": 0.4499453733252114
+      },
+      {
+        "hop": 3,
+        "n_pairs": 277,
+        "mean_delta_pp": 0.9217391053184741
+      },
+      {
+        "hop": 4,
+        "n_pairs": 283,
+        "mean_delta_pp": 0.6576632928310501
+      },
+      {
+        "hop": 5,
+        "n_pairs": 302,
+        "mean_delta_pp": 0.6378117944244757
+      },
+      {
+        "hop": 6,
+        "n_pairs": 301,
+        "mean_delta_pp": 0.5890908027679844
+      },
+      {
+        "hop": 7,
+        "n_pairs": 286,
+        "mean_delta_pp": 0.8918909373454827
+      },
+      {
+        "hop": 8,
+        "n_pairs": 72,
+        "mean_delta_pp": 0.08250825082508251
+      }
+    ]
+  },
+  "r250": {
+    "n_targets": 100,
+    "n_pairs": 2000,
+    "range_pp_mean": 7.401933193319333,
+    "range_pp_median": 7.0,
+    "regret_pp_mean": 2.8432378531970848,
+    "regret_pp_median": 2.0000000000000018,
+    "mean_delta_pp": 2.2359048728402255,
+    "target_rho_mean": 0.09449167306342236,
+    "kl_top1_is_best": "10/100",
+    "best_two_hop": "71/100",
+    "hop_stats": [
+      {
+        "hop": 1,
+        "n_pairs": 272,
+        "mean_delta_pp": 2.8028252868539454
+      },
+      {
+        "hop": 2,
+        "n_pairs": 941,
+        "mean_delta_pp": 2.432855075218092
+      },
+      {
+        "hop": 3,
+        "n_pairs": 784,
+        "mean_delta_pp": 1.8062814309642252
+      },
+      {
+        "hop": 4,
+        "n_pairs": 3,
+        "mean_delta_pp": 1.3333333333333308
+      }
+    ]
+  },
+  "r500": {
+    "n_targets": 100,
+    "n_pairs": 2000,
+    "range_pp_mean": 6.3418973073777964,
+    "range_pp_median": 6.896719083673069,
+    "regret_pp_mean": 2.602247577698946,
+    "regret_pp_median": 2.0000000000000018,
+    "mean_delta_pp": 1.520143276092316,
+    "target_rho_mean": 0.06683666042262158,
+    "kl_top1_is_best": "5/100",
+    "best_two_hop": "69/100",
+    "hop_stats": [
+      {
+        "hop": 1,
+        "n_pairs": 272,
+        "mean_delta_pp": 2.1680391438797866
+      },
+      {
+        "hop": 2,
+        "n_pairs": 941,
+        "mean_delta_pp": 1.6141875611578167
+      },
+      {
+        "hop": 3,
+        "n_pairs": 784,
+        "mean_delta_pp": 1.1780987372446732
+      },
+      {
+        "hop": 4,
+        "n_pairs": 3,
+        "mean_delta_pp": 2.6666666666666687
+      }
+    ]
+  }
+}

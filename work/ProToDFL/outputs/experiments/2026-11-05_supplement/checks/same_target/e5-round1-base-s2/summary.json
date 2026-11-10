@@ -1,0 +1,66 @@
+{
+  "n_pairs_total": 380,
+  "n_pairs_clean": 86,
+  "n_dropped_degenerate": 294,
+  "n_dropped_majority": 0,
+  "n_targets": 5,
+  "n_targets_comparable": 5,
+  "mean_candidates_per_target": 17.2,
+  "mean_delta_acc_clean": 0.008031108217456128,
+  "negative_transfer_fraction_clean": 0.6162790697674418,
+  "mean_top1_regret": 0.0904059248236993,
+  "median_top1_regret": 0.06986027944111778,
+  "max_top1_regret": 0.20440881763527058,
+  "n_targets_top1_is_best": 0,
+  "mean_delta_range_within_target": 0.11838121592486373,
+  "median_delta_range_within_target": 0.1297405189620759,
+  "n_targets_top1_beats_second": 2,
+  "mean_within_target_spearman": 0.03142150815699732,
+  "median_within_target_spearman": -0.02071155768501505,
+  "n_within_target_spearman_negative": 3,
+  "n_within_target_spearman": 5,
+  "overall_spearman_kl_vs_delta": -0.35726723112001413,
+  "graph_distance": {
+    "mean_delta_by_distance": {
+      "1": 0.026269795745849655,
+      "2": 0.020455401094331655,
+      "3": -0.02629128916515665,
+      "4": 0.02283651825516393,
+      "5": 0.008830638958919475,
+      "6": -0.006961812574523024,
+      "7": -0.005575613635787878,
+      "8": 0.033540157017770925
+    },
+    "count_by_distance": {
+      "1": 12,
+      "2": 11,
+      "3": 11,
+      "4": 11,
+      "5": 11,
+      "6": 11,
+      "7": 12,
+      "8": 7
+    },
+    "best_distance_histogram": {
+      "1": 2,
+      "4": 1,
+      "5": 2
+    },
+    "kl_top1_distance_histogram": {
+      "1": 2,
+      "6": 1,
+      "7": 2
+    },
+    "n_targets_best_inside_two_hops": 2,
+    "n_targets": 5
+  },
+  "two_hop_subset": {
+    "n_targets": 5,
+    "mean_delta_range": 0.10360116320465283,
+    "max_delta_range": 0.20440881763527058,
+    "mean_top1_regret": 0.09039872959491838,
+    "n_targets_top1_is_best": 1
+  },
+  "label": "5 epoch / round_1 / base / seed2 / 主口径",
+  "source": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\experiments\\2026-11-05_supplement\\raw\\kl_benefit_srv20_e5_base_s2.csv"
+}

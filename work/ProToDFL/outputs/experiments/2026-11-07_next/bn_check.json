@@ -1,0 +1,76 @@
+{
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-my_part0.3-ti-1-step-0-dy-0-t_max-100-cs-random-hops-2-mo0.1-per-0-mdlresnet18-cm500-total_clnt100-neighbor100-seed0-tagpaper100-next-dir/round_500",
+  "n_checked_targets": 5,
+  "per_target": [
+    {
+      "target": 0,
+      "neighbor": 1,
+      "n_head_keys": 2,
+      "n_bn_stat_keys": 0,
+      "n_learn_keys": 60,
+      "head_same_none_vs_base": true,
+      "head_same_agg_vs_base": true,
+      "bn_same_none_vs_base": true,
+      "bn_same_agg_vs_base": true,
+      "learn_same_agg_vs_base": false,
+      "none_vs_agg_differing_keys": 60
+    },
+    {
+      "target": 1,
+      "neighbor": 0,
+      "n_head_keys": 2,
+      "n_bn_stat_keys": 0,
+      "n_learn_keys": 60,
+      "head_same_none_vs_base": true,
+      "head_same_agg_vs_base": true,
+      "bn_same_none_vs_base": true,
+      "bn_same_agg_vs_base": true,
+      "learn_same_agg_vs_base": false,
+      "none_vs_agg_differing_keys": 60
+    },
+    {
+      "target": 2,
+      "neighbor": 0,
+      "n_head_keys": 2,
+      "n_bn_stat_keys": 0,
+      "n_learn_keys": 60,
+      "head_same_none_vs_base": true,
+      "head_same_agg_vs_base": true,
+      "bn_same_none_vs_base": true,
+      "bn_same_agg_vs_base": true,
+      "learn_same_agg_vs_base": false,
+      "none_vs_agg_differing_keys": 60
+    },
+    {
+      "target": 3,
+      "neighbor": 0,
+      "n_head_keys": 2,
+      "n_bn_stat_keys": 0,
+      "n_learn_keys": 60,
+      "head_same_none_vs_base": true,
+      "head_same_agg_vs_base": true,
+      "bn_same_none_vs_base": true,
+      "bn_same_agg_vs_base": true,
+      "learn_same_agg_vs_base": false,
+      "none_vs_agg_differing_keys": 60
+    },
+    {
+      "target": 4,
+      "neighbor": 0,
+      "n_head_keys": 2,
+      "n_bn_stat_keys": 0,
+      "n_learn_keys": 60,
+      "head_same_none_vs_base": true,
+      "head_same_agg_vs_base": true,
+      "bn_same_none_vs_base": true,
+      "bn_same_agg_vs_base": true,
+      "learn_same_agg_vs_base": false,
+      "none_vs_agg_differing_keys": 60
+    }
+  ],
+  "summary": {
+    "head_preserved_by_aggregate": true,
+    "bn_stats_preserved_by_aggregate": true,
+    "learned_base_changed_by_aggregate": true
+  }
+}

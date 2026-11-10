@@ -1,0 +1,989 @@
+{
+  "environment": {
+    "python": "3.11.7",
+    "torch": "2.1.0+cu121",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 3090"
+  },
+  "multihop": [
+    {
+      "graph": "five_node_chain",
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "rows": [
+        {
+          "source": 0,
+          "k": 1,
+          "actual": [
+            1
+          ],
+          "exact_k_hop": [
+            1
+          ],
+          "within_k_hop": [
+            1
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 2,
+          "actual": [
+            1,
+            2
+          ],
+          "exact_k_hop": [
+            2
+          ],
+          "within_k_hop": [
+            1,
+            2
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 3,
+          "actual": [
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            3
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 4,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            4
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 1,
+          "actual": [
+            0,
+            2
+          ],
+          "exact_k_hop": [
+            0,
+            2
+          ],
+          "within_k_hop": [
+            0,
+            2
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 2,
+          "actual": [
+            0,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            3
+          ],
+          "within_k_hop": [
+            0,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 3,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            4
+          ],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 4,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 1,
+          "actual": [
+            1,
+            3
+          ],
+          "exact_k_hop": [
+            1,
+            3
+          ],
+          "within_k_hop": [
+            1,
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            0,
+            4
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 1,
+          "actual": [
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            2,
+            4
+          ],
+          "within_k_hop": [
+            2,
+            4
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 2,
+          "actual": [
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            1
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            0
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 1,
+          "actual": [
+            3
+          ],
+          "exact_k_hop": [
+            3
+          ],
+          "within_k_hop": [
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 2,
+          "actual": [
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            2
+          ],
+          "within_k_hop": [
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 3,
+          "actual": [
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            1
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            0
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        }
+      ]
+    },
+    {
+      "graph": "five_node_ring",
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "rows": [
+        {
+          "source": 0,
+          "k": 1,
+          "actual": [
+            1,
+            4
+          ],
+          "exact_k_hop": [
+            1,
+            4
+          ],
+          "within_k_hop": [
+            1,
+            4
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 2,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            2,
+            3
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 3,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 4,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 1,
+          "actual": [
+            0,
+            2
+          ],
+          "exact_k_hop": [
+            0,
+            2
+          ],
+          "within_k_hop": [
+            0,
+            2
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 2,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            3,
+            4
+          ],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 3,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 4,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 1,
+          "actual": [
+            1,
+            3
+          ],
+          "exact_k_hop": [
+            1,
+            3
+          ],
+          "within_k_hop": [
+            1,
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            0,
+            4
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 1,
+          "actual": [
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            2,
+            4
+          ],
+          "within_k_hop": [
+            2,
+            4
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            0,
+            1
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 1,
+          "actual": [
+            0,
+            3
+          ],
+          "exact_k_hop": [
+            0,
+            3
+          ],
+          "within_k_hop": [
+            0,
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            1,
+            2
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        }
+      ]
+    }
+  ],
+  "cifar10": {
+    "seed": 0,
+    "partition": "dir",
+    "alpha": 0.3,
+    "client_num": 5,
+    "official_train_samples": 50000,
+    "official_test_samples": 10000,
+    "assigned_train_samples": 50000,
+    "unique_assigned_train_samples": 50000,
+    "duplicate_train_assignments": 0,
+    "unassigned_train_samples": 0,
+    "assigned_test_samples_with_overlap": 10011,
+    "unique_assigned_test_samples": 8099,
+    "train_test_pools": "CIFAR-10 official disjoint train/test pools; indices belong to separate pools",
+    "clients": [
+      {
+        "client": 0,
+        "train_samples": 10000,
+        "test_samples": 2003,
+        "train_class_counts": [
+          257,
+          1987,
+          671,
+          0,
+          0,
+          1788,
+          5000,
+          290,
+          2,
+          5
+        ],
+        "train_class_proportions": [
+          0.0257,
+          0.1987,
+          0.0671,
+          0.0,
+          0.0,
+          0.1788,
+          0.5,
+          0.029,
+          0.0002,
+          0.0005
+        ]
+      },
+      {
+        "client": 1,
+        "train_samples": 10000,
+        "test_samples": 2003,
+        "train_class_counts": [
+          1146,
+          128,
+          739,
+          0,
+          1917,
+          3212,
+          0,
+          2595,
+          55,
+          208
+        ],
+        "train_class_proportions": [
+          0.1146,
+          0.0128,
+          0.0739,
+          0.0,
+          0.1917,
+          0.3212,
+          0.0,
+          0.2595,
+          0.0055,
+          0.0208
+        ]
+      },
+      {
+        "client": 2,
+        "train_samples": 10000,
+        "test_samples": 2003,
+        "train_class_counts": [
+          2406,
+          96,
+          3590,
+          1235,
+          43,
+          0,
+          0,
+          2115,
+          234,
+          281
+        ],
+        "train_class_proportions": [
+          0.2406,
+          0.0096,
+          0.359,
+          0.1235,
+          0.0043,
+          0.0,
+          0.0,
+          0.2115,
+          0.0234,
+          0.0281
+        ]
+      },
+      {
+        "client": 3,
+        "train_samples": 10000,
+        "test_samples": 2001,
+        "train_class_counts": [
+          591,
+          0,
+          0,
+          3765,
+          635,
+          0,
+          0,
+          0,
+          4709,
+          300
+        ],
+        "train_class_proportions": [
+          0.0591,
+          0.0,
+          0.0,
+          0.3765,
+          0.0635,
+          0.0,
+          0.0,
+          0.0,
+          0.4709,
+          0.03
+        ]
+      },
+      {
+        "client": 4,
+        "train_samples": 10000,
+        "test_samples": 2001,
+        "train_class_counts": [
+          600,
+          2789,
+          0,
+          0,
+          2405,
+          0,
+          0,
+          0,
+          0,
+          4206
+        ],
+        "train_class_proportions": [
+          0.06,
+          0.2789,
+          0.0,
+          0.0,
+          0.2405,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.4206
+        ]
+      }
+    ],
+    "partition_file": "/home/seczone/ysz/outputs/checks/server-smoke/cifar10_dir_partition.npz"
+  }
+}

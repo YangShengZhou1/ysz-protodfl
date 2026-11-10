@@ -1,0 +1,62 @@
+{
+  "n_pairs_total": 380,
+  "n_pairs_clean": 33,
+  "n_dropped_degenerate": 347,
+  "n_dropped_majority": 0,
+  "n_targets": 2,
+  "n_targets_comparable": 2,
+  "mean_candidates_per_target": 16.5,
+  "mean_delta_acc_clean": 0.07849643848847036,
+  "negative_transfer_fraction_clean": 0.24242424242424243,
+  "mean_top1_regret": 0.13077290836653388,
+  "median_top1_regret": 0.13077290836653388,
+  "max_top1_regret": 0.14800000000000002,
+  "n_targets_top1_is_best": 0,
+  "mean_delta_range_within_target": 0.19066533864541835,
+  "median_delta_range_within_target": 0.19066533864541835,
+  "n_targets_top1_beats_second": 1,
+  "mean_within_target_spearman": 0.28912769673973876,
+  "median_within_target_spearman": 0.28912769673973876,
+  "n_within_target_spearman_negative": 0,
+  "n_within_target_spearman": 2,
+  "overall_spearman_kl_vs_delta": 0.43304915349314904,
+  "graph_distance": {
+    "mean_delta_by_distance": {
+      "1": 0.111199203187251,
+      "2": 0.10786852589641435,
+      "3": 0.05596812749003985,
+      "4": 0.08802390438247013,
+      "5": 0.087995219123506,
+      "6": 0.03921274900398407,
+      "7": 0.05592297476759628
+    },
+    "count_by_distance": {
+      "1": 6,
+      "2": 4,
+      "3": 6,
+      "4": 4,
+      "5": 5,
+      "6": 5,
+      "7": 3
+    },
+    "best_distance_histogram": {
+      "1": 1,
+      "5": 1
+    },
+    "kl_top1_distance_histogram": {
+      "6": 1,
+      "7": 1
+    },
+    "n_targets_best_inside_two_hops": 1,
+    "n_targets": 2
+  },
+  "two_hop_subset": {
+    "n_targets": 2,
+    "mean_delta_range": 0.09769721115537848,
+    "max_delta_range": 0.15139442231075698,
+    "mean_top1_regret": 0.02191235059760957,
+    "n_targets_top1_is_best": 1
+  },
+  "label": "1 epoch / round_1 / base / seed0",
+  "source": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\checks\\kl_benefit_20c\\kl_benefit_clean.csv"
+}

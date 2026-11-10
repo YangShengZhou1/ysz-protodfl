@@ -1,0 +1,72 @@
+{
+  "n_pairs_total": 380,
+  "n_pairs_clean": 152,
+  "n_dropped_degenerate": 193,
+  "n_dropped_majority": 35,
+  "n_targets": 10,
+  "n_targets_comparable": 9,
+  "mean_candidates_per_target": 15.2,
+  "mean_delta_acc_clean": -0.004991044227334798,
+  "negative_transfer_fraction_clean": 0.5723684210526315,
+  "mean_top1_regret": 0.06928055001108893,
+  "median_top1_regret": 0.027944111776447067,
+  "max_top1_regret": 0.24200000000000005,
+  "n_targets_top1_is_best": 0,
+  "mean_delta_range_within_target": 0.14926236416056776,
+  "median_delta_range_within_target": 0.13,
+  "n_targets_top1_beats_second": 2,
+  "mean_within_target_spearman": -0.055995096712181044,
+  "median_within_target_spearman": -0.020193159670260315,
+  "n_within_target_spearman_negative": 5,
+  "n_within_target_spearman": 9,
+  "overall_spearman_kl_vs_delta": -0.246979114960471,
+  "graph_distance": {
+    "mean_delta_by_distance": {
+      "1": 0.015176374523679918,
+      "2": 0.004519656339494927,
+      "3": -0.004389620758483032,
+      "4": -0.0027626651458986665,
+      "5": -0.019883661248930696,
+      "6": -0.005686227544910183,
+      "7": -0.015239836117239199,
+      "8": -0.03830405854956751
+    },
+    "count_by_distance": {
+      "1": 22,
+      "2": 23,
+      "3": 20,
+      "4": 21,
+      "5": 21,
+      "6": 20,
+      "7": 19,
+      "8": 6
+    },
+    "best_distance_histogram": {
+      "1": 4,
+      "3": 1,
+      "4": 2,
+      "5": 1,
+      "7": 1,
+      "8": 1
+    },
+    "kl_top1_distance_histogram": {
+      "1": 5,
+      "2": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1
+    },
+    "n_targets_best_inside_two_hops": 4,
+    "n_targets": 9
+  },
+  "two_hop_subset": {
+    "n_targets": 9,
+    "mean_delta_range": 0.07797649146152141,
+    "max_delta_range": 0.198,
+    "mean_top1_regret": 0.02153559547571524,
+    "n_targets_top1_is_best": 4
+  },
+  "label": "5 epoch / round_1 / base / seed0 / 严格口径",
+  "source": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\checks\\kl_benefit_server\\kl_benefit.csv"
+}

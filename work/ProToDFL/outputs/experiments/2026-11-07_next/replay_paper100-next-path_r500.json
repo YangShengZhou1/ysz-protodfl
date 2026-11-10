@@ -1,0 +1,42 @@
+{
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-n_cls2.0-ti-1-step-0-dy-0-t_max-100-cs-random-hops-2-mo0.1-per-0-mdlresnet18-cm500-total_clnt100-neighbor100-seed0-tagpaper100-next-path/round_500",
+  "n_targets": 100,
+  "n_rows": 300,
+  "branches": {
+    "none": {
+      "n": 100,
+      "verify_acc_before_mean": 0.8950144480869271,
+      "verify_acc_after_mean": 0.8353756864284175,
+      "verify_loss_before_mean": 0.30896197425502353,
+      "verify_loss_after_mean": 0.6422743476662763,
+      "select_acc_before_mean": 0.8994893157262905,
+      "select_acc_after_mean": 0.8410853141256501
+    },
+    "kl_top1": {
+      "n": 100,
+      "verify_acc_before_mean": 0.9166096869517036,
+      "verify_acc_after_mean": 0.8449042493920644,
+      "verify_loss_before_mean": 0.2384140159516794,
+      "verify_loss_after_mean": 0.7427056647660727,
+      "select_acc_before_mean": 0.9222667466986794,
+      "select_acc_after_mean": 0.8505066826730692,
+      "gain_vs_none_after_mean_pp": 0.9528562963646998,
+      "improved": 45,
+      "degraded": 28,
+      "flat": 27
+    },
+    "select_best": {
+      "n": 100,
+      "verify_acc_before_mean": 0.9124178225136207,
+      "verify_acc_after_mean": 0.8296695016468126,
+      "verify_loss_before_mean": 0.24457100501272788,
+      "verify_loss_after_mean": 0.8293541553382408,
+      "select_acc_before_mean": 0.9296633053221288,
+      "select_acc_after_mean": 0.8387204481792717,
+      "gain_vs_none_after_mean_pp": -0.5706184781604946,
+      "improved": 33,
+      "degraded": 31,
+      "flat": 36
+    }
+  }
+}

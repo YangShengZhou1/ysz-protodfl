@@ -1,0 +1,1056 @@
+Prototype-Based Communication Topology
+Optimization for Decentralized Federated Learning
+Xinlin Leng1, Kangyu Hu2, Hanlin Gu3, Xiangui Kang1, Wenyuan Yang*245
+1Guangdong Key Lab of Information Security, School of Computer Science and Engineering,
+Sun Yat-sen University, Guangzhou, China.
+2School of Cyber Science and Technology, Sun Yat-sen University, Shenzhen, China
+3WeBank AI Lab, Shenzhen, China
+4 Key Laboratory of Cyberspace Security, Ministry of Education, Zhengzhou, China
+5 Henan Key Laboratory of Cyberspace Situation Awareness, Zhenzhou, China
+{lengxlin, huky8}@mail2.sysu.edu.cn, ghltsl123@gmail.com, {isskxg, yangwy56}@mail.sysu.edu.cn
+Abstract—Decentralized
+Federated
+Learning
+(DFL)
+is
+a
+privacy-preserving framework that eliminates the need for a
+central server, enabling direct communication between clients
+to save communication resources. However, existing approaches
+do not adequately address the high data heterogeneity among
+communication neighbors and often employ inefficient neighbor
+selection strategies. We propose ProToDFL, a novel framework
+that leverages prototype learning for dynamic topology optimiza-
+tion in DFL. ProToDFL constructs communication topologies
+through selecting 1-hop and 2-hop neighbors based on the
+Kullback-Leibler divergence between prototype vectors, ensuring
+alignment with local data distributions. To prevent topology
+splitting during optimization, it develops a cut-edge detection
+mechanism. Additionally, ProToDFL incorporates a Stop-and-
+Wait strategy inspired by exponential back-off to minimize pro-
+totype vector transmissions. We provide theoretical convergence
+analysis of ProToDFL within a general non-convex framework
+for decentralized training. Experimental results on multiple real-
+world datasets show that ProToDFL significantly outperforms
+existing DFL methods, particularly in heterogeneous and sparse
+environments.
+Index Terms—Decentralized Federated Learning, Data Hetero-
+geneity, Prototype Learning, Topology Optimization
+I. INTRODUCTION
+Federated Learning (FL) enables distributed model training
+while keeping data local, reducing privacy risks in sensitive
+fields like healthcare and finance [1]. However, traditional
+Centralized Federated Learning (CFL) faces challenges such
+as communication bottlenecks and single points of failure.
+This has driven the shift to Decentralized Federated Learning
+(DFL), which replaces the central server with peer-to-peer
+(P2P) communication. In DFL, clients directly exchange and
+update models with their neighbors, enhancing efficiency,
+This work was supported by the National Natural Science Foundation of
+China (No. 62402535, 62072484), the Natural Science Foundation of Guang-
+dong Province (No. 2514050000889, 2024A1515011887), the Guangdong
+Key Laboratory of Information Security Technology (No. 2023B1212060026),
+the Open Foundation of the Key Laboratory of Cyberspace Security, Ministry
+of Education of China and Henan Key Laboratory of Cyberspace Situation
+Awareness (No. KLCS20240101), as well as the Aeronautical Science Foun-
+dation of the Chinese Aeronautical Establishment (No. 2022Z0660M1001).
+* Corresponding author.
+resilience, and autonomy, making it ideal for large-scale,
+dynamic environments [2], [3].
+A key challenge in FL is data heterogeneity, where clients
+hold local datasets with differing distributions. This variation
+can degrade performance during model aggregation, as param-
+eters trained on distinct data may conflict. To address this,
+methods like regularization [4], [5], knowledge distillation
+[6], and hyper networks [7] adapt models to each client’s
+data. While mitigate the effects of data heterogeneity, these
+approaches are primarily designed for centralized federated
+learning, relying on a central server for coordination.
+Constructing an optimal global federated topology is crucial
+for real-world applications, such as enabling hospitals with
+similar data distributions to collaborate and enhance disease
+prediction and diagnosis accuracy [8]. In DFL, the absence of
+a central server requires peer-to-peer communication among
+limited neighbors. This decentralized setup necessitates select-
+ing similar collaborators in global topology to align clients’
+data characteristics, ensuring efficient learning. Well-matched
+neighbors improve performance, while heterogeneous ones
+cause inefficiencies and inconsistent updates. Thus, construct-
+ing a globally optimized communication topology that con-
+nects compatible clients remains a key challenge in DFL [9].
+Traditional DFL methods [2], [10]–[12] often use personal-
+ized approaches to mitigate data heterogeneity among neigh-
+bors, leading to poor performance in highly heterogeneous
+topologies. To address this, dynamic neighbor selection meth-
+ods like Jiang et al. [13] and Chen et al. [14] adjust connections
+based on neighbors’ local model performance, improving ac-
+curacy. Additionally, graph-based techniques such as collabo-
+ration graph networks [15], [16] and pFedGraph [17] optimize
+network topology for diverse data environments. However,
+these methods struggle to accurately measure data distribution
+heterogeneity in the global topology, causing inefficiencies and
+higher communication costs. Thus, achieving fast and efficient
+global topology optimization in fully decentralized settings
+remains a significant challenge.
+In this paper, we propose ProToDFL, a novel framework
+that leverages prototype learning for dynamic global topology
+2025 IEEE International Conference on Multimedia and Expo (ICME) | 979-8-3315-9495-4/25/$31.00 ©2025 IEEE | DOI: 10.1109/ICME59968.2025.11208921
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on November 03,2026 at 05:07:35 UTC from IEEE Xplore.  Restrictions apply. 
+
+optimization in DFL. ProToDFL enhances node collaboration
+through prototype vectors that capture local data distributions.
+It identifies 1-hop and 2-hop neighbors using Kullback-Leibler
+divergence, ensuring connections between nodes with similar
+data characteristics. We design a cut-edge detection mech-
+anism to maintain topology integrity and a Stop-and-Wait
+strategy inspired by exponential backoff to regulate prototype
+vector transmissions. Additionally, our theoretical analysis
+demonstrates that minimizing KL divergence enhances con-
+vergence and that cut-edge detection prevents loss increases
+from graph partitioning.
+Our main contributions are as follows:
+• We present a framework called ProToDFL that integrates
+prototype learning into dynamic topology optimization,
+leveraging Kullback-Leibler divergence to refine global
+topology for improved collaboration and model perfor-
+mance in heterogeneous data environments.
+• We theoretically prove that ProToDFL’s prototype-based
+topology optimization ensures convergence via gradient
+norm limits, preserves global topology with cut-edge de-
+tection, and prevents fragmentation and increased model
+loss, enhancing scalability and performance.
+• We evaluate ProToDFL on CIFAR-10, CIFAR-100, and
+Tiny-ImageNet with Dirichlet, Pathological, and Cross-
+Dataset heterogeneous partitions across Ring, Grid, Ran-
+dom, and Exp topologies. Compared to latest DFL meth-
+ods, ProToDFL shows significant performance gains and
+improved adaptability in sparse networks.
+II. PRELIMINARIES
+In this section, we define the network topology structure in
+decentralized federated learning and present the optimization
+problem that forms the basis of our framework.
+A. Topology Network Structure
+In decentralized federated learning, the communication
+topology among clients is a critical component influencing
+the efficiency of the learning process. We define the topology
+network as follows:
+Definition 2.1 (Communication Graph): Let the communi-
+cation topology G = (M, E) be an undirected graph where:
+• M = c1, c2, . . . , cm is the set of m clients (nodes).
+• E ⊆{(ci, cj) | ci, cj ∈M, i̸ = j} is the set of edges of
+bidirectional communication links between clients.
+B. Problem Formulation
+In DFL, the goal is to collaboratively train models across
+multiple clients (or devices) without a central server. Each
+client ci has its own dataset Di and minimizes a local loss
+function based on its data. The global dataset across all clients
+is represented as the union of the local datasets: D = Sm
+i=1 Di,
+where m is the total number of clients.
+For each client ci, the local objective function of model
+training is defined as:
+min
+θi LDi(θi) =
+1
+|Di|
+|Di|
+X
+n=1
+ℓ
+
+h
+
+f
+
+xn; θf
+i
+
+, θh
+i
+
+, yn
+
+,
+(1)
+where ℓ(·, yn) is a non-negative convex function measuring the
+error between model output and n-th true label yn. The feature
+extraction layer is denoted as f(xn; θf
+i ) with parameters θf
+i ,
+and the classification layer as h(·; θh
+i ) with parameters θh
+i , both
+being subsets of the model parameters θi.
+In our decentralized setting, the optimization of the model
+parameters θi through a dual optimization process involving
+both the minimization of the local loss function and the op-
+timization of the graph connections. The overall optimization
+problem can be formulated as:
+Θ∗, G∗= arg min
+Θ,G
+m
+X
+i=1
+Li,
+(2)
+where the Θ = {θ1, θ2, . . . , θm} represents the set of model
+parameters for all clients, G represents the communication
+graph. And the Li represents the local optimization objective
+for client ci, defined as:
+Li = min
+θi,Aij LDi
+
+
+|Dj|
+P
+k∈Ni |Dk|
+m
+X
+j=1
+θjAij
+
+,
+(3)
+where θi is updated by aggregating the parameters from its
+neighbors in the graph G, Ni is the set of neighbors for
+client ci. Aij is the element of the adjacency matrix indicating
+whether clients ci and cj are connected (1) or not (0).
+III. PROTODFL FRAMEWORK
+A. Framework Overview
+In this section, we propose the Prototype-Based Commu-
+nication Topology Optimization of Decentralized Federated
+Learning (ProToDFL) framework to address the dual opti-
+mization problem Eq. (2) in decentralized setting. The main
+idea of our approach is to select neighbors and optimize the
+global topology network based on the KL divergence between
+prototype vectors.
+The overall ProToDFL framework consists of four main
+stages: (1) Prototype Computation (2) Neighbor Divergence
+Calculation (3) 2-Hop Neighbor Selection (4) Topology and
+Parameter Update. The framework is shown in Figure 1.
+B. Prototype Computation
+In the initial phase of our framework, each client ci ini-
+tializes a deep neural network model comprising a feature
+extractor and classifier. Local training starts using the local
+dataset to update the initial model weights θi. Concurrently,
+client ci computes the prototype vector ˜zg
+i from their local
+dataset using the feature extraction layer f
+
+x; θf
+i
+
+:
+˜zg
+i := (1 −µ) · ˜zg
+i + µ ·
+1
+Bk
+i
+
+X
+x∈Bk
+i
+f
+
+x; θf
+i
+
+,
+(4)
+where Bk
+i is the k-th batch in the local dataset Di, µ is a
+hyperparameter called momentum that controls the importance
+of the current batch, ˜zg
+i is initially set to zero vector.
+After all clients complete their local training, they send their
+aggregated prototype vectors ˜zg
+i to neighboring nodes.
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on November 03,2026 at 05:07:35 UTC from IEEE Xplore.  Restrictions apply. 
+
+①Prototype Computation
+Local SGD
+Local SGD
+Local SGD
+Local SGD
+Local SGD
+𝜽𝒊
+𝒇
+𝜽𝒋
+𝒇
+𝜽𝒌
+𝒇
+𝜽𝒎
+𝒇
+𝜽𝒏
+𝒇
+෤𝒛𝒋
+𝒈
+෤𝒛𝒌
+𝒈
+෤𝒛𝒊
+𝒈
+෤𝒛𝒎
+𝒈
+෤𝒛𝒏
+𝒈
+②Neighbor Divergence 
+Calculation
+④Topology and Parameter 
+Update
+③2-Hop Neighbor
+Selection
+𝒅𝒌𝒎
+𝒅𝒎𝒏
+𝒅𝒏𝒊
+𝒅𝒊𝒋
+𝒅𝒋𝒌
+𝒅𝒏𝒋
+𝒅𝒊𝒌
+𝒅𝒊𝒎
+𝒅𝒌𝒎
+𝜽𝒌
+𝜽𝒊
+𝜽𝒎
+Model Parameters 
+Prototype Vectors
+Model Aggregation
+𝐂𝐥𝐢𝐞𝐧𝐭
+Low KL divergence
+Communication link
+high KL divergence
+𝜽𝒏
+𝜽𝒋
+𝒄𝒊
+𝒄𝒋
+𝒄𝒌
+𝒄𝒎
+𝒄𝒏
+𝜹𝒕
+𝒄𝒊
+𝒄𝒋
+𝒄𝒏
+𝒄𝒌
+𝒄𝒎
+𝒄𝒊
+𝒄𝒎
+𝒄𝒌
+𝒄𝒋
+𝒄𝒏
+Fig. 1. Overview of the ProToDFL framework (Illustrated with 5-clients ring topology). The process consists of four main steps:(1) Prototype Computation:
+Clients compute prototype vectors from local data. (2) Neighbor Divergence Calculation: Clients calculate the KL divergence between prototype vectors of
+1-hop neighbors to assess similarity. (3) 2-Hop Neighbor Selection: Clients select 2-hop connections to refine their 1-hop neighbor set based on divergence. The
+dashed boundary in the Figure indicates clients whose prototype vectors are within δt. (4) Topology and Parameter Update: The topological communication
+network is updated, followed by model parameter aggregation using the newly selected communication neighbors.
+C. Neighbor Divergence Calculation
+At the neighbor divergence calculation phase, during each
+global communication round, clients receive prototype vectors
+from all potential 1-hop neighbors, which refers to nodes
+that are directly connected to it within the network. The
+client then calculates the Kullback-Leibler (KL) divergence to
+measure the similarity between its own data distribution and
+those of its communication neighbors. It allows each client to
+identify and select the most relevant neighbors for effective
+communication. The distance dij calculation is given by:
+dij = τ
+X
+k
+Softmax (˜zg
+i )k log
+ 
+Softmax (˜zg
+i )k
+Softmax
+ ˜zg
+j
+
+k
+!
+,
+(5)
+where Softmax (˜zg
+i )k represents the k-th dimension of the
+softmax value of ˜zg
+i , and τ is a scaling factor.
+Nodes are chosen as 1-hop neighbors when their divergence
+falls below a threshold δt, initially set according to the
+data distribution, and decreased by a factor γ each iteration
+until a fixed minimum is reached. This ensures that clients
+progressively connect with the most compatible neighbors as
+learning progresses.
+If a client’s 1-hop neighbors exceed the threshold, it recon-
+figures its connections to refine the global topology, enhancing
+optimization efficiency.
+We provide a theoretical analysis demonstrating that op-
+timizing the global topology using KL divergence improves
+convergence. Specifically, selecting neighbors with lower
+KL divergence reduces gradient discrepancies among clients,
+thereby accelerating the convergence rate.
+Theorem 3.1 (Convergence Analysis): Under the ProToDFL
+framework, the expected squared norm of the gradient at client
+ci is bounded by:
+EDi
+h
+|∇Li(θi)|2i
+≤|∇L(θ)|2 +
+
+LxC
+q
+DKL(Pi|Pavg)
+2
++ 2 |∇L(θ)| · LxC
+q
+DKL(Pi|Pavg) + σ2
+i ,
+(6)
+where EDi[·] is the the expectation under the dataset Di,
+∇L(θ) is the global gradient, Lx is the Lipschitz constant
+to the input data x, C is a constant related to the data space.
+DKL (Pi|Pavg) is the KL divergence between the local data
+distribution Pi and the average data distribution Pavg of ci’s
+neighbors, σ2
+i is the variance of the gradient at client ci.
+Detailed proofs are provided in the supplementary materials.
+D. 2-Hop Neighbor Selection
+In the 2-hop neighbor selection phase, nodes that detect
+significant divergence among their 1-hop connections adjust
+their network by targeting more compatible 2-hop neighbors.
+This refinement occurs as each 1-hop neighbor assesses and
+shares information with potential 2-hop connections.
+If the KL divergence of a 2-hop neighbor is below the
+threshold δt, it is selected and a new connection is established,
+making it a new 1-hop neighbor, replacing any existing 1-
+hop neighbors with higher divergence. The selection process
+is defined as:
+N (2)
+i
+=
+
+cj|dij < δt , cj ∈N (1)
+k , ck ∈N (1)
+i
+},
+(7)
+where N (2)
+i
+represents the set of 2-hop neighbors for node ci,
+and N (1)
+i
+is the set of 1-hop neighbors. Through this phase,
+clients gradually refine their neighbor selection, focusing on
+the nodes that are most aligned in terms of data distribution.
+E. Topology and Parameter Update
+Following the 2-hop neighbor selection process, clients
+update both their network topology and model parameters
+to reflect the newly optimized connections, ensuring that the
+communication network and the model aggregation process
+leverages the most relevant and similar nodes.
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on November 03,2026 at 05:07:35 UTC from IEEE Xplore.  Restrictions apply. 
+
+Specifically, clients revise the 1-hop neighbor set N (1)
+i
+. The
+corresponding adjacency matrix A(t+1)
+ij
+represents the connec-
+tivity between nodes ci and cj at the next communication
+round t+1, which is updated according to the following rules:
+A(t+1)
+ij
+=
+(
+1
+if cj ∈N (1)
+i
+∪N (2)
+i
+and dij < δt
+0
+if cj ∈N (1)
+i
+and dij ≥δt
+N (1)
+i
+:= {cj | A(t+1)
+ij
+= 1, cj ∈N (1)
+i
+∪N (2)
+i
+},
+(8)
+where N (2)
+i
+represents the 2-hop neighbors of node ci, which
+are the nodes indirectly connected to ci through an interme-
+diate node.
+To prevent global topology partitioning that may hinder
+convergence and performance, clients implement a cut-edge
+detection mechanism. An edge e = (ci, cj) is identified as a
+cut edge if removing it disconnects the nodes ci and cj in the
+updated graph G \ {e}:
+∀P ∈P(G \ {e}, ci, cj),
+P = ∅,
+(9)
+where P(G\{e}, ci, cj) denotes the set of all paths connecting
+ci and cj in G \ {e}. If e is determined to be a cut-edge, it is
+restored to maintain network integrity.
+Theorem 3.2 (Loss Increase from Partitioning): Partition-
+ing the communication graph G into disconnected subgraphs
+increases the total loss as follows:
+∆L ≥
+p
+X
+k=1
+λmin
+2
+
+
+1
+L |Gk|
+
+X
+i/∈Gk
+∇θiLi (θ∗
+i , G∗)
+
+
+
+2
+,
+(10)
+where ∆L is the total loss increase, p is the number of
+subgraphs, Gk is the k-th subgraph, λmin denotes the Hes-
+sian’s minimum eigenvalue of Li. L is the gradient Lipschitz
+constant, θ∗
+i is the global optimal parameter for ci, and
+∇θiLi (θ∗
+i , G∗) denotes the gradient of Li at θ∗
+i in the optimal
+communication graph G∗.
+Theorem 3.2 shows that partitioning communication graph
+perturbs gradients and increases loss, making cut-edge detec-
+tion essential for efficient convergence. Detailed proofs are
+provided in the supplementary materials.
+After updating the topology, clients aggregate model param-
+eters from selected communication neighbors to obtain the
+aggregated θi, then continue training on local datasets and
+update prototype vectors as Eq. (4). This completes the current
+global round t and initiates the next round t + 1.
+F. Stop-and-Wait Strategy
+To further reduce the communication overhead of sending
+low-dimensional prototype vectors to neighbors, we propose
+an improved stop-and-wait method inspired by exponential
+backoff. Nodes with fewer neighbors or lower bandwidth
+can quickly identify optimal communication partners. If a
+node’s current neighbors are not ideal in global communication
+round t, it can connect to a more appropriate optimal neigh-
+bor through a 2-hop connection. If no 2-hop neighbors are
+found for an extended period, the node is considered to have
+achieved optimal topology and stops sending prototype vectors
+for further optimization. Specifically, the client pauses one
+global communication round before resending its prototype
+vector, with the waiting time increasing exponentially if no
+improvements are found.
+We formalize this stop-and-wait process as follows. When
+a client’s 2-hop neighbor set N (2)
+i
+is empty, the waiting time
+is defined as:
+T (k+1)
+i
+=
+(
+min(2T (k)
+i
+, Tmax)
+if N (2)
+i
+= ∅
+0
+if N (2)
+i̸
+= ∅
+,
+(11)
+where T (k)
+i
+is the waiting time for client i after the k-th update,
+and Tmax caps the waiting time. If no new 2-hop neighbors are
+found, T (k+1)
+i
+is exponentially increased until reaching Tmax.
+Upon discovering new neighbors, T (k+1)
+i
+resets to zero.
+IV. EXPERIMENTS
+A. Experiment Setup
+1) Dataset and Data partition: We evaluate our ProToDFL
+framework on three datasets: CIFAR-10, CIFAR-100 [18],
+and Tiny-Imagenet [19], using three distinct data partitioning
+scenarios to simulate real-world distributions. The Dirichlet
+Partition [20] partitions training data based on a Dirichlet
+distribution with α = 0.3. The Pathological Partition [21]
+assigns each client a limited subset of 2 classes for CIFAR-
+10, 20 for CIFAR-100, and 40 for Tiny-ImageNet. The Cross-
+Dataset Partition [22] combines subsets from CIFAR-10 and
+CIFAR-100 using either Dirichlet or pathological partitioning
+methods. To support diverse classification tasks, clients share
+only the feature extractor parameters, while keeping the clas-
+sifiers local.
+2) FL baselines: We compare our proposed ProToDFL
+framework with several baselines in both CFL and DFL.
+The simplest baseline, Local, involves each client training
+independently on their own data without communication. In
+CFL, we include FedAvg [23], FedAvg-FT [24], and Ditto
+[25]. For DFL, baselines include GossipFL [12] , D-PSGD
+[26], DA-PFL [27], DisPFL [10] and DFedSAM [2]. Detailed
+descriptions of these baseline methods are provided in the
+supplementary materials.
+3) Implementation Details and Backbone: We maintain
+consistent experimental settings across all baselines and con-
+duct 500 communication rounds. The number of clients is set
+to 100, divided into 10 groups to simulate real-world scenarios
+with similar collaborators, where data is homogeneous within
+groups and heterogeneous across groups. In each round, we
+train with a batch size of 128 for 5 local epochs, using SGD
+as the optimizer (SAM for DFedSAM) at a learning rate of
+0.1. All experiments use ResNet-18 with group normalization
+replacing batch normalization for stability.
+4) Graph Topology and Communication Setup: We gener-
+ate the initial topology as a static, undirected graph, where
+each client is randomly connected to 10 neighbors, ensuring a
+connected network. Results for experiments with dynamic
+topology are provided in the supplementary materials.
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on November 03,2026 at 05:07:35 UTC from IEEE Xplore.  Restrictions apply. 
+
+TABLE I
+PERFORMANCE COMPARISON OF DIFFERENT ALGORITHMS ACROSS DIFFERENT DATASETS (CIFAR-10, CIFAR-100, TINY-IMAGENET) UNDER
+DIRICHLET AND PATHOLOGICAL PARTITION SCENARIOS.
+Algorithm
+CIFAR-10
+CIFAR-100
+Tiny-ImageNet
+CIFAR-10 + CIFAR-100
+Dirichlet
+Pathological
+Dirichlet
+Pathological
+Dirichlet
+Pathological
+Dirichlet
+Pathological
+Local
+60.48±0.23
+86.97±0.22
+22.81±0.09
+35.78±0.49
+5.58±0.31
+9.30±0.41
+49.40±0.05
+66.75±0.13
+FedAvg
+74.87±0.15
+79.08±0.41
+33.99±0.37
+42.32±0.28
+12.88±0.25
+12.41±0.32
+59.45±0.32
+77.27±0.16
+FedAvg+FT
+78.13±1.04
+93.21±0.10
+40.07±0.78
+53.34±0.35
+14.82±0.08
+20.40±0.47
+60.01±0.19
+77.70±0.40
+Ditto
+76.84±0.03
+91.69±0.33
+34.20±0.17
+46.32±0.10
+14.35±0.41
+19.01±0.12
+56.19±0.09
+73.16±0.70
+D-PSGD
+78.66±0.25
+93.37±0.39
+40.13±0.38
+53.32±0.65
+14.51±0.09
+20.61±0.03
+59.86±0.27
+77.60±0.03
+DisPFL
+78.14±0.08
+93.44±0.47
+44.07±0.13
+56.76±0.21
+11.27±0.12
+19.12±0.84
+58.25±0.17
+77.99±0.18
+DFedSAM
+77.27±0.31
+91.26±0.15
+39.32±0.44
+55.02±0.11
+11.50±0.31
+19.45±0.17
+55.59±0.32
+71.50±0.25
+GossipFL
+65.63±0.32
+90.38±0.47
+27.41±0.81
+39.76±0.33
+8.32±0.47
+13.76±0.23
+46.45±0.19
+64.19±0.07
+DA-PFL
+81.61±0.07
+93.84±0.19
+41.26±0.27
+57.43±0.14
+11.43±0.51
+18.29±0.43
+56.81±0.35
+73.59±0.41
+ProToDFL (ours)
+83.22±0.09
+94.85±0.16
+45.77±0.30
+60.29±0.87
+15.86±0.24
+23.30±0.21
+63.81±0.47
+79.03±0.57
+For CFL, each client acts as a server, performing federated
+communication and aggregation with its neighbors, following
+and improving upon the setup in [2], [10], ensuring a fair
+comparison across all methods.
+B. Performance Evaluation
+1) Baselines Comparison: As shown in Table II, ProToDFL
+achieves consistent improvements over a variety of strong
+baselines, including recent sota methods like DisPFL and DA-
+PFL. For example, on CIFAR-100 (Dirichlet) and (Patho-
+logical), ProToDFL surpasses DisPFL by about 1.70% and
+3.53%, respectively, and outperforms DA-PFL by approxi-
+mately 4.51% and 2.86%. On Tiny-ImageNet, ProToDFL leads
+DA-PFL by roughly 4.43% (Dirichlet) and 5.01% (Patholog-
+ical), and on the challenging CIFAR-10 + CIFAR-100 com-
+bined scenario, it provides a clear margin over all baselines.
+These results highlight the strong benefits of our prototype-
+based global topology construction, enabling efficient col-
+laboration among nodes with similar data distributions and
+delivering superior performance in complex, heterogeneous
+settings. A detailed analysis of the convergence speed for
+all baseline experiments is provided in the supplementary
+materials.
+TABLE II
+PERFORMANCE COMPARISON UNDER HETEROGENEOUS PARTITIONS ON
+CIFAR-10 AND CIFAR-100.
+Algorithm
+CIFAR-10
+CIFAR-100
+Dir α = 0.1
+Path c = 3
+Dir α = 0.1
+Path c = 30
+FedAvg
+77.17±0.15
+78.73±0.41
+40.51±0.37
+40.77±0.66
+FedAvg+FT
+89.68±1.04
+89.16±0.10
+55.24±0.78
+51.83±0.35
+Ditto
+76.84±0.03
+84.20±0.33
+46.69±0.17
+40.89±0.10
+D-PSGD
+89.43±0.22
+89.77±0.17
+54.30±0.38
+51.29±0.65
+DisPFL
+88.90±0.08
+89.02±0.47
+54.82±0.13
+50.72±0.82
+DFedSAM
+82.44±0.08
+93.44±0.47
+54.35±0.08
+51.16±0.92
+GossipFL
+81.53±0.37
+77.72±0.14
+38.12±0.55
+35.31±0.27
+DA-PFL
+90.07±0.08
+90.18±0.15
+56.74±0.38
+53.16±0.82
+ProToDFL (ours)
+90.74±0.19
+90.62±0.16
+58.08±0.30
+54.20±0.15
+2) Discussion on the heterogeneous setting: To further val-
+idate ProToDFL’s capability under severe data heterogeneity,
+we evaluated it on CIFAR-10 and CIFAR-100 with different
+data heterogeneity of Dirichlet and Pathological partitions in
+IV-B1, where c = 3 or c = 30 denote assigns each client a
+limited subset of 3 classes for CIFAR-10 or 30 classes for
+CIFAR-100. As shown in Table II, ProToDFL consistently
+Ring
+Grid
+Random
+Exp
+Performance for Dir( =0.3)
+25.0
+30.0
+35.0
+40.0
+45.0
+Accuracy(%)
+Ring
+Grid
+Random
+Exp
+Performance for Path(c=20)
+40.0
+45.0
+50.0
+55.0
+60.0
+Accuracy(%)
+D-PSGD
+DisPFL
+DFedSAM
+GossipFL
+DA-PFL
+ProToDFL
+Fig. 2. Performance comparison of decentralized algorithms across different
+communication topologies on CIFAR-100.
+achieved the top accuracy in all scenarios, reaching 90.74%
+on CIFAR-10 (Dirichlet) and 90.62% (Pathological), while
+also outperforming the strongest baselines on CIFAR-100 with
+58.08% (Dirichlet) and 54.20% (Pathological). These substan-
+tial gains highlight ProToDFL’s robustness and adaptability,
+maintaining superior performance in highly non-IID settings
+across existing methods.
+C. Topology-aware Performance
+We evaluated the influence of various communication
+topologies—including Ring, Grid, Random and Exponential
+(Exp), on the performance of multiple DFL algorithms. Fol-
+lowing a similar approach as in the previous experiments,
+we focused on key DFL properties under these different
+network structures. Detailed results for the Random topology
+are presented in Section IV-B1. As illustrated in Figure 3,
+ProToDFL consistently demonstrated significant performance
+gains across all tested topologies. Specifically, compared with
+DA-PFL and DisPFL in Pathological Partition, ProToDFL can
+significantly improve performance in the Grid topology by
+3.82% and 5.70%. Meanwhile, ProToDFL consistently outper-
+forms other methods across various topologies. These results
+confirm that our ProToDFL framework effectively addresses
+the challenges posed through varying network connectivity and
+sparse communication, thereby enhancing both the scalability
+and adaptability of decentralized federated learning.
+D. Ablation Study
+We conduct ablation studies to assess the impact of Pro-
+toDFL’s components on model performance and communica-
+tion overhead. All experiments use the “Ring” topology to
+evaluate each module under sparse conditions.
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on November 03,2026 at 05:07:35 UTC from IEEE Xplore.  Restrictions apply. 
+
+w/o ProtoDFL
+w/o 2-hop
+w/o Stop-and-Wait
+w/o Cut-Edge
+ProtoDFL
+0
+20
+40
+60
+80
+100
+120
+140
+160
+Communication (MB)
+89.4
+101.9
+158.3
+115.4
+115.5
+Communication (MB)
+w/o ProtoDFL
+w/o 2-hop
+w/o Stop-and-Wait
+w/o Cut-Edge
+ProtoDFL
+75
+76
+77
+78
+79
+Accuracy (%)
+Accuracy (%)
+74.5
+76.1
+78.9
+75.8
+79.6
+Fig. 3. Accuracy (%) and Communication (MB) of Comparison with Different
+Configurations.
+1) Performance Impact of Each Component: Ablation re-
+sults demonstrate ProToDFL’s essential components in sparse
+settings. Removing ProToDFL (similar to FedAvg+FT) re-
+duces accuracy from 79.62% to 74.47%, highlighting its
+role in aligning similar data distributions. Selecting only 1-
+hop neighbors raises accuracy to 76.13%, and adding 2-
+hop neighbor selection restores it to 79.62%. The Stop-and-
+Wait mechanism slightly reduces accuracy to 78.93% but
+reduces communication overhead. Omitting Cut-Edge Detec-
+tion further lowers accuracy to 75.82%, emphasizing its role
+in maintaining stable topology. Together, dynamic neighbor
+selection, 2-hop neighbor selection, and Cut-Edge Detection
+are crucial for ProToDFL’s effectiveness in sparse scenarios.
+2) Communication Overhead Impact: In terms of commu-
+nication costs, the Stop-and-Wait strategy minimizes overhead
+in ring topologies by regulating prototype transmissions and
+eliminating redundant messages. While enhancing accuracy,
+the total overhead remains low (115.5 MB). These results
+indicate that ProToDFL’s Stop-and-Wait effectively balances
+performance and efficiency in sparse network settings.
+V. CONCLUSION
+In this paper, we propose ProToDFL, a decentralized fed-
+erated learning framework that optimizes global topology
+through dynamic neighbor selection and prototype learning.
+Theoretical analysis shows that minimizing KL divergence en-
+hances convergence by reducing gradient discrepancies among
+clients. Experiments confirm ProToDFL’s superior perfor-
+mance in heterogeneous environments, significantly improving
+model accuracy and ensuring robust communication network
+connectivity. These results demonstrate ProToDFL’s effective-
+ness for adaptive distributed machine learning. Future work
+will focus on more efficient communication strategies to boost
+performance and broaden ProToDFL’s applicability.
+REFERENCES
+[1] Brendan McMahan, Eider Moore, et al.,
+“Communication-efficient
+learning of deep networks from decentralized data,”
+in Artificial
+Intelligence and Statistics, 2017, pp. 1273–1282.
+[2] Yifan Shi and Liand others Shen, “Improving the model consistency
+of decentralized federated learning,”
+in International Conference on
+Machine Learning, 2023, pp. 31269–31291.
+[3] Shivam Kalra, Junfeng Wen, et al., “Decentralized federated learning
+through proxy model sharing,” Nature communications, vol. 14, no. 1,
+pp. 2899, 2023.
+[4] Canh T Dinh, Nguyen Tran, et al.,
+“Personalized federated learning
+with moreau envelopes,” Advances in Neural Information Processing
+Systems, vol. 33, pp. 21394–21405, 2020.
+[5] Tian Li, Anit Kumar Sahu, et al., “Federated optimization in heteroge-
+neous networks,” Proceedings of Machine Learning and Systems, vol.
+2, pp. 429–450, 2020.
+[6] Huancheng Chen, Haris Vikalo, et al.,
+“The best of both worlds:
+Accurate global and personalized models through federated learn-
+ing with data-free hyper-knowledge distillation,”
+arXiv preprint
+arXiv:2301.08968, 2023.
+[7] Aviv Shamsian, Aviv Navon, et al., “Personalized federated learning us-
+ing hypernetworks,” in International Conference on Machine Learning,
+2021, pp. 9489–9502.
+[8] Muhammad Mateen Yaqoob, Muhammad Nazir, et al.,
+“Hybrid
+classifier-based federated learning in health service providers for car-
+diovascular disease prediction,” Applied Sciences, vol. 13, no. 3, pp.
+1911, 2023.
+[9] Liangqi Yuan, Ziran Wang, et al., “Decentralized federated learning: A
+survey and perspective,” IEEE Internet of Things Journal, 2024.
+[10] Rong Dai, Shen, et al.,
+“Dispfl: Towards communication-efficient
+personalized federated learning via decentralized sparse training,”
+in
+International Conference on Machine Learning, 2022, pp. 4587–4604.
+[11] Yue Huang, Lanju Kong, et al., “Decentralized federated learning via
+mutual knowledge distillation,” in 2023 IEEE International Conference
+on Multimedia and Expo, 2023, pp. 342–347.
+[12] Zhenheng Tang, Shaohuai Shi, et al., “Gossipfl: A decentralized feder-
+ated learning framework with sparsified and adaptive communication,”
+IEEE Transactions on Parallel and Distributed Systems, vol. 34, no. 3,
+pp. 909–922, 2022.
+[13] Zhida Jiang, Yang Xu, et al.,
+“Joint model pruning and topology
+construction for accelerating decentralized machine learning,”
+IEEE
+Transactions on Parallel and Distributed Systems, vol. 34, no. 10, pp.
+2827–2842, 2023.
+[14] Min Chen, Yang Xu, et al., “Enhancing decentralized federated learning
+for non-iid data on heterogeneous devices,”
+in 2023 IEEE 39th
+International Conference on Data Engineering. IEEE, 2023, pp. 2289–
+2302.
+[15] Sen Cui, Jian Liang, et al.,
+“Collaboration equilibrium in federated
+learning,”
+in Proceedings of the 28th ACM SIGKDD Conference on
+Knowledge Discovery and Data Mining, 2022, pp. 241–251.
+[16] Salma Kharrat, Marco Canini, et al.,
+“Decentralized personalized
+federated learning,” arXiv preprint arXiv:2406.06520, 2024.
+[17] Rui Ye, Zhenyang Ni, et al.,
+“Personalized federated learning with
+inferred collaboration graphs,” in International Conference on Machine
+Learning, 2023, pp. 39801–39817.
+[18] Alex Krizhevsky, Geoffrey Hinton, et al., “Learning multiple layers of
+features from tiny images,” 2009.
+[19] Ya Le and Xuan Yang, “Tiny imagenet visual recognition challenge,”
+CS 231N, vol. 7, no. 7, pp. 3, 2015.
+[20] Tzu-Ming Harry Hsu, Hang Qi, et al., “Measuring the effects of non-
+identical data distribution for federated visual classification,”
+arXiv
+preprint arXiv:1909.06335, 2019.
+[21] Michael Zhang, Karan Sapra, et al., “Personalized federated learning
+with first order model optimization,” arXiv preprint arXiv:2012.08565,
+2020.
+[22] Chao Huang, Jianwei Huang, et al.,
+“Cross-silo federated learning:
+Challenges and opportunities,” arXiv preprint arXiv:2206.12949, 2022.
+[23] Pan Zhou, Qian Lin, et al.,
+“Communication-efficient decentralized
+machine learning over heterogeneous networks,”
+in 2021 IEEE 37th
+International Conference on Data Engineering, 2021, pp. 384–395.
+[24] Gary Cheng, Karan Chadha, et al., “Fine-tuning is fine in federated
+learning,” arXiv preprint arXiv:2108.07313, vol. 3, 2021.
+[25] Tian Li, Shengyuan Hu, et al., “Ditto: Fair and robust federated learning
+through personalization,”
+in International Conference on Machine
+Learning, 2021, pp. 6357–6368.
+[26] Xiangru Lian, Ce Zhang, et al.,
+“Can decentralized algorithms out-
+perform centralized algorithms? a case study for decentralized parallel
+stochastic gradient descent,” Advances in Neural Information Processing
+Systems, vol. 30, 2017.
+[27] Qianyu Long, Qiyuan Wang, et al., “Decentralized personalized feder-
+ated learning based on a conditional sparse-to-sparser scheme,” arXiv
+preprint arXiv:2404.15943, 2024.
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on November 03,2026 at 05:07:35 UTC from IEEE Xplore.  Restrictions apply. 

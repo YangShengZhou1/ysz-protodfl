@@ -1,0 +1,15 @@
+{
+  "command": [
+    "c:/Users/Administrator/Desktop/bishe/.venv/Scripts/python.exe",
+    "-c",
+    "import time; print('start', flush=True); time.sleep(60)"
+  ],
+  "pid": 5660,
+  "returncode": 1,
+  "reason": "idle_timeout",
+  "elapsed_seconds": 8.31,
+  "idle_timeout": 5.0,
+  "hard_timeout": 30.0,
+  "stdout": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\test.out",
+  "stderr": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\watchdog\\test.err"
+}

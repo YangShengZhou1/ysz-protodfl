@@ -1,0 +1,11 @@
+{
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-my_part0.3-ti-1-step-0-dy-0-t_max-100-cs-random-hops-2-mo0.1-per-0-mdlresnet18-cm500-total_clnt100-neighbor100-seed0-tagpaper100-next-dir/round_500",
+  "n_targets": 100,
+  "n_rows": 400,
+  "delayed_gain": "60/400",
+  "reversed_gain": "92/400",
+  "mean_gain_before_pp": 1.7784707180744639,
+  "mean_gain_after_pp": -6.034285655751662,
+  "mean_kl_rank_of_best_after": 2.24,
+  "targets_with_delayed_candidate": 36
+}

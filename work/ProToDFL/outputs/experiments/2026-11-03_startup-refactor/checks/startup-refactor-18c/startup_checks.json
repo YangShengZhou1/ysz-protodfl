@@ -1,0 +1,1366 @@
+{
+  "environment": {
+    "python": "3.10.8",
+    "torch": "2.5.1+cu121",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+  },
+  "multihop": [
+    {
+      "graph": "five_node_chain",
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "rows": [
+        {
+          "source": 0,
+          "k": 1,
+          "actual": [
+            1
+          ],
+          "exact_k_hop": [
+            1
+          ],
+          "within_k_hop": [
+            1
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 2,
+          "actual": [
+            1,
+            2
+          ],
+          "exact_k_hop": [
+            2
+          ],
+          "within_k_hop": [
+            1,
+            2
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 3,
+          "actual": [
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            3
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 4,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            4
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 1,
+          "actual": [
+            0,
+            2
+          ],
+          "exact_k_hop": [
+            0,
+            2
+          ],
+          "within_k_hop": [
+            0,
+            2
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 2,
+          "actual": [
+            0,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            3
+          ],
+          "within_k_hop": [
+            0,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 3,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            4
+          ],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 4,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 1,
+          "actual": [
+            1,
+            3
+          ],
+          "exact_k_hop": [
+            1,
+            3
+          ],
+          "within_k_hop": [
+            1,
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            0,
+            4
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 1,
+          "actual": [
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            2,
+            4
+          ],
+          "within_k_hop": [
+            2,
+            4
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 2,
+          "actual": [
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            1
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            0
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 1,
+          "actual": [
+            3
+          ],
+          "exact_k_hop": [
+            3
+          ],
+          "within_k_hop": [
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 2,
+          "actual": [
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            2
+          ],
+          "within_k_hop": [
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 3,
+          "actual": [
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            1
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            0
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        }
+      ]
+    },
+    {
+      "graph": "five_node_ring",
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "rows": [
+        {
+          "source": 0,
+          "k": 1,
+          "actual": [
+            1,
+            4
+          ],
+          "exact_k_hop": [
+            1,
+            4
+          ],
+          "within_k_hop": [
+            1,
+            4
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 2,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            2,
+            3
+          ],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 3,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 0,
+          "k": 4,
+          "actual": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 1,
+          "actual": [
+            0,
+            2
+          ],
+          "exact_k_hop": [
+            0,
+            2
+          ],
+          "within_k_hop": [
+            0,
+            2
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 2,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            3,
+            4
+          ],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 3,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 1,
+          "k": 4,
+          "actual": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 1,
+          "actual": [
+            1,
+            3
+          ],
+          "exact_k_hop": [
+            1,
+            3
+          ],
+          "within_k_hop": [
+            1,
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [
+            0,
+            4
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 2,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 1,
+          "actual": [
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            2,
+            4
+          ],
+          "within_k_hop": [
+            2,
+            4
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [
+            0,
+            1
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 3,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 1,
+          "actual": [
+            0,
+            3
+          ],
+          "exact_k_hop": [
+            0,
+            3
+          ],
+          "within_k_hop": [
+            0,
+            3
+          ],
+          "matches_exact": true,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 2,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [
+            1,
+            2
+          ],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 3,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        },
+        {
+          "source": 4,
+          "k": 4,
+          "actual": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "exact_k_hop": [],
+          "within_k_hop": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "matches_exact": false,
+          "matches_within": true
+        }
+      ]
+    }
+  ],
+  "cifar10": {
+    "seed": 0,
+    "partition": "dir",
+    "alpha": 0.3,
+    "client_num": 18,
+    "official_train_samples": 50000,
+    "official_test_samples": 10000,
+    "assigned_train_samples": 50000,
+    "unique_assigned_train_samples": 50000,
+    "duplicate_train_assignments": 0,
+    "unassigned_train_samples": 0,
+    "assigned_test_samples_with_overlap": 10094,
+    "unique_assigned_test_samples": 6812,
+    "train_test_pools": "CIFAR-10 official disjoint train/test pools; indices belong to separate pools",
+    "clients": [
+      {
+        "client": 0,
+        "train_samples": 2777,
+        "test_samples": 562,
+        "train_class_counts": [
+          0,
+          1,
+          111,
+          17,
+          90,
+          0,
+          213,
+          2030,
+          30,
+          285
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.00036,
+          0.039971,
+          0.006122,
+          0.032409,
+          0.0,
+          0.076701,
+          0.731005,
+          0.010803,
+          0.102629
+        ]
+      },
+      {
+        "client": 1,
+        "train_samples": 2778,
+        "test_samples": 562,
+        "train_class_counts": [
+          9,
+          36,
+          251,
+          7,
+          354,
+          131,
+          5,
+          5,
+          907,
+          1073
+        ],
+        "train_class_proportions": [
+          0.00324,
+          0.012959,
+          0.090353,
+          0.00252,
+          0.12743,
+          0.047156,
+          0.0018,
+          0.0018,
+          0.326494,
+          0.386249
+        ]
+      },
+      {
+        "client": 2,
+        "train_samples": 2778,
+        "test_samples": 562,
+        "train_class_counts": [
+          70,
+          82,
+          78,
+          1,
+          607,
+          677,
+          98,
+          5,
+          52,
+          1108
+        ],
+        "train_class_proportions": [
+          0.025198,
+          0.029518,
+          0.028078,
+          0.00036,
+          0.218503,
+          0.243701,
+          0.035277,
+          0.0018,
+          0.018719,
+          0.398848
+        ]
+      },
+      {
+        "client": 3,
+        "train_samples": 2778,
+        "test_samples": 563,
+        "train_class_counts": [
+          285,
+          8,
+          128,
+          7,
+          50,
+          232,
+          425,
+          703,
+          685,
+          255
+        ],
+        "train_class_proportions": [
+          0.102592,
+          0.00288,
+          0.046076,
+          0.00252,
+          0.017999,
+          0.083513,
+          0.152988,
+          0.25306,
+          0.24658,
+          0.091793
+        ]
+      },
+      {
+        "client": 4,
+        "train_samples": 2778,
+        "test_samples": 561,
+        "train_class_counts": [
+          1393,
+          37,
+          0,
+          177,
+          137,
+          0,
+          106,
+          91,
+          140,
+          697
+        ],
+        "train_class_proportions": [
+          0.50144,
+          0.013319,
+          0.0,
+          0.063715,
+          0.049316,
+          0.0,
+          0.038157,
+          0.032757,
+          0.050396,
+          0.2509
+        ]
+      },
+      {
+        "client": 5,
+        "train_samples": 2778,
+        "test_samples": 561,
+        "train_class_counts": [
+          90,
+          824,
+          0,
+          478,
+          1,
+          3,
+          1,
+          831,
+          78,
+          472
+        ],
+        "train_class_proportions": [
+          0.032397,
+          0.296616,
+          0.0,
+          0.172066,
+          0.00036,
+          0.00108,
+          0.00036,
+          0.299136,
+          0.028078,
+          0.169906
+        ]
+      },
+      {
+        "client": 6,
+        "train_samples": 2778,
+        "test_samples": 562,
+        "train_class_counts": [
+          149,
+          1575,
+          0,
+          1,
+          221,
+          15,
+          0,
+          72,
+          705,
+          40
+        ],
+        "train_class_proportions": [
+          0.053636,
+          0.566955,
+          0.0,
+          0.00036,
+          0.079554,
+          0.0054,
+          0.0,
+          0.025918,
+          0.25378,
+          0.014399
+        ]
+      },
+      {
+        "client": 7,
+        "train_samples": 2778,
+        "test_samples": 562,
+        "train_class_counts": [
+          877,
+          114,
+          15,
+          940,
+          12,
+          1,
+          40,
+          115,
+          0,
+          664
+        ],
+        "train_class_proportions": [
+          0.315695,
+          0.041037,
+          0.0054,
+          0.338373,
+          0.00432,
+          0.00036,
+          0.014399,
+          0.041397,
+          0.0,
+          0.239021
+        ]
+      },
+      {
+        "client": 8,
+        "train_samples": 2778,
+        "test_samples": 562,
+        "train_class_counts": [
+          105,
+          288,
+          0,
+          26,
+          163,
+          213,
+          11,
+          6,
+          1955,
+          11
+        ],
+        "train_class_proportions": [
+          0.037797,
+          0.103672,
+          0.0,
+          0.009359,
+          0.058675,
+          0.076674,
+          0.00396,
+          0.00216,
+          0.703744,
+          0.00396
+        ]
+      },
+      {
+        "client": 9,
+        "train_samples": 2777,
+        "test_samples": 563,
+        "train_class_counts": [
+          15,
+          51,
+          20,
+          1310,
+          188,
+          508,
+          248,
+          1,
+          41,
+          395
+        ],
+        "train_class_proportions": [
+          0.005402,
+          0.018365,
+          0.007202,
+          0.471732,
+          0.067699,
+          0.182931,
+          0.089305,
+          0.00036,
+          0.014764,
+          0.14224
+        ]
+      },
+      {
+        "client": 10,
+        "train_samples": 2778,
+        "test_samples": 560,
+        "train_class_counts": [
+          1161,
+          143,
+          9,
+          0,
+          277,
+          15,
+          0,
+          1141,
+          32,
+          0
+        ],
+        "train_class_proportions": [
+          0.417927,
+          0.051476,
+          0.00324,
+          0.0,
+          0.099712,
+          0.0054,
+          0.0,
+          0.410727,
+          0.011519,
+          0.0
+        ]
+      },
+      {
+        "client": 11,
+        "train_samples": 2778,
+        "test_samples": 561,
+        "train_class_counts": [
+          846,
+          450,
+          25,
+          48,
+          192,
+          62,
+          1153,
+          0,
+          2,
+          0
+        ],
+        "train_class_proportions": [
+          0.304536,
+          0.161987,
+          0.008999,
+          0.017279,
+          0.069114,
+          0.022318,
+          0.415047,
+          0.0,
+          0.00072,
+          0.0
+        ]
+      },
+      {
+        "client": 12,
+        "train_samples": 2777,
+        "test_samples": 559,
+        "train_class_counts": [
+          0,
+          173,
+          345,
+          12,
+          3,
+          1788,
+          363,
+          0,
+          93,
+          0
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.062297,
+          0.124235,
+          0.004321,
+          0.00108,
+          0.64386,
+          0.130717,
+          0.0,
+          0.033489,
+          0.0
+        ]
+      },
+      {
+        "client": 13,
+        "train_samples": 2778,
+        "test_samples": 561,
+        "train_class_counts": [
+          0,
+          1146,
+          60,
+          20,
+          0,
+          1355,
+          42,
+          0,
+          155,
+          0
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.412527,
+          0.021598,
+          0.007199,
+          0.0,
+          0.487761,
+          0.015119,
+          0.0,
+          0.055796,
+          0.0
+        ]
+      },
+      {
+        "client": 14,
+        "train_samples": 2777,
+        "test_samples": 560,
+        "train_class_counts": [
+          0,
+          72,
+          1051,
+          121,
+          357,
+          0,
+          1051,
+          0,
+          125,
+          0
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.025927,
+          0.378466,
+          0.043572,
+          0.128556,
+          0.0,
+          0.378466,
+          0.0,
+          0.045013,
+          0.0
+        ]
+      },
+      {
+        "client": 15,
+        "train_samples": 2778,
+        "test_samples": 558,
+        "train_class_counts": [
+          0,
+          0,
+          25,
+          1314,
+          195,
+          0,
+          1244,
+          0,
+          0,
+          0
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.0,
+          0.008999,
+          0.473002,
+          0.070194,
+          0.0,
+          0.447804,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "client": 16,
+        "train_samples": 2778,
+        "test_samples": 558,
+        "train_class_counts": [
+          0,
+          0,
+          2071,
+          521,
+          186,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.0,
+          0.7455,
+          0.187545,
+          0.066955,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "client": 17,
+        "train_samples": 2778,
+        "test_samples": 557,
+        "train_class_counts": [
+          0,
+          0,
+          811,
+          0,
+          1967,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "train_class_proportions": [
+          0.0,
+          0.0,
+          0.291937,
+          0.0,
+          0.708063,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "partition_file": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\checks\\startup-refactor-18c\\cifar10_dir_partition.npz"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "checkpoint": "/home/seczone/ysz/outputs/checkpoints/ProToDFL-data-my_part0.3-ti-1-step-0-dy-0-t_max-100-cs-random-hops-2-mo0.1-per-0-mdlresnet18-cm500-total_clnt100-neighbor100-seed0-tagpaper100-next-dir/round_500",
+  "targets": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "repeats": 3,
+  "n_groups": 15,
+  "groups_with_identical_acc": 15,
+  "max_ver_loss_gap_across_repeats": 0.0,
+  "branches": {
+    "none": {
+      "ver_acc_after_mean": 0.8387755102040817,
+      "ver_acc_before_mean": 0.8630204081632653
+    },
+    "kl_top1": {
+      "ver_acc_after_mean": 0.8387755102040817,
+      "ver_acc_before_mean": 0.8749387755102042,
+      "gain_vs_none_mean_pp": 0.0
+    },
+    "select_best": {
+      "ver_acc_after_mean": 0.8267755102040818,
+      "ver_acc_before_mean": 0.870938775510204,
+      "gain_vs_none_mean_pp": -1.200000000000001
+    }
+  }
+}

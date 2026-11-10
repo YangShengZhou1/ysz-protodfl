@@ -1,0 +1,72 @@
+{
+  "n_pairs_total": 380,
+  "n_pairs_clean": 187,
+  "n_dropped_degenerate": 193,
+  "n_dropped_majority": 0,
+  "n_targets": 11,
+  "n_targets_comparable": 11,
+  "mean_candidates_per_target": 17,
+  "mean_delta_acc_clean": -0.011116035309061016,
+  "negative_transfer_fraction_clean": 0.6524064171122995,
+  "mean_top1_regret": 0.05850009072763564,
+  "median_top1_regret": 0.02594810379241519,
+  "max_top1_regret": 0.24200000000000005,
+  "n_targets_top1_is_best": 0,
+  "mean_delta_range_within_target": 0.12920522591181274,
+  "median_delta_range_within_target": 0.11599999999999999,
+  "n_targets_top1_beats_second": 2,
+  "mean_within_target_spearman": -0.04693721230723587,
+  "median_within_target_spearman": -0.032352941176470584,
+  "n_within_target_spearman_negative": 7,
+  "n_within_target_spearman": 11,
+  "overall_spearman_kl_vs_delta": -0.25883115198066114,
+  "graph_distance": {
+    "mean_delta_by_distance": {
+      "1": 0.006227237832028259,
+      "2": -0.000808752864641082,
+      "3": -0.01013844311377245,
+      "4": -0.01006187624750498,
+      "5": -0.02549508982035927,
+      "6": -0.011437893443881467,
+      "7": -0.019967744510978037,
+      "8": -0.03853493013972054
+    },
+    "count_by_distance": {
+      "1": 26,
+      "2": 27,
+      "3": 25,
+      "4": 26,
+      "5": 25,
+      "6": 26,
+      "7": 25,
+      "8": 7
+    },
+    "best_distance_histogram": {
+      "1": 5,
+      "3": 1,
+      "4": 2,
+      "5": 1,
+      "7": 1,
+      "8": 1
+    },
+    "kl_top1_distance_histogram": {
+      "1": 6,
+      "2": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1
+    },
+    "n_targets_best_inside_two_hops": 5,
+    "n_targets": 11
+  },
+  "two_hop_subset": {
+    "n_targets": 11,
+    "mean_delta_range": 0.07542115768463074,
+    "max_delta_range": 0.198,
+    "mean_top1_regret": 0.01943603701687534,
+    "n_targets_top1_is_best": 4
+  },
+  "label": "5 epoch / round_1 / base / seed0 / 主口径",
+  "source": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\checks\\kl_benefit_server\\kl_benefit.csv"
+}

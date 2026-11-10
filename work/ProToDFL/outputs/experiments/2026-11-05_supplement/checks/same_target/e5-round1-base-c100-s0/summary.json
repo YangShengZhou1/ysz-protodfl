@@ -1,0 +1,75 @@
+{
+  "n_pairs_total": 380,
+  "n_pairs_clean": 378,
+  "n_dropped_degenerate": 2,
+  "n_dropped_majority": 0,
+  "n_targets": 20,
+  "n_targets_comparable": 20,
+  "mean_candidates_per_target": 18.9,
+  "mean_delta_acc_clean": -0.020543673815636272,
+  "negative_transfer_fraction_clean": 0.8042328042328042,
+  "mean_top1_regret": 0.021332134019880447,
+  "median_top1_regret": 0.019960795563205208,
+  "max_top1_regret": 0.07171314741035856,
+  "n_targets_top1_is_best": 0,
+  "mean_delta_range_within_target": 0.05967004337734082,
+  "median_delta_range_within_target": 0.06127080477010753,
+  "n_targets_top1_beats_second": 7,
+  "mean_within_target_spearman": -0.030513736931384046,
+  "median_within_target_spearman": -0.06511249530582668,
+  "n_within_target_spearman_negative": 13,
+  "n_within_target_spearman": 20,
+  "overall_spearman_kl_vs_delta": 0.13826820985455462,
+  "graph_distance": {
+    "mean_delta_by_distance": {
+      "1": -0.01697697242955016,
+      "2": -0.020820229472605593,
+      "3": -0.025354432266786735,
+      "4": -0.020970392263008494,
+      "5": -0.01958439845161782,
+      "6": -0.025029288353320085,
+      "7": -0.017209908641693996,
+      "8": -0.016547225109375882,
+      "9": -0.026312497143282907
+    },
+    "count_by_distance": {
+      "1": 48,
+      "2": 48,
+      "3": 50,
+      "4": 50,
+      "5": 47,
+      "6": 48,
+      "7": 52,
+      "8": 31,
+      "9": 4
+    },
+    "best_distance_histogram": {
+      "1": 5,
+      "2": 1,
+      "4": 4,
+      "5": 2,
+      "7": 5,
+      "8": 3
+    },
+    "kl_top1_distance_histogram": {
+      "1": 2,
+      "2": 3,
+      "3": 4,
+      "4": 4,
+      "5": 5,
+      "6": 1,
+      "7": 1
+    },
+    "n_targets_best_inside_two_hops": 6,
+    "n_targets": 20
+  },
+  "two_hop_subset": {
+    "n_targets": 20,
+    "mean_delta_range": 0.034831651515383005,
+    "max_delta_range": 0.0796812749003984,
+    "mean_top1_regret": 0.016504230975798773,
+    "n_targets_top1_is_best": 4
+  },
+  "label": "5 epoch / round_1 / base / CIFAR-100 / seed0",
+  "source": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\experiments\\2026-11-05_supplement\\raw\\kl_benefit_c100_e5_base_s0.csv"
+}

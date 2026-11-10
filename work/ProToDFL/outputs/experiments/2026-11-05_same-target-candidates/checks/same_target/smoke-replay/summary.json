@@ -1,0 +1,52 @@
+{
+  "checkpoint": "C:\\Users\\Administrator\\Desktop\\bishe\\work\\ProToDFL\\outputs\\checkpoints\\ProToDFL-data-dir0.3-ti-1-step-0-dy-0-t_max-100-cs-ring-hops-2-mo0.5-per-0-mdlresnet18-cm2-total_clnt20-neighbor20-seed0-tagpaired20-base-s0\\round_1",
+  "scope": "base",
+  "replay_epochs": 1,
+  "split_frac": 0.5,
+  "split_seed": 0,
+  "max_candidates": 2,
+  "summary_agg": {
+    "n": 0
+  },
+  "summary_replay": {
+    "n": 0
+  },
+  "rows": [
+    {
+      "target": 0,
+      "candidate": 11,
+      "hop": 1,
+      "kl_ij": 42.39138412475586,
+      "kl_ji": 42.946903228759766,
+      "kl_sym": 42.66914367675781,
+      "pre_acc": 0.7427427427427428,
+      "agg_acc": 0.7427427427427428,
+      "replay_acc": 0.7427427427427428,
+      "delta_agg": 0.0,
+      "delta_replay": 0.0,
+      "training_gain": 0.0,
+      "pre_loss": 1.0334454021892987,
+      "agg_loss": 1.1019397388110768,
+      "replay_loss": 1.0553874950389843,
+      "degenerate": 1
+    },
+    {
+      "target": 0,
+      "candidate": 2,
+      "hop": 2,
+      "kl_ij": 45.17232131958008,
+      "kl_ji": 45.975746154785156,
+      "kl_sym": 45.57403373718262,
+      "pre_acc": 0.7427427427427428,
+      "agg_acc": 0.7427427427427428,
+      "replay_acc": 0.7427427427427428,
+      "delta_agg": 0.0,
+      "delta_replay": 0.0,
+      "training_gain": 0.0,
+      "pre_loss": 1.0334454021892987,
+      "agg_loss": 1.0837640924616023,
+      "replay_loss": 1.0367798370880645,
+      "degenerate": 1
+    }
+  ]
+}
