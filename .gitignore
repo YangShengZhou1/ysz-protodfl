@@ -51,3 +51,8 @@ work/ProToDFL/outputs/*.tar.gz
 __pycache__/
 *.pyc
 .DS_Store
+
+# 含服务器地址的本地运维工具
+work/ProToDFL/scripts/rsh.py
+work/ProToDFL/scripts/remote_exec.py
+work/ProToDFL/scripts/remote_pull.py
